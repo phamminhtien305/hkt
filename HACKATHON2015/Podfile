@@ -10,6 +10,7 @@ target 'HACKATHON2015' do
 	pod 'JSONKit', '1.5pre'
     pod 'GoogleMaps'
     pod 'EGOTableViewPullRefresh'
+    pod 'iCarousel', '~> 1.7.6'
 end
 
 target 'HACKATHON2015Tests' do

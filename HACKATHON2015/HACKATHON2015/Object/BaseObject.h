@@ -11,6 +11,7 @@
 @interface BaseObject : NSObject
 
 @property (readwrite) BOOL objectState;
+@property int order;
 @property (nonatomic, copy) NSDictionary* objectDict;
 - (NSString*)description;
 - (id) initWithObjectDict:(NSDictionary*) applicationDict;

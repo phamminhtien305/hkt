@@ -12,20 +12,24 @@
 	<dict>
 		<key>C898091960BD3F316B4B8FBF431DA6765015C1EF</key>
 		<string>bitbucket.org:phamminhtien/hackathon.git</string>
+		<key>D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA</key>
+		<string>https://github.com/phamminhtien305/hkt.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HACKATHON2015/HACKATHON2015.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C898091960BD3F316B4B8FBF431DA6765015C1EF</key>
+		<string>../../../hackathon</string>
+		<key>D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>bitbucket.org:phamminhtien/hackathon.git</string>
+	<string>https://github.com/phamminhtien305/hkt.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C898091960BD3F316B4B8FBF431DA6765015C1EF</string>
+	<string>D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>C898091960BD3F316B4B8FBF431DA6765015C1EF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>hackathon</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hkt</string>
 		</dict>
 	</array>
 </dict>

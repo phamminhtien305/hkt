@@ -41,9 +41,12 @@
             [btnState setTitle:@"Closeed" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }else if([item state] == unpublish){
-            [btnState setTitle:@"Closeed" forState:UIControlStateNormal];
+            [btnState setTitle:@"Unpublish" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
-        }else 
+        }else if([item state] == private_){
+            [btnState setTitle:@"Private" forState:UIControlStateNormal];
+            [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
+        }
     }
 }
 

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1B5438D23A295346B63F17EA'
-               BlueprintName = 'EGOTableViewPullRefresh'
+               BlueprintIdentifier = 'C7007F721099C68D1C5BC9EA'
+               BlueprintName = 'iCarousel'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libEGOTableViewPullRefresh.a'>
+               BuildableName = 'libiCarousel.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

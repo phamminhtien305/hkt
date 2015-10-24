@@ -23,5 +23,8 @@
 #define LESS_THAN_OS8  ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
 
 #define TABBAR_HEIGHT 50
+#define BannerHeight 180
+
+
 
 #endif

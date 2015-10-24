@@ -26,7 +26,8 @@
 
 -(NSArray *)getImages;
 
+-(NSString*)getImage;
 
-
+-(NSString*)getFirstImage;
 
 @end

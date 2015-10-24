@@ -79,4 +79,25 @@
     return nil;
 }
 
+-(NSString*)getFirstImage{
+    if([self.objectDict objectForKey:@"images"]){
+        NSArray *arr = [self.objectDict objectForKey:@"images"];
+        if([arr count] > 0){
+            NSString *url = [arr objectAtIndex:0];
+            return url;
+        }
+    }
+    return nil;
+}
+
+-(NSString*)getImage{
+    if([self.objectDict objectForKey:@"images"]){
+        NSArray *arr = [self.objectDict objectForKey:@"images"];
+        if(self.order < [arr count]){
+            NSString *url = [arr objectAtIndex:self.order];
+            return url;
+        }
+    }
+    return nil;
+}
 @end

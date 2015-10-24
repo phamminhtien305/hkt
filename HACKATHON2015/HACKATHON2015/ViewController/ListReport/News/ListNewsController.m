@@ -1,20 +1,19 @@
 //
-//  ListReportController.m
+//  ListNewsController.m
 //  HACKATHON2015
 //
 //  Created by Minh Tien on 10/24/15.
 //  Copyright (c) 2015 hackathon. All rights reserved.
 //
 
-#import "ListReportController.h"
-#import "ReportItemCell.h"
+#import "ListNewsController.h"
 #import "APIEngineer+Report.h"
-#import "AddNewReportCell.h"
-
-#import "AddReportViewController.h"
+#import "HeaderNewsView.h"
+#import "NewsCell.h"
 #import "ReportDetailViewController.h"
 
-@implementation ListReportController
+@implementation ListNewsController
+
 -(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items{
     self = [super initWithTargetCollection:targetCollectionView];
     if(self){
@@ -22,7 +21,7 @@
         listSection = [[NSMutableArray alloc] initWithObjects:listItem, nil];
         [self updateCollectionViewWithListItem:listSection];
         if([listItem count] == 0){
-            [self getListReportFromParse];
+            [self getListNewsFromParse];
         }
         [self setUpEgoRefreshHeader];
     }
@@ -42,54 +41,63 @@
     }
 }
 
-
--(void)getListReportFromParse{
-    isLoading = YES;
-    [[APIEngineer sharedInstance] getReportsItemContentOnComplete:^(id result, BOOL isCache) {
+-(void)getListNewsFromParse{
+    [[APIEngineer sharedInstance] getNewsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
             [listItem removeAllObjects];
-            [listItem addObject:@"Bạn muốn báo cáo gì?"];
-            [listItem addObjectsFromArray:[ReportItemObject createListDataFromListDict:result]];
+            [listItem addObjectsFromArray:[NewsObject createListDataFromListDict:result]];
             [self reloadCollectionView];
         }
-        isLoading = NO;
     } onError:^(NSError *error) {
-        isLoading = NO;        
+        
     }];
 }
 
 -(void)registerNibWithCollection:(UICollectionView *)collectionView{
     [collectionView setBackgroundColor:BACKGROUND_COLLECTION];
-    [collectionView registerNib:[ReportItemCell nib] forCellWithReuseIdentifier:[ReportItemCell nibName]];
-    [collectionView registerNib:[AddNewReportCell nib] forCellWithReuseIdentifier:[AddNewReportCell nibName]];
+    [collectionView registerNib:[NewsCell nib] forCellWithReuseIdentifier:[NewsCell nibName]];
+    [collectionView registerNib:[HeaderNewsView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderNewsView nibName]];
 }
 
 -(NSString *)getCellIdentifierWithItem:(id)item{
-    if([item isKindOfClass:[NSString class]]){
-        return [AddNewReportCell nibName];
-    }
-    return [ReportItemCell nibName];
+    return [NewsCell nibName];
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    id item = [self itemAtIndexPath:indexPath];
-    if([item isKindOfClass:[NSString class]]){
-        return [AddNewReportCell getSize];
+    return [NewsCell getSize];
+}
+
+-(CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return [HeaderNewsView  getSize];
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        HeaderNewsView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderNewsView nibName] forIndexPath:indexPath];
+        reusableView = collectionHeader;
+        if([listItem count] > 3){
+            NSArray *arr = [[NSArray alloc] initWithObjects:listItem[0],listItem[1],listItem[2], nil];
+            [collectionHeader configHeader:arr];
+        }
     }
-    return [ReportItemCell getSize];
+    return reusableView;
 }
 
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     id item = [self itemAtIndexPath:indexPath];
-    if([item isKindOfClass:[NSString class]]){
-        AddReportViewController *reportView = [[AddReportViewController alloc] initUsingNib];
-        [[MainViewController getRootNaviController] pushViewController:reportView animated:YES];
-    }else{
+    if([item isKindOfClass:[NewsObject class]]){
         ReportDetailViewController *reportDetailView = [[ReportDetailViewController alloc] initWithReportItem:item];
         [[MainViewController getRootNaviController] pushViewController:reportDetailView animated:YES];
     }
 }
+
+
 
 #pragma mark - Ego pull to refresh protocol
 #pragma mark - Ego refresh header protocol
@@ -128,7 +136,7 @@
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
     if (self.refreshHeaderView) {
         if(!isLoading){
-            [self getListReportFromParse];
+            [self getListNewsFromParse];
         }
         [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1];
     }
@@ -151,8 +159,6 @@
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
 
 
 @end

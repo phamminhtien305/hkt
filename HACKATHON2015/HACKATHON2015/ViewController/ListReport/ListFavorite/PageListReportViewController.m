@@ -17,8 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-    controller = [[ListReportController alloc] initWithTargetCollection:collectionView withListItem:[MainViewController shareMainViewController].listReporterItem forListReport:YES];
+    controller = [[ListReportController alloc] initWithTargetCollection:collectionView withListItem:[MainViewController shareMainViewController].listReporterItem];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
-#import "ListReportController.h"
+#import "ListNewsController.h"
 
 @interface PageNewsViewController : BaseViewController
 {
-    ListReportController *controller;
+    ListNewsController *controller;
     __weak IBOutlet UICollectionView *collectionView;
 }
 @end

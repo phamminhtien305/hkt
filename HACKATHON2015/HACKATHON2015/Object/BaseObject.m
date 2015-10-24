@@ -20,6 +20,7 @@ static NSString * const ObjectStateKey = @"objectstate";
     int index = 0;
     for (NSDictionary* dict in listDict) {
         BaseObject *object = [[self alloc] initWithObjectDict:dict];
+        object.order = index;
         [listData addObject:object];
         index ++;
     }
