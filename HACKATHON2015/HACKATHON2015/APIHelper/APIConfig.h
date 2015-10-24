@@ -17,7 +17,7 @@
 
 #define HOME_URL @"https://api.parse.com/1/classes/HOME"
 #define REPORT_URL @"https://api.parse.com/1/classes/NEWREPORT"
-#define REPORTS_ITEM_URL @"https://api.parse.com/1/classes/REPORT_ITEM"
+#define REPORTS_ITEM_URL @"https://api.parse.com/1/classes/Report"
 #define NEWS_URL @"https://api.parse.com/1/classes/News"
 #define INFO_APP_URL @"https://api.parse.com/1/classes/INFOAPP"
 

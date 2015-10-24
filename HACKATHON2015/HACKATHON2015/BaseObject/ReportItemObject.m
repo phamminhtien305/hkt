@@ -14,34 +14,6 @@
     if([self.objectDict objectForKey:@"title"]){
         return [self.objectDict objectForKey:@"title"];
     }
-    return [self getUserFirstName];
-}
-
--(NSString *)getUserFirstName{
-    if([self.objectDict objectForKey:@"user_first_name"]){
-        return [self.objectDict objectForKey:@"user_first_name"];
-    }
-    return @"";
-}
-
--(NSString *)getUserLastName{
-    if([self.objectDict objectForKey:@"user_last_name"]){
-        return [self.objectDict objectForKey:@"user_last_name"];
-    }
-    return @"";
-}
-
--(NSString *)getUserPhone{
-    if([self.objectDict objectForKey:@"user_phone"]){
-        return [self.objectDict objectForKey:@"user_phone"];
-    }
-    return @"";
-}
-
--(NSString *)getUserEmail{
-    if([self.objectDict objectForKey:@"user_email"]){
-        return [self.objectDict objectForKey:@"user_email"];
-    }
     return @"";
 }
 
@@ -60,16 +32,18 @@
 }
 
 -(float)getLatitude{
-    if([self.objectDict objectForKey:@"latitude"]){
-        return [[self.objectDict objectForKey:@"latitude"] floatValue];
+    if([self.objectDict objectForKey:@"location"]){
+        NSDictionary * location = [self.objectDict objectForKey:@"location"];
+        return [[location objectForKey:@"latitude"] floatValue];
     }
     return 0.0;
 }
 
 
 -(float)getLongtitude{
-    if([self.objectDict objectForKey:@"longtitude"]){
-        return [[self.objectDict objectForKey:@"longtitude"] floatValue];
+    if([self.objectDict objectForKey:@"location"]){
+        NSDictionary * location = [self.objectDict objectForKey:@"location"];
+        return [[location objectForKey:@"longitude"] floatValue];
     }
     return 0.0;
 }
@@ -104,7 +78,7 @@
             return pending;
         }else if([state isEqualToString:@"open"]){
             return open_;
-        }else if([state isEqualToString:@"slose"]){
+        }else if([state isEqualToString:@"close"]){
             return close_;
         }else if ([state isEqualToString:@"private"]){
             return private_;
@@ -115,17 +89,19 @@
     return pending;
 }
 
-
--(BOOL)isNew{
-    if([self.objectDict objectForKey:@"isNew"]){
-        return [[self.objectDict objectForKey:@"isNew"] boolValue];
+-(NSArray *)getImages{
+    if([self.objectDict objectForKey:@"iamges"]){
+        return [self.objectDict objectForKey:@"images"];
     }
-    return NO;
+    return nil;
 }
 
--(NSString *)getThumbnail{
-    if([self.objectDict objectForKey:@"thumbnail"]){
-        return [self.objectDict objectForKey:@"thumbnail"];
+-(NSString *)getFistImage{
+    if([self.objectDict objectForKey:@"images"]){
+        NSArray *items =  [self.objectDict objectForKey:@"images"];
+        if([items count] > 0){
+            return [items firstObject];
+        }
     }
     return nil;
 }

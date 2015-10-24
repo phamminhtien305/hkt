@@ -39,9 +39,11 @@
 -(void)setupForUser{
     [btnAll setHidden:YES];
     [btnClose setHidden:NO];
-    [btnMove setHidden:YES];
+    [btnMove setHidden:NO];
     [btnOpen setHidden:NO];
     [btnSubmited setHidden:YES];
+    [btnOpen setFrame:CGRectMake(10, btnOpen.frame.origin.y, btnOpen.frame.size.width, btnOpen.frame.size.height)];
+    [btnClose setFrame:CGRectMake(btnOpen.frame.origin.x + btnOpen.frame.size.width + 10, btnClose.frame.origin.y, btnClose.frame.size.width, btnClose.frame.size.height)];
 }
 
 
@@ -106,7 +108,6 @@
 //        }else if([item state] == close_){
 //            marker.icon = [UIImage imageNamed:@"location_closed.png"];
 //        }else if([item state] == private_){
-        
     }
 }
 
@@ -120,5 +121,8 @@
     btn.selected = !btn.selected;
     [mapView_.settings setAllGesturesEnabled:btn.selected];
 }
+
+
+
 
 @end

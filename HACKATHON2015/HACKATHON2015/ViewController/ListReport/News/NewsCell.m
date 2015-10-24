@@ -11,17 +11,22 @@
 @implementation NewsCell
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 120);
+    return CGSizeMake([DeviceHelper getWinSize].width, 77);
 }
 
 -(void)configCell:(id)data{
-    if(data && [data isKindOfClass:[ReportItemObject class]]){
-        item = (ReportItemObject *)data;
+    if(data && [data isKindOfClass:[NewsObject class]]){
+        item = (NewsObject *)data;
+        [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 130, 42)];
         [lbTitle setText:[item getTitle]];
+        [lbTitle sizeToFit];
+        
         [lbDescription setText:[item getDescription]];
+        
         [createDate setText:[item createTime]];
-        if([item getThumbnail]){
-            [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getThumbnail]] placeholderImage:nil];
+        
+        if([item getFirstImage]){
+            [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFirstImage]] placeholderImage:nil];
         }
     }
 }

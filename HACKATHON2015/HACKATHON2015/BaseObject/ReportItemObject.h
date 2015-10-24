@@ -12,14 +12,6 @@
 
 -(NSString *)getTitle;
 
--(NSString *)getUserFirstName;
-
--(NSString *)getUserLastName;
-
--(NSString *)getUserPhone;
-
--(NSString *)getUserEmail;
-
 -(NSString *)getDescription;
 
 -(NSString *)getID;
@@ -36,8 +28,8 @@
 
 -(REPORT_STATE)state;
 
--(BOOL)isNew;
+-(NSArray *)getImages;
 
--(NSString *)getThumbnail;
+-(NSString *)getFistImage;
 
 @end

@@ -13,7 +13,7 @@
     __weak IBOutlet UILabel *lbTitle, *lbCreateDate, *lbReporter;
     __weak IBOutlet UITextView *textDescription;
     __weak IBOutlet UIImageView *imageReport;
-    ReportItemObject *reportItem;
+    id item_;
     __weak IBOutlet UIButton *btnStateReport;
     __weak IBOutlet UIScrollView *mainScroll;
 }

@@ -15,6 +15,7 @@
     __weak IBOutlet UILabel *lbTitle;
     __weak IBOutlet UILabel *lbDescription;
     __weak IBOutlet UILabel *createDate;
+    __weak IBOutlet UILabel *lbReporter;
     __weak IBOutlet UIImageView *thumbnail;
     __weak IBOutlet UIButton *btnState;
 }

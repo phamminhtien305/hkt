@@ -54,7 +54,7 @@
     self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleRightMargin;
     
     [self.pageControl setOffColor:[UIColor colorWithWhite: 1.0f alpha:1.0f]];
-    [self.pageControl setOnColor:[UIColor colorWithRed:65.0f/255.0f green:105.0f/255.0f blue:225.0f/255.0f alpha:0.9]];
+    [self.pageControl setOnColor:[UIColor greenColor]];
     self.pageControl.hidden = NO;
     
     [self addSubview:self.pageControl];

@@ -7,6 +7,8 @@
 //
 
 #import "ReportDetailViewController.h"
+#import "ReportItemObject.h"
+#import "NewsObject.h"
 
 @interface ReportDetailViewController ()
 
@@ -14,10 +16,10 @@
 
 @implementation ReportDetailViewController
 
--(id)initWithReportItem:(ReportItemObject *)item{
+-(id)initWithReportItem:(id)item{
     self = [super initUsingNib];
     if(self){
-        reportItem = item;
+        item_ = item;
     }
     return self;
 }
@@ -25,8 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *title  = [reportItem getTitle];
-    [[MainViewController getRootNaviController] updateTitle:title];
+
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:YES];
     
@@ -41,23 +42,65 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
-    [self updateView];
+    if([item_ isKindOfClass:[ReportItemObject class]]){
+        [self updateForReport];
+    }else{
+        [self updateForNews];
+    }
     
     [mainScroll setContentSize:CGSizeMake(mainScroll.frame.size.width, lbReporter.frame.origin.y + lbReporter.frame.size.height)];
 }
+-(void)updateForNews{
+    NewsObject *newItem = (NewsObject *)item_;
+    NSString *title  = [newItem getTitle];
+    [[MainViewController getRootNaviController] updateTitle:title];
+    
+    [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
+    [lbTitle setText:[newItem getTitle]];
+    [lbTitle sizeToFit];
+    [lbCreateDate setText:[newItem createTime]];
+    //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
+    [textDescription setText:[newItem getDescription]];
+    
+    if([newItem getFirstImage]){
+        [imageReport sd_setImageWithURL:[NSURL URLWithString:[newItem getFirstImage]] placeholderImage:nil];
+    }
+    if([newItem state] == open_){
+        [btnStateReport setTitle:@"Open" forState:UIControlStateNormal];
+        [btnStateReport setBackgroundColor:BACKGROUND_STATE_OPENED];
+    }else if([newItem state] == pending){
+        [btnStateReport setTitle:@"Pending" forState:UIControlStateNormal];
+        [btnStateReport setBackgroundColor:BACKGROUND_STATE_SUBMITED];
+    }else if([newItem state] == close_){
+        [btnStateReport setTitle:@"Close" forState:UIControlStateNormal];
+        [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
+    }else if([newItem state] == private_){
+        [btnStateReport setTitle:@"Private" forState:UIControlStateNormal];
+        [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
+    }else if([newItem state] == unpublish){
+        [btnStateReport setTitle:@"Unpublish" forState:UIControlStateNormal];
+        [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
+    }
+    [textDescription sizeToFit];
+    
+    [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
+}
 
-
--(void)updateView{
+-(void)updateForReport{
+    ReportItemObject *reportItem = (ReportItemObject *)item_;
+    
+    NSString *title  = [reportItem getTitle];
+    [[MainViewController getRootNaviController] updateTitle:title];
+    
     [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
     [lbTitle setText:[reportItem getTitle]];
     [lbTitle sizeToFit];
     [lbCreateDate setText:[reportItem createTime]];
-    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
+//    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[reportItem getDescription]];
     
-    if([reportItem getThumbnail]){
-        [imageReport sd_setImageWithURL:[NSURL URLWithString:[reportItem getThumbnail]] placeholderImage:nil];
+    if([reportItem getFistImage]){
+        [imageReport sd_setImageWithURL:[NSURL URLWithString:[reportItem getFistImage]] placeholderImage:nil];
     }
     if([reportItem state] == open_){
         [btnStateReport setTitle:@"Open" forState:UIControlStateNormal];
