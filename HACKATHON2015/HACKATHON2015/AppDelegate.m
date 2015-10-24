@@ -10,8 +10,11 @@
 #import "MainViewController.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "UploadEngine.h"
 @interface AppDelegate ()
-
+{
+    UploadEngine *engine ;
+}
 @end
 
 @implementation AppDelegate
@@ -21,7 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    engine = [[UploadEngine alloc] initWithHostName:nil];
+    [engine uploadWithPath:@"/Users/tuent/Desktop/t.jpg" withCompletionBlock:^(NSString *result) {
+        
+    } withErrorBlock:^(NSError *error) {
+        
+    }];
+    return YES;
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_ID];
     
