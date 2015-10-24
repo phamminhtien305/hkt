@@ -9,6 +9,8 @@
 #import "MKNetworkEngine.h"
 
 @interface UploadEngine : MKNetworkEngine
++ (UploadEngine*) sharedInstance;
+
 - (void) uploadWithPath:(NSString*) path
     withCompletionBlock:(AppStringCompleteBlock) completeBlock
          withErrorBlock:(AppResultErrorBlock) errorBlock;

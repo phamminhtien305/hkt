@@ -9,6 +9,17 @@
 #import "UploadEngine.h"
 
 @implementation UploadEngine
+
++ (UploadEngine*) sharedInstance {
+    static UploadEngine *sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        sharedInstance = [[UploadEngine alloc] initWithHostName:nil];
+    });
+    return sharedInstance;
+}
+
+
 - (void) uploadWithPath:(NSString*) path
     withCompletionBlock:(AppStringCompleteBlock) completeBlock
          withErrorBlock:(AppResultErrorBlock) errorBlock
