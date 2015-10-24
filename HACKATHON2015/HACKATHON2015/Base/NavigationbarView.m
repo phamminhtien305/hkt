@@ -14,7 +14,7 @@
     UIViewController *viewController = [[UIViewController alloc] initWithNibName:@"NavigationbarView" bundle:[NSBundle mainBundle]];
     NavigationbarView *aView = (NavigationbarView *)viewController.view;
     [aView setBackgroundColor:BACKGROUND_NAVIGATIONBAR];
-    [aView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+    [aView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 65)];
     return aView;
 }
 

@@ -28,7 +28,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-     [[MainViewController getRootNaviController] updateTitle:@"News"];
+//    [[MainViewController getRootNaviController] updateTitle:@"News"];
 }
 /*
 #pragma mark - Navigation

@@ -16,7 +16,6 @@
     [lbwarning setHidden:YES];
     txtEmail.delegate = self;
     txtFirstName.delegate = self;
-    txtLastName.delegate = self;
     txtPhone.delegate = self;
     if([MainViewController shareMainViewController].reporter){
         [self updateViewWithReporterObject:[MainViewController shareMainViewController].reporter];
@@ -24,7 +23,7 @@
 }
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 250);
+    return CGSizeMake([DeviceHelper getWinSize].width, 215);
 }
 
 -(void)configHeader:(id)data{
@@ -45,7 +44,7 @@
         user[@"user_phone"] = txtPhone.text;
         user[@"email"] = txtEmail.text;
 
-        NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",txtLastName.text,@"last_name",txtPhone.text,@"phone", nil];
+        NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",@"",@"last_name",txtPhone.text,@"phone", nil];
         ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
         
         [MainViewController shareMainViewController].reporter = reporter;
@@ -56,7 +55,7 @@
         
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if(succeeded){
-                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",txtLastName.text,@"last_name",txtPhone.text,@"phone", nil];
+                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name", @"", @"last_name",txtPhone.text,@"phone", nil];
                 ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
                 NSString *data = AFJSONStringFromParameters(reporterDic);
                 [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
@@ -74,7 +73,6 @@
 -(void)updateViewWithReporterObject:(ReporterObject *)reporter{
     [txtEmail setText:[reporter getReporterEmail]];
     [txtFirstName setText:[reporter getReporterFirstName]];
-    [txtLastName setText:[reporter getReporterLastName]];
     [txtPhone setText:[reporter getReporterPhone]];
 }
 

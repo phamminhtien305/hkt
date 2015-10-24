@@ -18,6 +18,7 @@
     [super awakeFromNib];
     btnState.layer.cornerRadius = 2;
     btnState.layer.masksToBounds = YES;
+    btnFollow.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
     [btnState addTarget:self action:@selector(stateClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 

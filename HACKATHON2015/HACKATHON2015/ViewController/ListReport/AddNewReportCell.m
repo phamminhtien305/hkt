@@ -11,7 +11,7 @@
 @implementation AddNewReportCell
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 50);
+    return CGSizeMake([DeviceHelper getWinSize].width, 40);
 }
 
 

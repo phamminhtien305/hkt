@@ -24,6 +24,6 @@
 #define ADMIN 0
 
 
-#define GOOGLE_MAP_API_KEY @"AIzaSyDZLsJ9mMis6nEtskuC5e6fRMgcf3bpWRw"
+#define GOOGLE_MAP_API_KEY @"AIzaSyD1Z4aT7RBtEf4iqhpPmgdfjwpcRidRlJc"
 
 #endif

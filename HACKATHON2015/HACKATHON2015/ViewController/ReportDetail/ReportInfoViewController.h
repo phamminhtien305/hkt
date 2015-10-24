@@ -18,7 +18,7 @@
     __weak IBOutlet UILabel *lbLocation, *lbStatus;
     float longtitude,latitude;
     NSString *description, *_titleReport;
-    BOOL shareWithPublic;
+    BOOL shareWithPublic, isanym;
 
     __weak IBOutlet UITextView *txtViewDescription;
     __weak IBOutlet UITextField *txtTitle;
@@ -26,6 +26,10 @@
     __weak IBOutlet UILabel *lbReporter;
     
     __weak IBOutlet GMSMapView *mapView_;
+    
+    __weak IBOutlet UIView *takePhotoView;
+    
+    NSString *currentPath;
     
     BOOL updatedLocation;
 }
