@@ -129,6 +129,7 @@
 		36A8A8871BDB6F74002C66E3 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A87D1BDB6F74002C66E3 /* MKNetworkEngine.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A8881BDB6F74002C66E3 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8801BDB6F74002C66E3 /* MKNetworkOperation.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A88B1BDB6FE9002C66E3 /* UploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */; settings = {ASSET_TAGS = (); }; };
+		36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88D1BDB77B9002C66E3 /* PFController.m */; settings = {ASSET_TAGS = (); }; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -346,6 +347,8 @@
 		36A8A8801BDB6F74002C66E3 /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
 		36A8A8891BDB6FE9002C66E3 /* UploadEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UploadEngine.h; path = APIHelper/UploadEngine.h; sourceTree = "<group>"; };
 		36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadEngine.m; path = APIHelper/UploadEngine.m; sourceTree = "<group>"; };
+		36A8A88C1BDB77B9002C66E3 /* PFController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFController.h; path = APIHelper/PFController.h; sourceTree = "<group>"; };
+		36A8A88D1BDB77B9002C66E3 /* PFController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFController.m; path = APIHelper/PFController.m; sourceTree = "<group>"; };
 		FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKATHON2015.release.xcconfig"; path = "Pods/Target Support Files/Pods-HACKATHON2015/Pods-HACKATHON2015.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -421,6 +424,8 @@
 				1BB121331BD5EA660012E13B /* Categories */,
 				1B025DB21BD56539007BD923 /* APIEngineer.h */,
 				1B025DB31BD56539007BD923 /* APIEngineer.m */,
+				36A8A88C1BDB77B9002C66E3 /* PFController.h */,
+				36A8A88D1BDB77B9002C66E3 /* PFController.m */,
 			);
 			name = APIHelper;
 			sourceTree = "<group>";
@@ -1073,6 +1078,7 @@
 				1B02EB441BD7434000DD8868 /* UIImage+_Resize.m in Sources */,
 				1B55C0DC1BD770C700B29AAA /* TabBarView.m in Sources */,
 				1B9CC15D1BD78E5600CAA495 /* SegmentController.m in Sources */,
+				36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */,
 				1B55C0E21BD78A7D00B29AAA /* PageNewsViewController.m in Sources */,
 				1BB1211C1BD5DEBD0012E13B /* BaseCollectionController.m in Sources */,
 				1B58837C1BD8C85A00F2BD45 /* AFJSONUtilities.m in Sources */,
