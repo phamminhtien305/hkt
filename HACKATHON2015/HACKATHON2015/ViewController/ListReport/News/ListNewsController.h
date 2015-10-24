@@ -18,6 +18,6 @@
 @property (readwrite) BOOL isLoadingRefreshHeader;
 @property (nonatomic, retain) BaseRefreshTableHeaderView * refreshHeaderView;
 
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items;
-
+- (id) initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items;
+-(void)getListNewsFromParse;
 @end

@@ -86,4 +86,16 @@
     }
     return @"open";
 }
+
++ (NSDictionary*) pfObjectToDict:(PFObject*) object {
+    NSArray * allKeys = [object allKeys];
+    NSMutableDictionary * retDict = [[NSMutableDictionary alloc] init];
+    for (NSString *key in allKeys) {
+        [retDict setObject:[object objectForKey:key] forKey:key];
+    }
+    [retDict setObject:object.objectId forKeyedSubscript:@"objectId"];
+//    [retDict setObject:object.createdAt forKey:@"createdAt"];
+//    [retDict setObject:object.updatedAt forKey:@"updateAt"];
+    return  retDict;
+}
 @end
