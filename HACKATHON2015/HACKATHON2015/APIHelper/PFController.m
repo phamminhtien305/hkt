@@ -65,4 +65,25 @@
     return @"Đang xử lý";
 }
 
++ (NSString*) stringFromState:(REPORT_STATE) state {
+    switch (state) {
+        case open_:
+            return @"open";
+            break;
+        case pending:
+            return @"pending";
+            break;
+        case private_:
+            return @"private";
+            break;
+        case close_:
+            return @"close";
+            break;
+        case unpublish:
+            return @"unpublish";
+        default:
+            break;
+    }
+    return @"open";
+}
 @end

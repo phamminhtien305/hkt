@@ -131,6 +131,8 @@
 		36A8A88B1BDB6FE9002C66E3 /* UploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88D1BDB77B9002C66E3 /* PFController.m */; settings = {ASSET_TAGS = (); }; };
 		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; settings = {ASSET_TAGS = (); }; };
+		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; settings = {ASSET_TAGS = (); }; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -352,6 +354,10 @@
 		36A8A88D1BDB77B9002C66E3 /* PFController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFController.m; path = APIHelper/PFController.m; sourceTree = "<group>"; };
 		36EC02281BDBAACF0091C2DF /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
 		36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		36EC022B1BDBAE8E0091C2DF /* AdminController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdminController.h; path = APIHelper/AdminController.h; sourceTree = "<group>"; };
+		36EC022C1BDBAE8E0091C2DF /* AdminController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdminController.m; path = APIHelper/AdminController.m; sourceTree = "<group>"; };
+		36EC022E1BDBB2830091C2DF /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationController.h; path = APIHelper/NotificationController.h; sourceTree = "<group>"; };
+		36EC022F1BDBB2830091C2DF /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationController.m; path = APIHelper/NotificationController.m; sourceTree = "<group>"; };
 		FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKATHON2015.release.xcconfig"; path = "Pods/Target Support Files/Pods-HACKATHON2015/Pods-HACKATHON2015.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -431,6 +437,10 @@
 				1B025DB31BD56539007BD923 /* APIEngineer.m */,
 				36A8A88C1BDB77B9002C66E3 /* PFController.h */,
 				36A8A88D1BDB77B9002C66E3 /* PFController.m */,
+				36EC022B1BDBAE8E0091C2DF /* AdminController.h */,
+				36EC022C1BDBAE8E0091C2DF /* AdminController.m */,
+				36EC022E1BDBB2830091C2DF /* NotificationController.h */,
+				36EC022F1BDBB2830091C2DF /* NotificationController.m */,
 			);
 			name = APIHelper;
 			sourceTree = "<group>";
@@ -1061,6 +1071,7 @@
 				1BB121561BD5FC340012E13B /* ListReportViewController.m in Sources */,
 				1B9CC1681BD79F3200CAA495 /* InfoViewController.m in Sources */,
 				1B025DC91BD569DA007BD923 /* OpenUDID.m in Sources */,
+				36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */,
 				1B9CC16C1BD7A1CD00CAA495 /* NavigationbarView.m in Sources */,
 				1B9CC1621BD79E4E00CAA495 /* NotifiViewController.m in Sources */,
 				1B55C0DE1BD770C700B29AAA /* BaseTabBarController.m in Sources */,
@@ -1088,6 +1099,7 @@
 				1B55C0E21BD78A7D00B29AAA /* PageNewsViewController.m in Sources */,
 				1BB1211C1BD5DEBD0012E13B /* BaseCollectionController.m in Sources */,
 				1B58837C1BD8C85A00F2BD45 /* AFJSONUtilities.m in Sources */,
+				36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */,
 				1BB121611BD5FC8B0012E13B /* PageMapReportViewController.m in Sources */,
 				1BB121841BD642E20012E13B /* ReportCell.m in Sources */,
 				1BAE75D21BDA237B0072581B /* HeaderInfoView.m in Sources */,

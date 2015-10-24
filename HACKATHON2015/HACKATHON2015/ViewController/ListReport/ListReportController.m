@@ -13,6 +13,7 @@
 
 #import "AddReportViewController.h"
 #import "ReportDetailViewController.h"
+#import "NotificationController.h"
 
 @implementation ListReportController
 -(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items{
@@ -25,6 +26,7 @@
             [self getListReportFromParse];
         }
         [self setUpEgoRefreshHeader];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getListReportFromParse) name:STATE_CHANGE_NOTIFICATION object:nil];
     }
     return self;
 }

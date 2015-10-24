@@ -13,4 +13,5 @@
 + (BOOL) isAnonymous;
 + (BOOL) isAdmin;
 + (NSString*) textStringFromState:(REPORT_STATE) state;
++ (NSString*) stringFromState:(REPORT_STATE) state;
 @end

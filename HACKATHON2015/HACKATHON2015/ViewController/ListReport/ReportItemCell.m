@@ -8,6 +8,7 @@
 
 #import "ReportItemCell.h"
 #import "PFController.h"
+#import "AdminController.h"
 #import "UIActionSheet+Blocks.h"
 #import "NewsObject.h"
 
@@ -21,17 +22,7 @@
 }
 
 - (void) stateClick:(id) sender {
-    if ([PFController isAdmin]) {
-        NSMutableArray *listAction = [NSMutableArray array];
-        for (REPORT_STATE i = pending; i <= unpublish; i++) {
-            [listAction addObject:[PFController textStringFromState:i]];
-        }
-        [UIActionSheet showInView:[[[UIApplication sharedApplication] delegate] window]
-                        withTitle:@"Chuyển trạng thái report"
-                cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:listAction tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
-            
-        }];
-    }
+    [AdminController changeStateActionWithWithReportObject:item];
 }
 
 +(CGSize)getSize{
