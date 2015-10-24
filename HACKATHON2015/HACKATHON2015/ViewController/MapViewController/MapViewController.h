@@ -11,12 +11,13 @@
 #import "ReportItemObject.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController : BaseViewController<GMSMapViewDelegate>
+@interface MapViewController : BaseViewController<GMSMapViewDelegate,CLLocationManagerDelegate>
 {
     NSString *title, *description;
     float latitude, longtitude;
     IBOutlet GMSMapView *mapView;
     BOOL updatedLocation;
+    id item_;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;

@@ -95,7 +95,9 @@
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }
     [textDescription sizeToFit];
-
+    if(![item_ getLocation]){
+        [locationView setAlpha:0.0];
+    }
     [locationView setFrame:CGRectMake(locationView.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, locationView.frame.size.width, locationView.frame.size.height)];
     
     [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, locationView.frame.origin.y + locationView.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];

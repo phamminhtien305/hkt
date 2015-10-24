@@ -17,6 +17,7 @@
 -(id)initWithItem:(id)item{
     self = [super initUsingNib];
     if(self){
+        item_ = item;
         [self initMapOnComplete:^(BOOL b) {
             title = @"";
             if([item isKindOfClass:[ReportItemObject class]]){
@@ -51,6 +52,13 @@
     // Do any additional setup after loading the view from its nib.
     self.locationManager = [[CLLocationManager alloc] init];
     [CLLocationManager locationServicesEnabled];
+
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [self.locationManager startUpdatingLocation];
+    self.locationManager.delegate = self;
+    self.location = [[CLLocation alloc] init];
+    [self.locationManager startUpdatingHeading];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,8 +78,9 @@
 
 -(void)initMapOnComplete:(AppBOOLBlock)onComplete{
     // Do any additional setup after loading the view from its nib.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:mapView.myLocation.coordinate.latitude
-                                                            longitude:mapView.myLocation.coordinate.longitude
+    float ss = [item_ getLongtitude];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[item_ getLatitude]
+                                                            longitude:[item_ getLongtitude]
                                                                  zoom:12];
     [mapView setCamera:camera];
     mapView.mapType = kGMSTypeNormal;

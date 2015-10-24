@@ -13,16 +13,7 @@
 
 -(void)getHomeContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     [self requestParseWithLink:HOME_URL withCompleteBlock:^(id result, BOOL isCache) {
-        NSMutableArray *listObjects =[[NSMutableArray alloc] init];
-        for (PFObject * object in result) {
-            NSArray * allKeys = [object allKeys];
-            NSMutableDictionary * retDict = [[NSMutableDictionary alloc] init];
-            for (NSString *key in allKeys) {
-                [retDict setObject:[object objectForKey:key] forKey:key];
-            }
-            [listObjects addObject:retDict];
-        }
-        onComplete(listObjects, NO);
+        onComplete(result, NO);
     } errorBlock:^(NSError *error) {
         errorBlock(error);
     }];

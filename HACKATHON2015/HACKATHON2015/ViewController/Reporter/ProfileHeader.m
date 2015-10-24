@@ -43,28 +43,36 @@
         user[@"user_full_name"] = txtFirstName.text;
         user[@"user_phone"] = txtPhone.text;
         user[@"email"] = txtEmail.text;
+        
 
         NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",@"",@"last_name",txtPhone.text,@"phone", nil];
-        ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
-        
-        [MainViewController shareMainViewController].reporter = reporter;
         
         NSString *data = AFJSONStringFromParameters(reporterDic);
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if(succeeded){
-                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name", @"", @"last_name",txtPhone.text,@"phone", nil];
-                ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
-                NSString *data = AFJSONStringFromParameters(reporterDic);
-                [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                [MainViewController shareMainViewController].reporter = reporter;
-            }else{
-                
-            }
-        }];
+
+
+//
+//        ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
+//        
+//        [MainViewController shareMainViewController].reporter = reporter;
+//        
+//        NSString *data = AFJSONStringFromParameters(reporterDic);
+//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        
+//        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if(succeeded){
+//                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name", @"", @"last_name",txtPhone.text,@"phone", nil];
+//                ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
+//                NSString *data = AFJSONStringFromParameters(reporterDic);
+//                [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
+//                [[NSUserDefaults standardUserDefaults] synchronize];
+//                [MainViewController shareMainViewController].reporter = reporter;
+//            }else{
+//                
+//            }
+//        }];
 
     }
 }

@@ -12,69 +12,69 @@
 
 
 -(NSString *)getTitle{
-    if([self.objectDict objectForKey:@"title"]){
-        return [self.objectDict objectForKey:@"title"];
+    if([self.pfObject objectForKey:@"title"]){
+        return [self.pfObject objectForKey:@"title"];
     }
     return @"";
 }
 
 -(NSString *)getDescription{
-    if([self.objectDict objectForKey:@"description"]){
-        return [self.objectDict objectForKey:@"description"];
+    if([self.pfObject objectForKey:@"description"]){
+        return [self.pfObject objectForKey:@"description"];
     }
     return @"";
 }
 
 -(NSString *)getID{
-    if([self.objectDict objectForKey:@"objectId"]){
-        return [self.objectDict objectForKey:@"objectId"];
+    if([self.pfObject objectForKey:@"objectId"]){
+        return [self.pfObject objectForKey:@"objectId"];
     }
     return @"";
 }
 
 -(id)getLocation{
-    if([self.objectDict objectForKey:@"location"]){
-        return [self.objectDict objectForKey:@"location"];
+    if([self.pfObject objectForKey:@"location"]){
+        return [self.pfObject objectForKey:@"location"];
     }
     return nil;
 }
 
 
 -(float)getLatitude{
-    if([self.objectDict objectForKey:@"location"]){
-        NSDictionary * location = [self.objectDict objectForKey:@"location"];
-        return [[location objectForKey:@"latitude"] floatValue];
+    if([self.pfObject objectForKey:@"location"]){
+        PFGeoPoint * location = [self.pfObject objectForKey:@"location"];
+        return location.latitude;
     }
     return 0.0;
 }
 
 
 -(float)getLongtitude{
-    if([self.objectDict objectForKey:@"location"]){
-        NSDictionary * location = [self.objectDict objectForKey:@"location"];
-        return [[location objectForKey:@"longitude"] floatValue];
+    if([self.pfObject objectForKey:@"location"]){
+        PFGeoPoint * location = [self.pfObject objectForKey:@"location"];
+        return location.longitude;
     }
     return 0.0;
 }
 
 -(NSString *)createTime{
-    if([self.objectDict objectForKey:@"createdAt"]){
-        return [self.objectDict objectForKey:@"createdAt"];
+    if([self.pfObject objectForKey:@"createdAt"]){
+        return [self.pfObject objectForKey:@"createdAt"];
     }
     return @"";
 }
 
 
 -(NSString *)updateTime{
-    if([self.objectDict objectForKey:@"updatedAt"]){
-        return [self.objectDict objectForKey:@"updatedAt"];
+    if([self.pfObject objectForKey:@"updatedAt"]){
+        return [self.pfObject objectForKey:@"updatedAt"];
     }
     return @"";
 }
 
 -(REPORT_STATE)state{
-    if([self.objectDict objectForKey:@"state"]){
-        NSString *state = [self.objectDict objectForKey:@"state"];
+    if([self.pfObject objectForKey:@"state"]){
+        NSString *state = [self.pfObject objectForKey:@"state"];
         if([state isEqualToString:@"pending"]){
             return pending;
         }else if([state isEqualToString:@"private"]){
@@ -91,15 +91,15 @@
 }
 
 -(NSArray *)getImages{
-    if([self.objectDict objectForKey:@"images"]){
-        return [self.objectDict objectForKey:@"images"];
+    if([self.pfObject objectForKey:@"images"]){
+        return [self.pfObject objectForKey:@"images"];
     }
     return nil;
 }
 
 -(NSString*)getFirstImage{
-    if([self.objectDict objectForKey:@"images"]){
-        NSArray *arr = [self.objectDict objectForKey:@"images"];
+    if([self.pfObject objectForKey:@"images"]){
+        NSArray *arr = [self.pfObject objectForKey:@"images"];
         if([arr count] > 0){
             NSString *url = [arr objectAtIndex:0];
             return url;
@@ -109,8 +109,8 @@
 }
 
 -(NSString*)getImage{
-    if([self.objectDict objectForKey:@"images"]){
-        NSArray *arr = [self.objectDict objectForKey:@"images"];
+    if([self.pfObject objectForKey:@"images"]){
+        NSArray *arr = [self.pfObject objectForKey:@"images"];
         if(self.order < [arr count]){
             NSString *url = [arr objectAtIndex:self.order];
             return url;

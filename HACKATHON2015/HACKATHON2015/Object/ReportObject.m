@@ -11,15 +11,15 @@
 @implementation ReportObject
 
 -(NSString *)getHeaderName{
-    if([self.objectDict objectForKey:@"header_name"]){
-        return [self.objectDict objectForKey:@"header_name"];
+    if([self.pfObject objectForKey:@"header_name"]){
+        return [self.pfObject objectForKey:@"header_name"];
     }
     return @"";
 }
 
 -(NSArray *)getListReport{
-    if([self.objectDict objectForKey:@"items"]){
-        return [self.objectDict objectForKey:@"items"];
+    if([self.pfObject objectForKey:@"items"]){
+        return [self.pfObject objectForKey:@"items"];
     }
     return nil;
 }

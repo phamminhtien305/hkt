@@ -13,56 +13,37 @@
 
 
 -(void)getReportContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
-    [self requestParseWithLink:REPORT_URL withCompleteBlock:^(id result, BOOL isCache) {
-        NSMutableArray *listObjects =[[NSMutableArray alloc] init];
-        for (PFObject * object in result) {
-            NSArray * allKeys = [object allKeys];
-            NSMutableDictionary * retDict = [[NSMutableDictionary alloc] init];
-            for (NSString *key in allKeys) {
-                [retDict setObject:[object objectForKey:key] forKey:key];
-            }
-            [listObjects addObject:retDict];
+    PFQuery *query = [PFQuery queryWithClassName:@"NEWREPORT"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
         }
-        onComplete(listObjects, NO);
-    } errorBlock:^(NSError *error) {
-        errorBlock(error);
     }];
 }
 
 
 -(void)getReportsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
-    [self requestParseWithLink:REPORTS_ITEM_URL withCompleteBlock:^(id result, BOOL isCache) {
-        NSMutableArray *listObjects =[[NSMutableArray alloc] init];
-        for (PFObject * object in result) {
-            NSArray * allKeys = [object allKeys];
-            NSMutableDictionary * retDict = [[NSMutableDictionary alloc] init];
-            for (NSString *key in allKeys) {
-                [retDict setObject:[object objectForKey:key] forKey:key];
-            }
-            [listObjects addObject:retDict];
+    PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
         }
-        onComplete(listObjects, NO);
-    } errorBlock:^(NSError *error) {
-        errorBlock(error);
     }];
 }
 
 
-
 -(void)getNewsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
-    [self requestParseWithLink:NEWS_URL withCompleteBlock:^(id result, BOOL isCache) {
-        NSMutableArray *listObjects =[[NSMutableArray alloc] init];
-        for (PFObject * object in result) {
-            NSArray * allKeys = [object allKeys];
-            NSMutableDictionary * retDict = [[NSMutableDictionary alloc] init];
-            for (NSString *key in allKeys) {
-                [retDict setObject:[object objectForKey:key] forKey:key];
-            }
-            [listObjects addObject:retDict];
+    PFQuery *query = [PFQuery queryWithClassName:@"News"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
         }
-        onComplete(listObjects, NO);
-    } errorBlock:^(NSError *error) {
-        errorBlock(error);
     }];
 }
 

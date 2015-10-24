@@ -51,7 +51,7 @@
 -(void)getListReportFromParse{
     [[APIEngineer sharedInstance] getReportsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
-            [MainViewController shareMainViewController].listReporterItem = [[ReportItemObject createListDataFromListDict:result] mutableCopy];
+            [MainViewController shareMainViewController].listReporterItem = [[ReportItemObject createListDataFromPFObject:result] mutableCopy];
         }
     } onError:^(NSError *error) {
         

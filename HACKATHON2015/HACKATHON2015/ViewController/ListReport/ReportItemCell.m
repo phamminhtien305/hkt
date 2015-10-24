@@ -40,7 +40,7 @@
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
         [lbDescription setText:[item getDescription]];
-        [createDate setText:[item createTime]];
+        [createDate setText:[item createDate]];
         [btnState setTitle:[PFController textStringFromState:[item state]] forState:UIControlStateNormal];
         if([item getFistImage]){
             [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFistImage]] placeholderImage:nil];
