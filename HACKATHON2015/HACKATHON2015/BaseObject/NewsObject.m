@@ -39,6 +39,24 @@
     return nil;
 }
 
+
+-(float)getLatitude{
+    if([self.objectDict objectForKey:@"location"]){
+        NSDictionary * location = [self.objectDict objectForKey:@"location"];
+        return [[location objectForKey:@"latitude"] floatValue];
+    }
+    return 0.0;
+}
+
+
+-(float)getLongtitude{
+    if([self.objectDict objectForKey:@"location"]){
+        NSDictionary * location = [self.objectDict objectForKey:@"location"];
+        return [[location objectForKey:@"longitude"] floatValue];
+    }
+    return 0.0;
+}
+
 -(NSString *)createTime{
     if([self.objectDict objectForKey:@"createdAt"]){
         return [self.objectDict objectForKey:@"createdAt"];

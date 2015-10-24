@@ -30,4 +30,8 @@
 
 -(NSString*)getFirstImage;
 
+-(float)getLatitude;
+
+-(float)getLongtitude;
+
 @end

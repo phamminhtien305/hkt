@@ -16,6 +16,8 @@
 
 -(NSString *)getID;
 
+-(NSDictionary *)getLocationDic;
+
 -(float)getLatitude;
 
 -(float)getLongtitude;

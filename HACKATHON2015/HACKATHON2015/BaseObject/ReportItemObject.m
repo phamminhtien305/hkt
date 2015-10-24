@@ -31,6 +31,14 @@
     return @"";
 }
 
+-(NSDictionary *)getLocationDic{
+    if([self.objectDict objectForKey:@"location"]){
+        NSDictionary * location = [self.objectDict objectForKey:@"location"];
+        return location;
+    }
+    return nil;
+}
+
 -(float)getLatitude{
     if([self.objectDict objectForKey:@"location"]){
         NSDictionary * location = [self.objectDict objectForKey:@"location"];

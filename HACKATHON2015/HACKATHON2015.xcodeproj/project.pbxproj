@@ -170,6 +170,8 @@
 		1BBD8B441BDB9EDF00EA1EB4 /* vietthongbao.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B071BDB9EDF00EA1EB4 /* vietthongbao.png */; };
 		1BBD8B451BDB9EDF00EA1EB4 /* vietthongbao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B081BDB9EDF00EA1EB4 /* vietthongbao@2x.png */; };
 		1BBD8B461BDB9EDF00EA1EB4 /* vietthongbao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B091BDB9EDF00EA1EB4 /* vietthongbao@3x.png */; };
+		1BBD8B4C1BDBE17500EA1EB4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4A1BDBE17500EA1EB4 /* MapViewController.m */; };
+		1BBD8B4D1BDBE17500EA1EB4 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4B1BDBE17500EA1EB4 /* MapViewController.xib */; };
 		1BC2679F1BD69D0800A2355E /* BasePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2679E1BD69D0800A2355E /* BasePageViewController.m */; };
 		1BC267AF1BD6BC4700A2355E /* ReportInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC267AD1BD6BC4700A2355E /* ReportInfoViewController.m */; };
 		1BC267B01BD6BC4700A2355E /* ReportInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC267AE1BD6BC4700A2355E /* ReportInfoViewController.xib */; };
@@ -181,19 +183,6 @@
 		1BEA1E531BD5634B0029262E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA1E521BD5634B0029262E /* Images.xcassets */; };
 		1BEA1E561BD5634B0029262E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BEA1E541BD5634B0029262E /* LaunchScreen.xib */; };
 		1BEA1E621BD5634B0029262E /* HACKATHON2015Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEA1E611BD5634B0029262E /* HACKATHON2015Tests.m */; };
-		36A8A8811BDB6F74002C66E3 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8711BDB6F74002C66E3 /* NSData+MKBase64.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8821BDB6F74002C66E3 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8731BDB6F74002C66E3 /* NSDate+RFC1123.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8831BDB6F74002C66E3 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8751BDB6F74002C66E3 /* NSDictionary+RequestEncoding.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8841BDB6F74002C66E3 /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8771BDB6F74002C66E3 /* NSString+MKNetworkKitAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8851BDB6F74002C66E3 /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8791BDB6F74002C66E3 /* UIAlertView+MKNetworkKitAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8861BDB6F74002C66E3 /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A87B1BDB6F74002C66E3 /* UIImageView+MKNetworkKitAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8871BDB6F74002C66E3 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A87D1BDB6F74002C66E3 /* MKNetworkEngine.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A8881BDB6F74002C66E3 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8801BDB6F74002C66E3 /* MKNetworkOperation.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A88B1BDB6FE9002C66E3 /* UploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */; settings = {ASSET_TAGS = (); }; };
-		36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88D1BDB77B9002C66E3 /* PFController.m */; settings = {ASSET_TAGS = (); }; };
-		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; settings = {ASSET_TAGS = (); }; };
-		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; settings = {ASSET_TAGS = (); }; };
-		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A8811BDB6F74002C66E3 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8711BDB6F74002C66E3 /* NSData+MKBase64.m */; };
 		36A8A8821BDB6F74002C66E3 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8731BDB6F74002C66E3 /* NSDate+RFC1123.m */; };
 		36A8A8831BDB6F74002C66E3 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8751BDB6F74002C66E3 /* NSDictionary+RequestEncoding.m */; };
@@ -204,6 +193,9 @@
 		36A8A8881BDB6F74002C66E3 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8801BDB6F74002C66E3 /* MKNetworkOperation.m */; };
 		36A8A88B1BDB6FE9002C66E3 /* UploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */; };
 		36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88D1BDB77B9002C66E3 /* PFController.m */; };
+		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; };
+		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; };
+		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -444,6 +436,9 @@
 		1BBD8B071BDB9EDF00EA1EB4 /* vietthongbao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vietthongbao.png; sourceTree = "<group>"; };
 		1BBD8B081BDB9EDF00EA1EB4 /* vietthongbao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vietthongbao@2x.png"; sourceTree = "<group>"; };
 		1BBD8B091BDB9EDF00EA1EB4 /* vietthongbao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vietthongbao@3x.png"; sourceTree = "<group>"; };
+		1BBD8B491BDBE17500EA1EB4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewController/MapViewController/MapViewController.h; sourceTree = "<group>"; };
+		1BBD8B4A1BDBE17500EA1EB4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewController/MapViewController/MapViewController.m; sourceTree = "<group>"; };
+		1BBD8B4B1BDBE17500EA1EB4 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ViewController/MapViewController/MapViewController.xib; sourceTree = "<group>"; };
 		1BC2679D1BD69D0800A2355E /* BasePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePageViewController.h; sourceTree = "<group>"; };
 		1BC2679E1BD69D0800A2355E /* BasePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePageViewController.m; sourceTree = "<group>"; };
 		1BC267AC1BD6BC4700A2355E /* ReportInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportInfoViewController.h; path = ViewController/ReportDetail/ReportInfoViewController.h; sourceTree = "<group>"; };
@@ -645,6 +640,9 @@
 		1BAE75BA1BD9E4950072581B /* DetailReportViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1BBD8B491BDBE17500EA1EB4 /* MapViewController.h */,
+				1BBD8B4A1BDBE17500EA1EB4 /* MapViewController.m */,
+				1BBD8B4B1BDBE17500EA1EB4 /* MapViewController.xib */,
 				1BAE75BB1BD9E4DE0072581B /* ReportDetailViewController.h */,
 				1BAE75BC1BD9E4DE0072581B /* ReportDetailViewController.m */,
 				1BAE75BD1BD9E4DE0072581B /* ReportDetailViewController.xib */,
@@ -1206,6 +1204,7 @@
 				1BBD8B2B1BDB9EDF00EA1EB4 /* icon-profile@3x.png in Resources */,
 				1BBD8B1B1BDB9EDF00EA1EB4 /* icon-about-active@3x.png in Resources */,
 				1BEA1E511BD5634B0029262E /* Main.storyboard in Resources */,
+				1BBD8B4D1BDBE17500EA1EB4 /* MapViewController.xib in Resources */,
 				1BBD8B201BDB9EDF00EA1EB4 /* icon-facebook@2x.png in Resources */,
 				1BBD8B131BDB9EDF00EA1EB4 /* button_bo.png in Resources */,
 				1BBD8B3C1BDB9EDF00EA1EB4 /* muiten@2x.png in Resources */,
@@ -1379,6 +1378,7 @@
 				1B58837C1BD8C85A00F2BD45 /* AFJSONUtilities.m in Sources */,
 				36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */,
 				1BB121611BD5FC8B0012E13B /* PageMapReportViewController.m in Sources */,
+				1BBD8B4C1BDBE17500EA1EB4 /* MapViewController.m in Sources */,
 				1BB121841BD642E20012E13B /* ReportCell.m in Sources */,
 				1BAE75D21BDA237B0072581B /* HeaderInfoView.m in Sources */,
 			);
