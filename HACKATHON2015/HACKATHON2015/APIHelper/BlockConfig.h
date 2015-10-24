@@ -13,5 +13,6 @@ typedef void (^AppResultCompleteBlock)(id result, BOOL isCache);
 typedef void (^AppResultErrorBlock)(NSError *error);
 typedef void (^AppResultProgressBlock)(double progress, double byteRead, double totalByteOfFile);
 typedef void (^AppBOOLBlock)(BOOL b);
+typedef void (^AppStringCompleteBlock)(NSString* result);
 
 #endif

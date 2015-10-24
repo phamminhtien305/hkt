@@ -10,8 +10,10 @@
 #import "MainViewController.h"
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "UploadEngine.h"
 @interface AppDelegate ()
-
+{
+}
 @end
 
 @implementation AppDelegate
@@ -21,7 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_ID];
     
