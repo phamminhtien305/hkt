@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>190A6158-C26E-4715-A060-C03FD0880ED3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HACKATHON2015</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C898091960BD3F316B4B8FBF431DA6765015C1EF</key>
+		<string>bitbucket.org:phamminhtien/hackathon.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HACKATHON2015/HACKATHON2015.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C898091960BD3F316B4B8FBF431DA6765015C1EF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>bitbucket.org:phamminhtien/hackathon.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C898091960BD3F316B4B8FBF431DA6765015C1EF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C898091960BD3F316B4B8FBF431DA6765015C1EF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hackathon</string>
+		</dict>
+	</array>
+</dict>
+</plist>
