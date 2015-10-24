@@ -23,7 +23,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
-    [[MainViewController getRootNaviController] updateTitle:@"Report"];
+//    [[MainViewController getRootNaviController] updateTitle:@"Report"];
 }
 
 - (void)didReceiveMemoryWarning {

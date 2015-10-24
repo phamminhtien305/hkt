@@ -22,9 +22,8 @@
 }
 
 -(void)registerNibWithCollection:(UICollectionView *)collectionView{
-    [collectionView setBackgroundColor:[UIColor whiteColor]];
-    [collectionView registerNib:[SegmentCell nib] forCellWithReuseIdentifier:[SegmentCell nibName]];
-    
+    [collectionView setBackgroundColor:[UIColor clearColor]];
+    [collectionView registerNib:[SegmentCell nib] forCellWithReuseIdentifier:[SegmentCell nibName]];    
 }
 
 

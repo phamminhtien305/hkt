@@ -43,23 +43,27 @@
         case 0:{
             [self deselectedButton:selectedBtn];
             [btnTabbar0 setSelected:YES];
+            [imgBtnTabBar0 setImage:[UIImage imageNamed:@"icon-report-active.png"]];
             selectedBtn = btnTabbar0;
             break;
         }
         case 1:{
             [self deselectedButton:selectedBtn];
             [btnTabbar1 setSelected:YES];
+            [imgBtnTabBar1 setImage:[UIImage imageNamed:@"icon-notice-active.png"]];
             selectedBtn = btnTabbar1;
             break;
         }case 2:{
             [self deselectedButton:selectedBtn];
             [btnTabbar2 setSelected:YES];
+            [imgBtnTabBar2 setImage:[UIImage imageNamed:@"icon-profile-active.png"]];
             selectedBtn = btnTabbar2;
             break;
         }
         case 3:{
             [self deselectedButton:selectedBtn];
             [btnTabBar3 setSelected:YES];
+            [imgBtnTabBar3 setImage:[UIImage imageNamed:@"icon-about-active.png"]];
             selectedBtn = btnTabBar3;
             break;
         }
@@ -90,19 +94,19 @@
 -(void)deselectedButton:(UIButton *)button{
     switch (button.tag) {
         case 0:
-            [imgBtnTabBar0 setImage:[UIImage imageNamed:@"discover"]];
+            [imgBtnTabBar0 setImage:[UIImage imageNamed:@"icon-report.png"]];
             [btnTabbar0 setSelected:NO];
             break;
         case 1:
-            [imgBtnTabBar1 setImage:[UIImage imageNamed:@"top-new"]];
+            [imgBtnTabBar1 setImage:[UIImage imageNamed:@"icon-notice.png"]];
             [btnTabbar1 setSelected:NO];
             break;
         case 2:
-            [imgBtnTabBar2 setImage:[UIImage imageNamed:@"top-down"]];
+            [imgBtnTabBar2 setImage:[UIImage imageNamed:@"icon-profile.png"]];
             [btnTabbar2 setSelected:NO];
             break;
         case 3:
-            [imgBtnTabBar3 setImage:[UIImage imageNamed:@"category"]];
+            [imgBtnTabBar3 setImage:[UIImage imageNamed:@"icon-about.png"]];
             [btnTabBar3 setSelected:NO];
             break;
         default:

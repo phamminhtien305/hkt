@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 #import "PageMapReportViewController.h"
+#import "UploadEngine.h"
 
 @interface ReportInfoViewController ()
 
@@ -40,7 +41,7 @@
     }else{
         [lbLocation setText:@"Location Services Disable"];
     }
-    
+
     txtViewDescription.delegate = self;
     txtTitle.delegate = self;
     [txtTitle setText:_titleReport];
@@ -63,6 +64,14 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
+    [self setupTakePhotoView];
+    shareWithPublic = YES;
+    isanym = NO;
+}
+
+-(void)setupTakePhotoView{
+    takePhotoView.layer.cornerRadius = takePhotoView.frame.size.width/2;
+    takePhotoView.layer.masksToBounds = YES;
     
 }
 
@@ -151,8 +160,7 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *time = [NSString stringWithFormat:@"%@",[NSDate date]];
-    NSString *name = [@"Hackathon-" stringByAppendingString:time];
+    NSString *name = @"hkt.jpg";
     NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:name];
     
     //extracting image from the picker and saving it
@@ -164,17 +172,17 @@
         // The value '1.0' represents image compression quality as value from 0.0 to 1.0
         
             // Set desired maximum height and calculate width
-            CGFloat width = image.size.width;  // or whatever you need
+            CGFloat width = image.size.width / 2;  // or whatever you need
             CGFloat height = (width / image.size.width) * image.size.height;
             
             // Resize the image
             UIImage *newImage = [image scaleToSize:CGSizeMake(width, height)];
-            newImage = [newImage centerCropImage:newImage];
-        
+//            newImage = [newImage centerCropImage:newImage];
             // Optionally save the image here...
 
         [UIImageJPEGRepresentation(newImage, 1.0) writeToFile:imagePath atomically:YES];
-            [thumbnail setImage:newImage];
+        currentPath = imagePath;
+        [thumbnail setImage:newImage];
         // Write image to PNG
     }
     
@@ -229,38 +237,55 @@
 
 -(IBAction)clickSubmit:(id)sender{
     if([MainViewController shareMainViewController].reporter){
-        ReporterObject *reporter = [MainViewController shareMainViewController].reporter;
-
-        PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
-        reportObject[@"title"] = txtTitle.text;
-        
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
-        
-        reportObject[@"location"] = geoPoint;
-        
-        reportObject[@"state"] = @"pending";
-        reportObject[@"images"] = [[NSArray alloc] initWithObjects:@"http://4.bp.blogspot.com/-nk0SSzm41HE/VVQeWMQ3iRI/AAAAAAAAALk/a9EWLZ8JCvc/s1600/a4f998e11a3aeecec34dfbf296d4120f_61-0513.jpg",@"http://hanoimoi.com.vn/Uploads/trieuhoa/2015/8/4/duong5.jpg",@"http://img.vietnamplus.vn/t660/Uploaded/mzdiq/2015_06_13/vnp_muagiong2.jpg",@"http://media.tinmoi.vn/2015/03/13/resized__MG_8596.JPG", nil];
-        
-        description = txtViewDescription.text;
-        if(description)
-            reportObject[@"description"] = description;
-        
-//        NSData *imageData = UIImagePNGRepresentation(thumbnail.image);
-//        if(imageData){
-//            PFFile *imageFile = [PFFile fileWithName:@"thum" data:imageData];
-//            [reportObject setObject:imageFile forKey:@"imageFile"];
-//        }
-//        
-
-        [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                // The object has been saved.
-                [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
-            } else {
-                // There was a problem, check error.description
-                [lbStatus setHidden:NO];
+        [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
+            
+            PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
+            reportObject[@"title"] = txtTitle.text;
+            
+            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
+            
+            reportObject[@"location"] = geoPoint;
+            
+            reportObject[@"state"] = @"pending";
+            
+            reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
+            
+            PFUser *currUser = [PFUser currentUser];
+            PFRelation *relation = [reportObject relationForKey:@"owner"];
+            [relation addObject:currUser];
+            
+            description = txtViewDescription.text;
+            if(description)
+                reportObject[@"description"] = description;
+            
+            if(shareWithPublic){
+                reportObject[@"state"] = @"private";
+            }else{
+                reportObject[@"state"] = @"pending";
             }
+            
+            if(isanym){
+                reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
+            }else{
+                reportObject[@"isanym"] = [NSNumber numberWithBool:NO];
+            }
+
+            
+            [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been saved.
+
+                } else {
+                    // There was a problem, check error.description
+                    [lbStatus setHidden:NO];
+                }
+            }];
+
+        } withErrorBlock:^(NSError *error) {
+            
         }];
+        
+        [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
     }
 }
 
@@ -269,6 +294,10 @@
     shareWithPublic = [sw isOn];
 }
 
+-(IBAction)clickAnym:(id)sender{
+    UISwitch *sw = (UISwitch *)sender;
+    isanym = [sw isOn];
+}
 
 -(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     [mapView clear];

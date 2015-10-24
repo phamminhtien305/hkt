@@ -119,6 +119,7 @@
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }
     [textDescription sizeToFit];
+    [textDescription setFrame:CGRectMake(textDescription.frame.origin.x, textDescription.frame.origin.y, textDescription.frame.size.width, textDescription.frame.size.height + 20)];
     
     [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
 }

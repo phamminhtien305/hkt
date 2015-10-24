@@ -37,7 +37,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-
+    
+    [[MainViewController getRootNaviController] updateTitle:@"PEOPLE SERVICE"];
+    
     [pageViewController.view setFrame:CGRectMake(0, segmentView.frame.origin.y + segmentView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - segmentView.frame.size.height - TABBAR_HEIGHT)];
     [self getListReportFromParse];
     

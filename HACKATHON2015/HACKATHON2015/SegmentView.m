@@ -14,7 +14,7 @@
     listItem = [[NSArray alloc] initWithObjects:@"List Report",@"Map",@"News", nil];
     controller = [[SegmentController alloc] initWithTargetCollection:collectionView withListItem:listItem];
     controller.delegate = self;
-    
+    [self setBackgroundColor:BACKGROUND_NAVIGATIONBAR];
 }
 
 

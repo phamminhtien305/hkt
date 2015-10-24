@@ -17,7 +17,7 @@
 -(void)configCell:(id)data{
     if(data && [data isKindOfClass:[NewsObject class]]){
         item = (NewsObject *)data;
-        [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 130, 42)];
+        [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 140, 42)];
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
         
