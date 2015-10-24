@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class PFObject;
 @interface PFController : NSObject
 + (void) registerPFUser;
 + (BOOL) isAnonymous;
 + (BOOL) isAdmin;
 + (NSString*) textStringFromState:(REPORT_STATE) state;
 + (NSString*) stringFromState:(REPORT_STATE) state;
++ (NSDictionary*) pfObjectToDict:(PFObject*) object;
 @end

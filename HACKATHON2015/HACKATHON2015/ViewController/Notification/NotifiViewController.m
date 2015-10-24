@@ -7,8 +7,14 @@
 //
 
 #import "NotifiViewController.h"
+#import "ListNotificationController.h"
 
 @interface NotifiViewController ()
+{
+    ListNotificationController *notificationController;
+}
+@property (strong, nonatomic) IBOutlet UICollectionView *notificationCollectionView;
+
 
 @end
 
@@ -20,6 +26,11 @@
     [[MainViewController getRootNaviController] updateTitle:@"Notification"];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
+    notificationController = [[ListNotificationController alloc] initWithTargetCollection:self.notificationCollectionView];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    [notificationController reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

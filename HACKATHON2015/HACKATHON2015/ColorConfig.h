@@ -16,5 +16,6 @@
 #define BACKGROUND_STATE_SUBMITED [UIColor colorWithRed:230.0/255.0 green:96.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define BACKGROUND_STATE_CLOSED [UIColor colorWithRed:81.0/255.0 green:164.0/255.0 blue:17.0/255.0 alpha:1.0]
 
+#define BACKGROUND_NOTIFICATION_NOTREAD [UIColor colorWithRed:233/255.0 green:238/255.0 blue:231/255.0 alpha:1.0]
 
 #endif
