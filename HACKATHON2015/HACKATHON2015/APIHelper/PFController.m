@@ -7,6 +7,7 @@
 //
 
 #import "PFController.h"
+#import "DeviceHelper.h"
 #import <Parse/Parse.h>
 
 @implementation PFController
@@ -16,10 +17,12 @@
     if (!user) {
         PFUser *user = [PFUser user];
         [user setValue:@"user" forKey:@"group"];
-        user.username = [[NSUUID alloc] init].UUIDString;
-        user.password = [[NSUUID alloc] init].UUIDString;
+        user.username = [DeviceHelper getDeviceID];
+        user.password = [DeviceHelper getDeviceID];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            
+            if (error.code == kPFErrorUsernameTaken) {
+                [PFUser logInWithUsername:[DeviceHelper getDeviceID] password:[DeviceHelper getDeviceID]];
+            }
         }];
     }
 }

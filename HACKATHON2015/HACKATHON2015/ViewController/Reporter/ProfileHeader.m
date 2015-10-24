@@ -34,15 +34,14 @@
 }
 
 -(IBAction)clickSubmitReporter:(id)sender{
-    if([txtPhone.text length]  == 0 || [txtEmail.text length] == 0 || [txtFirstName.text length] == 0 || [txtLastName.text length] == 0){
+    if([txtPhone.text length]  == 0 || [txtEmail.text length] == 0 || [txtFirstName.text length] == 0){
         [lbwarning setHidden:NO];
     }else{
         [lbwarning setHidden:YES];
         
-        PFUser *user = [[PFUser alloc] init];
+        PFUser *user = [PFUser currentUser];
         
-        user[@"user_first_name"] = txtFirstName.text;
-        user[@"user_last_name"] = txtLastName.text;
+        user[@"user_full_name"] = txtFirstName.text;
         user[@"user_phone"] = txtPhone.text;
         user[@"email"] = txtEmail.text;
 
