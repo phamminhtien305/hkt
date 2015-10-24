@@ -43,7 +43,7 @@
 }
 
 
--(void)getListReportFromParse{
+-(void)getListReportFromParse {
     isLoading = YES;
     [[APIEngineer sharedInstance] getReportsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
