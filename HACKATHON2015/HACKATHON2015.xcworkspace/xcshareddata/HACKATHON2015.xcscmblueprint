@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C898091960BD3F316B4B8FBF431DA6765015C1EF" : 0,
+    "D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "190A6158-C26E-4715-A060-C03FD0880ED3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C898091960BD3F316B4B8FBF431DA6765015C1EF" : "hackathon",
+    "D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA" : "hkt"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HACKATHON2015",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HACKATHON2015\/HACKATHON2015.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:phamminhtien\/hackathon.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C898091960BD3F316B4B8FBF431DA6765015C1EF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/phamminhtien305\/hkt.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D81B89F9DE29CA699EA0C8D5AB24FA74A45512DA"
+    }
+  ]
+}
