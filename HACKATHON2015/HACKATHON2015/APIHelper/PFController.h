@@ -10,4 +10,7 @@
 
 @interface PFController : NSObject
 + (void) registerPFUser;
++ (BOOL) isAnonymous;
++ (BOOL) isAdmin;
++ (NSString*) textStringFromState:(REPORT_STATE) state;
 @end

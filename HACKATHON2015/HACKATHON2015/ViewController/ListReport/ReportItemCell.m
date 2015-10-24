@@ -7,6 +7,9 @@
 //
 
 #import "ReportItemCell.h"
+#import "PFController.h"
+#import "UIActionSheet+Blocks.h"
+#import "NewsObject.h"
 
 @implementation ReportItemCell
 
@@ -14,6 +17,21 @@
     [super awakeFromNib];
     btnState.layer.cornerRadius = 2;
     btnState.layer.masksToBounds = YES;
+    [btnState addTarget:self action:@selector(stateClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) stateClick:(id) sender {
+    if ([PFController isAdmin]) {
+        NSMutableArray *listAction = [NSMutableArray array];
+        for (REPORT_STATE i = pending; i <= unpublish; i++) {
+            [listAction addObject:[PFController textStringFromState:i]];
+        }
+        [UIActionSheet showInView:[[[UIApplication sharedApplication] delegate] window]
+                        withTitle:@"Chuyển trạng thái report"
+                cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:listAction tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+            
+        }];
+    }
 }
 
 +(CGSize)getSize{
@@ -28,26 +46,21 @@
         [lbTitle sizeToFit];
         [lbDescription setText:[item getDescription]];
         [createDate setText:[item createTime]];
+        [btnState setTitle:[PFController textStringFromState:[item state]] forState:UIControlStateNormal];
         if([item getFistImage]){
             [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFistImage]] placeholderImage:nil];
         }
         if([item state] == open_){
-            [btnState setTitle:@"Opened" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_OPENED];
         }else if([item state] == pending){
-            [btnState setTitle:@"Pending" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_SUBMITED];
         }else if([item state] == close_){
-            [btnState setTitle:@"Closed" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }else if([item state] == unpublish){
-            [btnState setTitle:@"UnPublish" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }else if([item state] == private_){
-            [btnState setTitle:@"Private" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }
-
     }
 }
 

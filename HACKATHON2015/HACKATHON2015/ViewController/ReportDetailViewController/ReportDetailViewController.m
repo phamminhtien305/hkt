@@ -9,6 +9,7 @@
 #import "ReportDetailViewController.h"
 #import "ReportItemObject.h"
 #import "NewsObject.h"
+#import "PFController.h"
 
 @interface ReportDetailViewController ()
 
@@ -61,24 +62,21 @@
     [lbCreateDate setText:[newItem createTime]];
     //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[newItem getDescription]];
+
+    [btnStateReport setTitle:[PFController textStringFromState:[newItem state]] forState:UIControlStateNormal];
     
     if([newItem getFirstImage]){
         [imageReport sd_setImageWithURL:[NSURL URLWithString:[newItem getFirstImage]] placeholderImage:nil];
     }
     if([newItem state] == open_){
-        [btnStateReport setTitle:@"Open" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_OPENED];
     }else if([newItem state] == pending){
-        [btnStateReport setTitle:@"Pending" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_SUBMITED];
     }else if([newItem state] == close_){
-        [btnStateReport setTitle:@"Close" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }else if([newItem state] == private_){
-        [btnStateReport setTitle:@"Private" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }else if([newItem state] == unpublish){
-        [btnStateReport setTitle:@"Unpublish" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }
     [textDescription sizeToFit];
@@ -99,23 +97,19 @@
 //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[reportItem getDescription]];
     
+    [btnStateReport setTitle:[PFController textStringFromState:[reportItem state]] forState:UIControlStateNormal];
     if([reportItem getFistImage]){
         [imageReport sd_setImageWithURL:[NSURL URLWithString:[reportItem getFistImage]] placeholderImage:nil];
     }
     if([reportItem state] == open_){
-        [btnStateReport setTitle:@"Open" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_OPENED];
     }else if([reportItem state] == pending){
-        [btnStateReport setTitle:@"Pending" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_SUBMITED];
     }else if([reportItem state] == close_){
-        [btnStateReport setTitle:@"Close" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }else if([reportItem state] == private_){
-        [btnStateReport setTitle:@"Private" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }else if([reportItem state] == unpublish){
-        [btnStateReport setTitle:@"Unpublish" forState:UIControlStateNormal];
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }
     [textDescription sizeToFit];

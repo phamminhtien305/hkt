@@ -130,6 +130,7 @@
 		36A8A8881BDB6F74002C66E3 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A8801BDB6F74002C66E3 /* MKNetworkOperation.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A88B1BDB6FE9002C66E3 /* UploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */; settings = {ASSET_TAGS = (); }; };
 		36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A8A88D1BDB77B9002C66E3 /* PFController.m */; settings = {ASSET_TAGS = (); }; };
+		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; settings = {ASSET_TAGS = (); }; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +350,8 @@
 		36A8A88A1BDB6FE9002C66E3 /* UploadEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UploadEngine.m; path = APIHelper/UploadEngine.m; sourceTree = "<group>"; };
 		36A8A88C1BDB77B9002C66E3 /* PFController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFController.h; path = APIHelper/PFController.h; sourceTree = "<group>"; };
 		36A8A88D1BDB77B9002C66E3 /* PFController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFController.m; path = APIHelper/PFController.m; sourceTree = "<group>"; };
+		36EC02281BDBAACF0091C2DF /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
 		FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKATHON2015.release.xcconfig"; path = "Pods/Target Support Files/Pods-HACKATHON2015/Pods-HACKATHON2015.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -400,6 +403,8 @@
 		1B025DB01BD564DD007BD923 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				36EC02281BDBAACF0091C2DF /* UIActionSheet+Blocks.h */,
+				36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */,
 				1BBD8AB61BDB3C5300EA1EB4 /* BannerPageControl.h */,
 				1BBD8AB71BDB3C5300EA1EB4 /* BannerPageControl.m */,
 				1BBD8ABC1BDB3D3B00EA1EB4 /* ReflectionView.h */,
@@ -1069,6 +1074,7 @@
 				1B7791501BD951A500FE9A53 /* NewsCell.m in Sources */,
 				1BB121231BD5E2050012E13B /* MainViewController.m in Sources */,
 				36A8A8861BDB6F74002C66E3 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */,
 				1BB1219A1BD652DC0012E13B /* BaseObject.m in Sources */,
 				1BAE75C31BDA1F400072581B /* APIEngineer+Infomation.m in Sources */,
 				1BC267AF1BD6BC4700A2355E /* ReportInfoViewController.m in Sources */,
