@@ -19,7 +19,6 @@
     return sharedInstance;
 }
 
-
 - (void) uploadWithPath:(NSString*) path
     withCompletionBlock:(AppStringCompleteBlock) completeBlock
          withErrorBlock:(AppResultErrorBlock) errorBlock

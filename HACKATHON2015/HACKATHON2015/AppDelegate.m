@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "UploadEngine.h"
+#import "PFController.h"
+
 @interface AppDelegate ()
 {
 }
@@ -22,11 +24,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [Parse setApplicationId:PARSE_APP_ID
-                  clientKey:PARSE_CLIENT_ID];
     
-    [self registerAPN];
+    [self initParse];
     
     [GMSServices provideAPIKey:GOOGLE_MAP_API_KEY];
     
@@ -37,6 +36,17 @@
     [self.window setFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) initParse {
+    // Override point for customization after application launch.
+    [Parse setApplicationId:PARSE_APP_ID
+                  clientKey:PARSE_CLIENT_ID];
+    
+    [self registerAPN];
+    
+    // Register PFUser
+    [PFController registerPFUser];
 }
 
 
