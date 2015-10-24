@@ -37,5 +37,5 @@
     #import "ReportItemObject.h"
     #import "ReportObject.h"
     #import <GoogleMaps/GoogleMaps.h>
-
+    #import "AppUIFontHelper.h"
 #endif

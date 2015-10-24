@@ -44,12 +44,33 @@
 - (void) setupView {
     [self addURLImageViewDescription];
     [self addSubview:shadowBg];
+    [self addDescription];
 }
 
 //for reload with new data
 - (void) setBannerData:(NewsObject *) _bannerData {
     bannerData = _bannerData;
     [self setupView];
+}
+
+-(void)addDescription{
+    NSString *description = [bannerData getDescription];
+    if(description){
+        float align = 4;
+        CGRect framemask = CGRectMake(align/2, self.frame.size.height/2, self.frame.size.width-align, self.frame.size.height/2);
+        
+        UIImageView *mask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_gradient_home.png"]];
+        [mask setFrame:framemask];
+        [self addSubview:mask];
+        CGRect frame = CGRectMake(align/2, self.frame.size.height*2/3, self.frame.size.width-align, self.frame.size.height/3);
+        UILabel *lbDescription = [[UILabel alloc] initWithFrame:frame];
+        [lbDescription setFont:[AppUIFontHelper textheveticalRegular14]];
+        [lbDescription setTextColor:[UIColor whiteColor]];
+        [lbDescription setText:description];
+        [lbDescription setNumberOfLines:2];
+        imgView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [self addSubview:lbDescription];
+    }
 }
 
 - (void) addURLImageViewDescription {

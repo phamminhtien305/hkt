@@ -17,7 +17,7 @@
 }
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 220);
+    return CGSizeMake([DeviceHelper getWinSize].width, 250);
 }
 
 -(void)configCell:(id)data{
@@ -28,8 +28,8 @@
         [lbTitle sizeToFit];
         [lbDescription setText:[item getDescription]];
         [createDate setText:[item createTime]];
-        if([item getThumbnail]){
-            [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getThumbnail]] placeholderImage:nil];
+        if([item getFistImage]){
+            [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFistImage]] placeholderImage:nil];
         }
         if([item state] == open_){
             [btnState setTitle:@"Opened" forState:UIControlStateNormal];
@@ -38,15 +38,16 @@
             [btnState setTitle:@"Pending" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_SUBMITED];
         }else if([item state] == close_){
-            [btnState setTitle:@"Closeed" forState:UIControlStateNormal];
+            [btnState setTitle:@"Closed" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }else if([item state] == unpublish){
-            [btnState setTitle:@"Unpublish" forState:UIControlStateNormal];
+            [btnState setTitle:@"UnPublish" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }else if([item state] == private_){
             [btnState setTitle:@"Private" forState:UIControlStateNormal];
             [btnState setBackgroundColor:BACKGROUND_STATE_CLOSED];
         }
+
     }
 }
 

@@ -108,6 +108,7 @@
 		1BBD8ABB1BDB3CD400EA1EB4 /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8ABA1BDB3CD400EA1EB4 /* BannerView.m */; };
 		1BBD8ABE1BDB3D3B00EA1EB4 /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8ABD1BDB3D3B00EA1EB4 /* ReflectionView.m */; };
 		1BBD8AC41BDB3EAF00EA1EB4 /* ListNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8AC31BDB3EAF00EA1EB4 /* ListNewsController.m */; };
+		1BBD8AC71BDB51EE00EA1EB4 /* AppUIFontHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8AC61BDB51EE00EA1EB4 /* AppUIFontHelper.m */; };
 		1BC2679F1BD69D0800A2355E /* BasePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2679E1BD69D0800A2355E /* BasePageViewController.m */; };
 		1BC267AF1BD6BC4700A2355E /* ReportInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC267AD1BD6BC4700A2355E /* ReportInfoViewController.m */; };
 		1BC267B01BD6BC4700A2355E /* ReportInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC267AE1BD6BC4700A2355E /* ReportInfoViewController.xib */; };
@@ -296,6 +297,8 @@
 		1BBD8ABD1BDB3D3B00EA1EB4 /* ReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		1BBD8AC21BDB3EAF00EA1EB4 /* ListNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListNewsController.h; path = ViewController/ListReport/News/ListNewsController.h; sourceTree = "<group>"; };
 		1BBD8AC31BDB3EAF00EA1EB4 /* ListNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListNewsController.m; path = ViewController/ListReport/News/ListNewsController.m; sourceTree = "<group>"; };
+		1BBD8AC51BDB51EE00EA1EB4 /* AppUIFontHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUIFontHelper.h; sourceTree = "<group>"; };
+		1BBD8AC61BDB51EE00EA1EB4 /* AppUIFontHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUIFontHelper.m; sourceTree = "<group>"; };
 		1BC2679D1BD69D0800A2355E /* BasePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePageViewController.h; sourceTree = "<group>"; };
 		1BC2679E1BD69D0800A2355E /* BasePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePageViewController.m; sourceTree = "<group>"; };
 		1BC267AC1BD6BC4700A2355E /* ReportInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportInfoViewController.h; path = ViewController/ReportDetail/ReportInfoViewController.h; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 		1BB121141BD5DCFE0012E13B /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				1BBD8AC51BDB51EE00EA1EB4 /* AppUIFontHelper.h */,
+				1BBD8AC61BDB51EE00EA1EB4 /* AppUIFontHelper.m */,
 				1B025DB51BD565A0007BD923 /* APIConfig.h */,
 				1B025DB61BD56656007BD923 /* BlockConfig.h */,
 				1B025DBA1BD56808007BD923 /* AppConfig.h */,
@@ -967,6 +972,7 @@
 				1BBD8AB31BDB3A1F00EA1EB4 /* HeaderNewsView.m in Sources */,
 				1B9CC1591BD78E4100CAA495 /* SegmentCell.m in Sources */,
 				1B025DC01BD56923007BD923 /* AFGetIp.m in Sources */,
+				1BBD8AC71BDB51EE00EA1EB4 /* AppUIFontHelper.m in Sources */,
 				1BEA1E451BD5634B0029262E /* main.m in Sources */,
 				1BB1211F1BD5E0540012E13B /* BaseCollectionViewCell.m in Sources */,
 				1B025DC61BD56966007BD923 /* DeviceHelper.m in Sources */,
