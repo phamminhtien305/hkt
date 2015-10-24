@@ -57,21 +57,6 @@
     return 0.0;
 }
 
--(NSString *)createTime{
-    if([self.pfObject objectForKey:@"createdAt"]){
-        return [self.pfObject objectForKey:@"createdAt"];
-    }
-    return @"";
-}
-
-
--(NSString *)updateTime{
-    if([self.pfObject objectForKey:@"updatedAt"]){
-        return [self.pfObject objectForKey:@"updatedAt"];
-    }
-    return @"";
-}
-
 -(REPORT_STATE)state{
     if([self.pfObject objectForKey:@"state"]){
         NSString *state = [self.pfObject objectForKey:@"state"];

@@ -18,10 +18,6 @@
 
 -(id)getLocation;
 
--(NSString *)createTime;
-
--(NSString *)updateTime;
-
 -(REPORT_STATE)state;
 
 -(NSArray *)getImages;

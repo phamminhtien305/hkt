@@ -22,10 +22,6 @@
 
 -(float)getLongtitude;
 
--(NSString *)createTime;
-
--(NSString *)updateTime;
-
 -(BOOL)shareWithPublic;
 
 -(REPORT_STATE)state;

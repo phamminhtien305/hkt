@@ -56,22 +56,6 @@
     return 0.0;
 }
 
-
--(NSString *)createTime{
-    if([self.pfObject objectForKey:@"createdAt"]){
-        return [self.pfObject objectForKey:@"createdAt"];
-    }
-    return @"";
-}
-
-
--(NSString *)updateTime{
-    if([self.pfObject objectForKey:@"updatedAt"]){
-        return [self.pfObject objectForKey:@"updatedAt"];
-    }
-    return @"";
-}
-
 -(BOOL)shareWithPublic{
     if([self.pfObject objectForKey:@"share_public"]){
         return [[self.pfObject objectForKey:@"share_public"] boolValue];

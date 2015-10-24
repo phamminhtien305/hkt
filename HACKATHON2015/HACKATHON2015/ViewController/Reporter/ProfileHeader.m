@@ -23,7 +23,7 @@
 }
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 215);
+    return CGSizeMake([DeviceHelper getWinSize].width, 240);
 }
 
 -(void)configHeader:(id)data{
@@ -33,48 +33,7 @@
 }
 
 -(IBAction)clickSubmitReporter:(id)sender{
-    if([txtPhone.text length]  == 0 || [txtEmail.text length] == 0 || [txtFirstName.text length] == 0){
-        [lbwarning setHidden:NO];
-    }else{
-        [lbwarning setHidden:YES];
-        
-        PFUser *user = [PFUser currentUser];
-        
-        user[@"user_full_name"] = txtFirstName.text;
-        user[@"user_phone"] = txtPhone.text;
-        user[@"email"] = txtEmail.text;
-        
-
-        NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",@"",@"last_name",txtPhone.text,@"phone", nil];
-        
-        NSString *data = AFJSONStringFromParameters(reporterDic);
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-
-
-//
-//        ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
-//        
-//        [MainViewController shareMainViewController].reporter = reporter;
-//        
-//        NSString *data = AFJSONStringFromParameters(reporterDic);
-//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//        
-//        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if(succeeded){
-//                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name", @"", @"last_name",txtPhone.text,@"phone", nil];
-//                ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
-//                NSString *data = AFJSONStringFromParameters(reporterDic);
-//                [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
-//                [[NSUserDefaults standardUserDefaults] synchronize];
-//                [MainViewController shareMainViewController].reporter = reporter;
-//            }else{
-//                
-//            }
-//        }];
-
-    }
+    
 }
 
 
@@ -99,7 +58,11 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    
+    if(textField.tag == 2 && [textField.text length] > 0){
+        if(txtFirstName.text && [txtFirstName.text length] > 0){
+            
+        }
+    }
 }
 
 - (BOOL) textField:(UITextField *)aTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -107,6 +70,46 @@
     return YES;
 }
 
+
+-(void)updateUser{
+        
+    PFUser *user = [PFUser currentUser];
+    
+    user[@"user_full_name"] = txtFirstName.text;
+    user[@"user_phone"] = txtPhone.text;
+    user[@"email"] = txtEmail.text;
+    
+    
+    NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name",@"",@"last_name",txtPhone.text,@"phone", nil];
+    
+    NSString *data = AFJSONStringFromParameters(reporterDic);
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    //
+    //        ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
+    //
+    //        [MainViewController shareMainViewController].reporter = reporter;
+    //
+    //        NSString *data = AFJSONStringFromParameters(reporterDic);
+    //        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
+    //        [[NSUserDefaults standardUserDefaults] synchronize];
+    //
+    //        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //            if(succeeded){
+    //                NSDictionary *reporterDic  = [[NSDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtFirstName.text,@"first_name", @"", @"last_name",txtPhone.text,@"phone", nil];
+    //                ReporterObject *reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
+    //                NSString *data = AFJSONStringFromParameters(reporterDic);
+    //                [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"current_reporter"];
+    //                [[NSUserDefaults standardUserDefaults] synchronize];
+    //                [MainViewController shareMainViewController].reporter = reporter;
+    //            }else{
+    //
+    //            }
+    //        }];
+    
+}
 
 
 

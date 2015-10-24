@@ -72,7 +72,7 @@
     [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
     [lbTitle setText:[newItem getTitle]];
     [lbTitle sizeToFit];
-    [lbCreateDate setText:[newItem createTime]];
+    [lbCreateDate setText:[newItem createDate]];
     //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[newItem getDescription]];
 
@@ -112,7 +112,7 @@
     [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
     [lbTitle setText:[reportItem getTitle]];
     [lbTitle sizeToFit];
-    [lbCreateDate setText:[reportItem createTime]];
+    [lbCreateDate setText:[reportItem createDate]];
 //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[reportItem getDescription]];
     

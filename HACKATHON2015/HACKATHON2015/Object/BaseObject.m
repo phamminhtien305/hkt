@@ -83,7 +83,7 @@ static NSString * const ObjectStateKey = @"objectstate";
     if(self.pfObject){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"pt_BR"]];
-        [dateFormatter setDateFormat: @"dd - MM - yyyy"];
+        [dateFormatter setDateFormat: @"dd/MM/yyyy"];
         NSString *strDate = [dateFormatter stringFromDate:self.pfObject.createdAt];
         return strDate;
     }
@@ -94,7 +94,7 @@ static NSString * const ObjectStateKey = @"objectstate";
     if(self.pfObject){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"pt_BR"]];
-        [dateFormatter setDateFormat: @"dd - MM - yyyy"];
+        [dateFormatter setDateFormat: @"dd/MM/yyyy"];
         NSString *strDate = [dateFormatter stringFromDate:self.pfObject.updatedAt];
         return strDate;
     }
