@@ -14,6 +14,7 @@
 
 -(void)getReportContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"NEWREPORT"];
+    [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
             errorBlock(error);
