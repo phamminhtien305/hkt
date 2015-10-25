@@ -129,6 +129,10 @@
 }
 
 + (NSDictionary*) pushDictWithObject:(BaseObject*) object {
-    NSString *alert = object.objectDict
+    NSMutableDictionary *pushDict = [NSMutableDictionary dictionary];
+    [pushDict setObject:object.pfObject[@"title"] forKey:@"alert"];
+    [pushDict setObject:@"Increment" forKey:@"badge"];
+    [pushDict setObject:@"class" forKey:[object.pfObject parseClassName]];
+    [pushDict setObject:@"objectId" forKey:[object.pfObject objectId]];
 }
 @end

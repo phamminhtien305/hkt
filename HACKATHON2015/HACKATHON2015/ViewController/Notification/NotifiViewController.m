@@ -23,9 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [PFController pushToAdminWithDictionary:@{@"objectId":@"1",
-                                              @"class":@"News"
-                                              }];
     // Do any additional setup after loading the view from its nib.
     [[MainViewController getRootNaviController] updateTitle:@"Notification"];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
