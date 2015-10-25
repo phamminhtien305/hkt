@@ -20,6 +20,8 @@
     if([data isKindOfClass:[ReportObject class]]){
         ReportObject *item = (ReportObject *)data;
         [lbTitle setText:[item getHeaderName]];
+    }else if([data isKindOfClass:[NSString class]]){
+        [lbTitle setText:data];
     }
 }
 
