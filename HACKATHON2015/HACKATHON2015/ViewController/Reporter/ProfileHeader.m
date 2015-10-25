@@ -13,7 +13,6 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-    [lbwarning setHidden:YES];
     txtEmail.delegate = self;
     txtFirstName.delegate = self;
     txtPhone.delegate = self;

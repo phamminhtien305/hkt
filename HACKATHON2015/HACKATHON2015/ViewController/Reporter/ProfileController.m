@@ -12,6 +12,7 @@
 #import "ReportItemCell.h"
 #import "HeaderAddReportView.h"
 
+#import "APIEngineer+Report.h"
 
 @implementation ProfileController
 
@@ -28,7 +29,15 @@
 }
 
 -(void)getListUserReport{
-    
+    [[APIEngineer sharedInstance] getReportsUserItemContentOnComplete:^(id result, BOOL isCache) {
+        [listSection removeAllObjects];
+        NSArray *list = [[NSArray alloc] init];
+        [listSection addObject:list];
+        [listSection addObject:[ReportItemObject createListDataFromPFObject:result]];
+        [self updateCollectionViewWithListItem:listSection];
+    } onError:^(NSError *error) {
+        
+    }];
 }
 
 -(void)getListUserLike{
@@ -72,9 +81,9 @@
         }else{
             NSString *headerTitle = @"";
             if(indexPath.section == 1){
-                headerTitle = @"My Report";
+                headerTitle = @"Tin đã đăng";
             }else if(indexPath.section == 2){
-                headerTitle = @"Favorite";
+                headerTitle = @"Tin đã lưu";
             }
             HeaderAddReportView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderAddReportView nibName] forIndexPath:indexPath];
             reusableView = collectionHeader;
