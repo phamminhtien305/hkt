@@ -1521,7 +1521,8 @@
 			baseConfigurationReference = 0E3DE7A20A1805B933CCC021 /* Pods-HACKATHON2015.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1551,7 +1552,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1561,7 +1562,8 @@
 			baseConfigurationReference = FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1591,7 +1593,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

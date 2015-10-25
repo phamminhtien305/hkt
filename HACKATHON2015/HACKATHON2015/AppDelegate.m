@@ -42,11 +42,10 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_ID];
-    
-    [self registerAPN];
-    
     // Register PFUser
-    [PFController registerPFUser];
+    [PFController registerPFUserWithCompletionBlock:^(BOOL b) {
+        [self registerAPN];        
+    }];    
 }
 
 
@@ -99,6 +98,9 @@
             [currentInstallation removeObject:channel forKey:@"channels"];
         }
     }
+    PFUser *currUser = [PFUser currentUser];
+    PFRelation *relation = [currentInstallation relationForKey:@"owner"];
+    [relation addObject:currUser];
     [currentInstallation saveInBackground];
     
     [currentInstallation removeObjectForKey:@"device_name"];
@@ -133,6 +135,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Receive push %@", userInfo);
 }
 
 #pragma mark - Core Data stack

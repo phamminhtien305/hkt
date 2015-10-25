@@ -8,21 +8,24 @@
 
 #import "PFController.h"
 #import "DeviceHelper.h"
+#import "BaseObject.h"
 #import <Parse/Parse.h>
 
 @implementation PFController
 
-+ (void) registerPFUser{
++ (void) registerPFUserWithCompletionBlock:(AppBOOLBlock) completeBlock{
     PFUser *user = [PFUser currentUser];
     if (!user) {
         PFUser *user = [PFUser user];
         [user setValue:@"user" forKey:@"group"];
+        [user setValue:[[UIDevice currentDevice] systemName] forKey:@"device_name"];
         user.username = [DeviceHelper getDeviceID];
         user.password = [DeviceHelper getDeviceID];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error.code == kPFErrorUsernameTaken) {
-                [PFUser logInWithUsername:[DeviceHelper getDeviceID] password:[DeviceHelper getDeviceID]];
+                [PFUser logInWithUsername:[DeviceHelper getDeviceID] password:[DeviceHelper getDeviceID]];                
             }
+            completeBlock(YES);
         }];
     }
 }
@@ -97,5 +100,35 @@
 //    [retDict setObject:object.createdAt forKey:@"createdAt"];
 //    [retDict setObject:object.updatedAt forKey:@"updateAt"];
     return  retDict;
+}
+
++ (NSArray*) getListAdminUserWithCompletionBlock:(AppArrayCompleteBlock) completeBlock{
+    NSArray *listAdmin;
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"group" equalTo:@"admin"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        completeBlock(objects);
+    }];
+    return listAdmin;
+}
+
++ (void) pushToAdminWithDictionary:(NSDictionary*) obj {
+    [PFController getListAdminUserWithCompletionBlock:^(NSArray *result) {
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"owner" containedIn:result];
+        PFPush *push = [[PFPush alloc] init];
+        [push setQuery:pushQuery];
+        NSMutableDictionary *pushDict = [NSMutableDictionary dictionaryWithDictionary:obj];
+        [pushDict setObject:@"Increment" forKey:@"badge"];
+        [pushDict setObject:@"TestPush" forKey:@"alert"];
+        [push setData:pushDict];
+        [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+        }];
+    }];
+}
+
++ (NSDictionary*) pushDictWithObject:(BaseObject*) object {
+    NSString *alert = object.objectDict
 }
 @end

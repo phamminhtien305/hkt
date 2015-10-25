@@ -10,10 +10,12 @@
 
 @class PFObject;
 @interface PFController : NSObject
-+ (void) registerPFUser;
++ (void) registerPFUserWithCompletionBlock:(AppBOOLBlock) completeBlock;
 + (BOOL) isAnonymous;
 + (BOOL) isAdmin;
 + (NSString*) textStringFromState:(REPORT_STATE) state;
 + (NSString*) stringFromState:(REPORT_STATE) state;
 + (NSDictionary*) pfObjectToDict:(PFObject*) object;
++ (NSArray*) getListAdminUserWithCompletionBlock:(AppArrayCompleteBlock) completeBlock;
++ (void) pushToAdminWithDictionary:(NSDictionary*) obj;
 @end

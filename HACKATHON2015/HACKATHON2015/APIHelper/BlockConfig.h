@@ -10,6 +10,7 @@
 #define HACKATHON2015_BlockConfig_h
 
 typedef void (^AppResultCompleteBlock)(id result, BOOL isCache);
+typedef void (^AppArrayCompleteBlock)(NSArray *result);
 typedef void (^AppResultErrorBlock)(NSError *error);
 typedef void (^AppResultProgressBlock)(double progress, double byteRead, double totalByteOfFile);
 typedef void (^AppBOOLBlock)(BOOL b);
