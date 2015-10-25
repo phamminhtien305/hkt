@@ -83,12 +83,29 @@
         
     }
     if (![[obj pfObject][@"is_read"] boolValue]) {
-        PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
-        [query getObjectInBackgroundWithId:[obj pfObject][@"objectId"] block:^(PFObject *object, NSError *error) {
-            object[@"is_read"] = [NSNumber numberWithBool:YES];
-            [object saveInBackground];
+//        [self updateReadItem:[obj pfObject].objectId];
+        [obj pfObject][@"is_read"] = [NSNumber numberWithBool:YES];
+        [[obj pfObject] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:READ_CHANGE_NOTIFICATION object:nil];
         }];
     }
+}
+
+- (void) updateReadItem:(NSString*) objectID{
+    NotificationObject *newObject;
+    NSMutableArray *newItems = [NSMutableArray array];
+    for (NotificationObject *obj  in self.items[0]) {
+        if ([[obj pfObject].objectId isEqualToString:objectID]) {
+            PFObject *cpObject = [obj pfObject];
+            cpObject[@"is_read"] = [NSNumber numberWithBool:TRUE];
+            newObject = [[NotificationObject alloc] initWithPFObject:cpObject];
+            [newItems addObject:cpObject];
+        }
+        else {
+            [newItems addObject:obj];
+        }
+    }
+    self.items = newItems;
 }
 
 //- (id)itemAtIndexPath:(NSIndexPath *)indexPath {

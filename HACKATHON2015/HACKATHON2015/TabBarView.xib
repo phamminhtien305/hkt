@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIViewController">
@@ -113,6 +113,12 @@
                             <rect key="frame" x="86" y="2" width="60" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bza-eZ-3nK">
+                            <rect key="frame" x="115" y="6" width="12" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
+                            <state key="normal" title="1" backgroundImage="nums_down.png"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -122,6 +128,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="_contentView" destination="7sb-7H-GKO" id="8sN-c8-urh"/>
+                <outlet property="btnNotRead" destination="bza-eZ-3nK" id="hma-WF-7gz"/>
                 <outlet property="btnTabBar3" destination="Rl6-sQ-BQe" id="RNJ-3c-z5z"/>
                 <outlet property="btnTabbar0" destination="Rcy-f8-HyC" id="wNH-JI-3V4"/>
                 <outlet property="btnTabbar1" destination="IPG-RL-q7n" id="qLs-py-nCk"/>
@@ -140,10 +147,6 @@
         <image name="icon-profile.png" width="18" height="18"/>
         <image name="icon-report-active.png" width="18" height="18"/>
         <image name="line.png" width="493" height="3"/>
+        <image name="nums_down.png" width="12" height="12"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -7,6 +7,12 @@
 //
 
 #import "TabBarView.h"
+#import "PFController.h"
+@interface TabBarView()
+{
+    NSInteger countBadge;
+}
+@end
 
 @implementation TabBarView
 
@@ -24,6 +30,28 @@
     }else{
         [_contentView setFrame:CGRectMake(0, 2, [DeviceHelper getWinSize].width, 48)];
     }
+    btnNotRead.hidden = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNoticeNum:) name:READ_CHANGE_NOTIFICATION object:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [PFController reloadReadNotice];
+    });
+}
+
+- (void) updateNoticeNum:(NSNotification*) notification{
+    NSInteger num = [notification.object integerValue];
+    if (!notification.object) {
+        countBadge --;
+        num = countBadge >= 0 ? countBadge : 0;
+    }
+    NSLog(@"Update read num %ld %ld", (long)num, countBadge);
+    countBadge = num;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        btnNotRead.hidden = (num == 0);
+        [btnNotRead setTitle:[NSString stringWithFormat:@"%ld", (long)num] forState:UIControlStateNormal];
+    });
+    CGRect frame = btnNotRead.frame;
+    frame.origin = CGPointMake(btnTabbar1.center.x, frame.origin.y);
+    btnNotRead.frame = frame;
 }
 
 +(NSString *)nibName{

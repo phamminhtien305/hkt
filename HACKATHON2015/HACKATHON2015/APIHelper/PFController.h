@@ -19,4 +19,5 @@
 + (NSArray*) getListAdminUserWithCompletionBlock:(AppArrayCompleteBlock) completeBlock;
 + (void) pushToAdminWithDictionary:(NSDictionary*) obj;
 + (NSDictionary*) pushDictWithObject:(PFObject*) object;
++ (void) reloadReadNotice;
 @end

@@ -133,4 +133,12 @@
     [pushDict setObject:[object objectId] forKey:@"objectId"];
     return pushDict;
 }
+
++ (void) reloadReadNotice {
+    PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
+    [query whereKey:@"is_read" equalTo:[NSNumber numberWithBool:NO]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:READ_CHANGE_NOTIFICATION object:[NSNumber numberWithInteger:objects.count]];
+    }];
+}
 @end

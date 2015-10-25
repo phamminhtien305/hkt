@@ -201,6 +201,9 @@
 		36EC023A1BDBD1000091C2DF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02371BDBD1000091C2DF /* NotificationCell.m */; settings = {ASSET_TAGS = (); }; };
 		36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02391BDBD1000091C2DF /* NotificationCell.xib */; settings = {ASSET_TAGS = (); }; };
 		36EC023E1BDC65F80091C2DF /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC023D1BDC65F80091C2DF /* UIAlertView+Blocks.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02421BDC6AD20091C2DF /* nums_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC023F1BDC6AD20091C2DF /* nums_down.png */; settings = {ASSET_TAGS = (); }; };
+		36EC02431BDC6AD20091C2DF /* nums_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02401BDC6AD20091C2DF /* nums_down@2x.png */; settings = {ASSET_TAGS = (); }; };
+		36EC02441BDC6AD20091C2DF /* nums_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02411BDC6AD20091C2DF /* nums_down@3x.png */; settings = {ASSET_TAGS = (); }; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -499,6 +502,9 @@
 		36EC02391BDBD1000091C2DF /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		36EC023C1BDC65F80091C2DF /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		36EC023D1BDC65F80091C2DF /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		36EC023F1BDC6AD20091C2DF /* nums_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nums_down.png; sourceTree = "<group>"; };
+		36EC02401BDC6AD20091C2DF /* nums_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nums_down@2x.png"; sourceTree = "<group>"; };
+		36EC02411BDC6AD20091C2DF /* nums_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nums_down@3x.png"; sourceTree = "<group>"; };
 		FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKATHON2015.release.xcconfig"; path = "Pods/Target Support Files/Pods-HACKATHON2015/Pods-HACKATHON2015.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -628,6 +634,9 @@
 				1B77913B1BD94E7200FE9A53 /* location_closed@2x.png */,
 				1B77913C1BD94E7200FE9A53 /* location_opened@2x.png */,
 				1B77913D1BD94E7200FE9A53 /* location_submited@2x.png */,
+				36EC023F1BDC6AD20091C2DF /* nums_down.png */,
+				36EC02401BDC6AD20091C2DF /* nums_down@2x.png */,
+				36EC02411BDC6AD20091C2DF /* nums_down@3x.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1178,6 +1187,7 @@
 				1BBD8B141BDB9EDF00EA1EB4 /* button_bo@2x.png in Resources */,
 				1BBD8B1C1BDB9EDF00EA1EB4 /* icon-about.png in Resources */,
 				1BBD8B0E1BDB9EDF00EA1EB4 /* avatar@2x.png in Resources */,
+				36EC02431BDC6AD20091C2DF /* nums_down@2x.png in Resources */,
 				1BBD8B391BDB9EDF00EA1EB4 /* location1@2x.png in Resources */,
 				1B7791401BD94E7200FE9A53 /* line1.png in Resources */,
 				1BBD8B2F1BDB9EDF00EA1EB4 /* icon-report.png in Resources */,
@@ -1243,7 +1253,9 @@
 				1B77913F1BD94E7200FE9A53 /* line.png in Resources */,
 				1BAE75BF1BD9E4DE0072581B /* ReportDetailViewController.xib in Resources */,
 				1B9CC15A1BD78E4100CAA495 /* SegmentCell.xib in Resources */,
+				36EC02441BDC6AD20091C2DF /* nums_down@3x.png in Resources */,
 				1BBD8B101BDB9EDF00EA1EB4 /* button_bo-active.png in Resources */,
+				36EC02421BDC6AD20091C2DF /* nums_down.png in Resources */,
 				1BBD8B411BDB9EDF00EA1EB4 /* star.png in Resources */,
 				1BBD8B0B1BDB9EDF00EA1EB4 /* plus@2x.png in Resources */,
 				1BB121731BD5FFDF0012E13B /* ProfileViewController.xib in Resources */,
