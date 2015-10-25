@@ -16,13 +16,11 @@
 
 -(NSString *)getID;
 
+-(NSDictionary *)getLocationDic;
+
 -(float)getLatitude;
 
 -(float)getLongtitude;
-
--(NSString *)createTime;
-
--(NSString *)updateTime;
 
 -(BOOL)shareWithPublic;
 

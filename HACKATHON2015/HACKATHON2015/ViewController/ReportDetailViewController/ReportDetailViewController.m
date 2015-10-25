@@ -10,6 +10,7 @@
 #import "ReportItemObject.h"
 #import "NewsObject.h"
 #import "PFController.h"
+#import "MapViewController.h"
 
 @interface ReportDetailViewController ()
 
@@ -32,8 +33,19 @@
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:YES];
     
+    btnShare.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    btnFollow.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    btnRequest.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    
+    [textDescription setFrame:CGRectMake(textDescription.frame.origin.x, textDescription.frame.origin.y, textDescription.frame.size.width, 250)];
+}
+
+-(void)configButtonStateReport{
     btnStateReport.layer.cornerRadius = 2;
     btnStateReport.layer.masksToBounds = YES;
+    [UIView animateWithDuration:0.25 animations:^{
+        [btnStateReport setAlpha:1.0];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,9 +60,10 @@
     }else{
         [self updateForNews];
     }
-    
-    [mainScroll setContentSize:CGSizeMake(mainScroll.frame.size.width, lbReporter.frame.origin.y + lbReporter.frame.size.height)];
+    [self configButtonStateReport];
+    [mainScroll setContentSize:CGSizeMake(mainScroll.frame.size.width, lbReporter.frame.origin.y + lbReporter.frame.size.height + 30)];
 }
+
 -(void)updateForNews{
     NewsObject *newItem = (NewsObject *)item_;
     NSString *title  = [newItem getTitle];
@@ -59,11 +72,13 @@
     [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
     [lbTitle setText:[newItem getTitle]];
     [lbTitle sizeToFit];
-    [lbCreateDate setText:[newItem createTime]];
+    [lbCreateDate setText:[newItem createDate]];
     //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[newItem getDescription]];
 
     [btnStateReport setTitle:[PFController textStringFromState:[newItem state]] forState:UIControlStateNormal];
+    [btnStateReport sizeToFit];
+    [btnStateReport setFrame:CGRectMake([DeviceHelper getWinSize].width - 10 - btnStateReport.frame.size.width, btnStateReport.frame.origin.y, btnStateReport.frame.size.width, 20)];
     
     if([newItem getFirstImage]){
         [imageReport sd_setImageWithURL:[NSURL URLWithString:[newItem getFirstImage]] placeholderImage:nil];
@@ -80,8 +95,12 @@
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_CLOSED];
     }
     [textDescription sizeToFit];
+    if(![item_ getLocation]){
+        [locationView setAlpha:0.0];
+    }
+    [locationView setFrame:CGRectMake(locationView.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, locationView.frame.size.width, locationView.frame.size.height)];
     
-    [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
+    [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, locationView.frame.origin.y + locationView.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
 }
 
 -(void)updateForReport{
@@ -93,14 +112,19 @@
     [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, lbTitle.frame.size.width, 40)];
     [lbTitle setText:[reportItem getTitle]];
     [lbTitle sizeToFit];
-    [lbCreateDate setText:[reportItem createTime]];
+    [lbCreateDate setText:[reportItem createDate]];
 //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
     [textDescription setText:[reportItem getDescription]];
     
     [btnStateReport setTitle:[PFController textStringFromState:[reportItem state]] forState:UIControlStateNormal];
+    [btnStateReport sizeToFit];
+    [btnStateReport setFrame:CGRectMake([DeviceHelper getWinSize].width - 10 - btnStateReport.frame.size.width, btnStateReport.frame.origin.y, btnStateReport.frame.size.width, 20)];
+    
+    
     if([reportItem getFistImage]){
         [imageReport sd_setImageWithURL:[NSURL URLWithString:[reportItem getFistImage]] placeholderImage:nil];
     }
+    
     if([reportItem state] == open_){
         [btnStateReport setBackgroundColor:BACKGROUND_STATE_OPENED];
     }else if([reportItem state] == pending){
@@ -115,9 +139,16 @@
     [textDescription sizeToFit];
     [textDescription setFrame:CGRectMake(textDescription.frame.origin.x, textDescription.frame.origin.y, textDescription.frame.size.width, textDescription.frame.size.height + 20)];
     
-    [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
+    [locationView setFrame:CGRectMake(locationView.frame.origin.x, textDescription.frame.origin.y + textDescription.frame.size.height, locationView.frame.size.width, locationView.frame.size.height)];
+    
+    [lbReporter setFrame:CGRectMake(lbReporter.frame.origin.x, locationView.frame.origin.y + locationView.frame.size.height, lbReporter.frame.size.width, lbReporter.frame.size.height)];
 }
 
+
+-(IBAction)clickPosition:(id)sender{
+    MapViewController *map = [[MapViewController alloc] initWithItem:item_];
+    [[MainViewController getRootNaviController] pushViewController:map animated:YES];
+}
 
 
 @end

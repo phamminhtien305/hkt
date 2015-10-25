@@ -22,8 +22,8 @@
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
 //        [createDate setText:[item createTime]];
-        [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item objectDict][@"thumbnail"]] placeholderImage:nil];
-        if (![[item objectDict][@"is_read"] boolValue]) {
+        [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item pfObject][@"thumbnail"]] placeholderImage:nil];
+        if (![[item pfObject][@"is_read"] boolValue]) {
             self.backgroundColor = BACKGROUND_NOTIFICATION_NOTREAD;
         }
         else {

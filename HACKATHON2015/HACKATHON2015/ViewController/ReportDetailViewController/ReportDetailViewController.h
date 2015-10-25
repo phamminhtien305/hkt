@@ -16,6 +16,9 @@
     id item_;
     __weak IBOutlet UIButton *btnStateReport;
     __weak IBOutlet UIScrollView *mainScroll;
+    
+    __weak IBOutlet UIButton *btnFollow, *btnShare, *btnRequest;
+    __weak IBOutlet UIView *locationView;
 }
 
 -(id)initWithReportItem:(ReportItemObject *)item;

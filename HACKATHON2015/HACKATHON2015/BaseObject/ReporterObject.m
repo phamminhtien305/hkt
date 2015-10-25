@@ -12,29 +12,29 @@
 
 
 -(NSString *)getReporterFirstName{
-    if([self.objectDict objectForKey:@"first_name"]){
-        return [self.objectDict objectForKey:@"first_name"];
+    if([self.pfObject objectForKey:@"first_name"]){
+        return [self.pfObject objectForKey:@"first_name"];
     }
     return @"";
 }
 
 -(NSString *)getReporterLastName{
-    if([self.objectDict objectForKey:@"last_name"]){
-        return [self.objectDict objectForKey:@"last_name"];
+    if([self.pfObject objectForKey:@"last_name"]){
+        return [self.pfObject objectForKey:@"last_name"];
     }
     return @"";
 }
 
 -(NSString *)getReporterEmail{
-    if([self.objectDict objectForKey:@"email"]){
-        return [self.objectDict objectForKey:@"email"];
+    if([self.pfObject objectForKey:@"email"]){
+        return [self.pfObject objectForKey:@"email"];
     }
     return @"";
 }
 
 -(NSString *)getReporterPhone{
-    if([self.objectDict objectForKey:@"phone"]){
-        return [self.objectDict objectForKey:@"phone"];
+    if([self.pfObject objectForKey:@"phone"]){
+        return [self.pfObject objectForKey:@"phone"];
     }
     return @"";
 }

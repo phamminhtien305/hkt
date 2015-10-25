@@ -13,13 +13,13 @@
 static NSString * const ApplicationDictKey = @"dictionary";
 static NSString * const ObjectStateKey = @"objectstate";
 
-+ (NSArray*) createListDataFromListDict:(NSArray*) listDict {
-    if (![listDict isKindOfClass:[NSArray class]])
++ (NSArray*) createListDataFromPFObject:(NSArray*) listPFObject {
+    if (![listPFObject isKindOfClass:[NSArray class]])
         return nil;
     NSMutableArray *listData = [NSMutableArray array];
     int index = 0;
-    for (NSDictionary* dict in listDict) {
-        BaseObject *object = [[self alloc] initWithObjectDict:dict];
+    for (PFObject* pfobject in listPFObject) {
+        BaseObject *object = [[self alloc] initWithPFObject:pfobject];
         object.order = index;
         [listData addObject:object];
         index ++;
@@ -30,13 +30,13 @@ static NSString * const ObjectStateKey = @"objectstate";
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"<%@: %p> \"%@\"",
-            [self class], self, self.objectDict];
+            [self class], self, self.pfObject];
 }
 
 
 - (void) encodeWithCoder:(NSCoder*)coder
 {
-    [coder encodeObject:self.objectDict forKey:ApplicationDictKey];
+    [coder encodeObject:self.pfObject forKey:ApplicationDictKey];
     [coder encodeInt:self.objectState forKey:ObjectStateKey];
 }
 
@@ -53,34 +53,51 @@ static NSString * const ObjectStateKey = @"objectstate";
 {
     self = [super init];
     if (self) {
-        self.objectDict = [coder decodeObjectForKey:ApplicationDictKey];
+        self.pfObject = [coder decodeObjectForKey:ApplicationDictKey];
         self.objectState = [coder decodeIntForKey:ObjectStateKey];
     }
     return self;
 }
 
-- (id) initWithObjectDict:(NSDictionary*) applicationDict {
+
+- (id) initWithPFObject:(PFObject*) pfItem{
     self = [super init];
     if (self) {
-        if (!applicationDict || ![applicationDict isKindOfClass:[NSDictionary class]]) {
-            self.objectDict = [NSDictionary dictionary];
+        if (pfItem && [pfItem isKindOfClass:[PFObject class]]) {
+            self.pfObject = pfItem;
         }
-        else
-        {
-            self.objectDict = applicationDict;
-        }
-        self.objectState = [self.objectDict objectForKey:@"error_code"] ? ![[self.objectDict objectForKey:@"error_code"] intValue] : YES;
     }
     return self;
 }
 
 - (id) objectForKey:(NSString*) key {
-    return [self.objectDict objectForKey:key];
+    return [self.pfObject objectForKey:key];
 }
 
 - (NSString*) getObjectMessage {
-    return self.objectDict ? [self.objectDict objectForKey:@"message"] : nil;
+    return self.pfObject ? [self.pfObject objectForKey:@"message"] : nil;
 }
 
 
+-(NSString *)createDate{
+    if(self.pfObject){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"pt_BR"]];
+        [dateFormatter setDateFormat: @"dd/MM/yyyy"];
+        NSString *strDate = [dateFormatter stringFromDate:self.pfObject.createdAt];
+        return strDate;
+    }
+    return @"";
+}
+
+-(NSString *)updateTime{
+    if(self.pfObject){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"pt_BR"]];
+        [dateFormatter setDateFormat: @"dd/MM/yyyy"];
+        NSString *strDate = [dateFormatter stringFromDate:self.pfObject.updatedAt];
+        return strDate;
+    }
+    return @"";
+}
 @end

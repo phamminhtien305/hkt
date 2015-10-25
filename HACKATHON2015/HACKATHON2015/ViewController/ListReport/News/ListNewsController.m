@@ -45,7 +45,7 @@
     [[APIEngineer sharedInstance] getNewsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
             [listItem removeAllObjects];
-            [listItem addObjectsFromArray:[NewsObject createListDataFromListDict:result]];
+            [listItem addObjectsFromArray:[NewsObject createListDataFromPFObject:result]];
             [self reloadCollectionView];
         }
     } onError:^(NSError *error) {

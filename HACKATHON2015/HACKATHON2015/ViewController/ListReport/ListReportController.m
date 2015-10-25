@@ -51,7 +51,7 @@
         if(result && [result isKindOfClass:[NSArray class]]){
             [listItem removeAllObjects];
             [listItem addObject:@"Bạn muốn báo cáo gì?"];
-            [listItem addObjectsFromArray:[ReportItemObject createListDataFromListDict:result]];
+            [listItem addObjectsFromArray:[ReportItemObject createListDataFromPFObject:result]];
             [self reloadCollectionView];
         }
         isLoading = NO;

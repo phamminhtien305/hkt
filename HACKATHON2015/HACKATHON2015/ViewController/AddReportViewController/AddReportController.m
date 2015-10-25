@@ -26,7 +26,7 @@
 
 -(void)getReportTypeFromServer{
     [[APIEngineer sharedInstance] getReportContentOnComplete:^(id result, BOOL isCache) {
-        NSArray *list = [ReportObject createListDataFromListDict:result];
+        NSArray *list = [ReportObject createListDataFromPFObject:result];
         [listSection addObjectsFromArray:list];
         [self updateCollectionViewWithListItem:listSection];
     } onError:^(NSError *error) {

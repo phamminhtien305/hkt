@@ -49,23 +49,23 @@
 + (NSString*) textStringFromState:(REPORT_STATE) state {
     switch (state) {
         case open_:
-            return @"Đang xử lý";
+            return @" Đang xử lý ";
             break;
         case pending:
-            return @"Chờ duyệt";
+            return @" Chờ duyệt ";
             break;
         case private_:
-            return @"Gửi admin";
+            return @" Gửi admin ";
             break;
         case close_:
-            return @"Đã xử lý";
+            return @" Đã xử lý ";
             break;
         case unpublish:
-            return @"Đã đóng";
+            return @" Đã đóng ";
         default:
             break;
     }
-    return @"Đang xử lý";
+    return @" Đang xử lý ";
 }
 
 + (NSString*) stringFromState:(REPORT_STATE) state {

@@ -23,7 +23,7 @@
         
         [lbDescription setText:[item getDescription]];
         
-        [createDate setText:[item createTime]];
+        [createDate setText:[item createDate]];
         
         if([item getFirstImage]){
             [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFirstImage]] placeholderImage:nil];

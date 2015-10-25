@@ -15,4 +15,8 @@
 }
 
 
+-(void)configCell:(id)data{
+    
+}
+
 @end

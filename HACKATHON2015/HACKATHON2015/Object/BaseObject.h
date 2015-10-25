@@ -7,17 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface BaseObject : NSObject
 
 @property (readwrite) BOOL objectState;
 @property int order;
-@property (nonatomic, copy) NSDictionary* objectDict;
+@property (nonatomic, strong) PFObject * pfObject;
 - (NSString*)description;
-- (id) initWithObjectDict:(NSDictionary*) applicationDict;
-+ (NSArray*) createListDataFromListDict:(NSArray*) listDict;
+- (id) initWithPFObject:(PFObject*) pfItem;
++ (NSArray*) createListDataFromPFObject:(NSArray*) listPFObject;
 - (id) objectForKey:(NSString*) key;
 - (NSString*) getObjectMessage;
-
+-(NSString *)createDate;
+-(NSString *)updateTime;
 
 @end

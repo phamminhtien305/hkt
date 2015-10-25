@@ -19,12 +19,7 @@
 - (void) getListNotificationFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSMutableArray *listObjects =[[NSMutableArray alloc] init];
-        for (PFObject * object in objects) {
-            [listObjects addObject:[PFController pfObjectToDict:object]];
-        }
-
-        self.items = @[[NotificationObject createListDataFromListDict:listObjects]];
+        self.items = @[[NotificationObject createListDataFromPFObject:objects]];
         [self reloadCollectionView];
     }];
 }
@@ -76,10 +71,10 @@
 }
 
 - (void) handleSelectNotificationWithObject:(NotificationObject*) obj {
-    if ([[obj objectDict][@"notification_type"] isEqualToString:@"news"]) {
+    if ([[obj pfObject][@"notification_type"] isEqualToString:@"news"]) {
         PFQuery *query = [PFQuery queryWithClassName:@"News"];
-        [query getObjectInBackgroundWithId:[obj objectDict][@"notification_id"] block:^(PFObject *pfObject, NSError *error) {
-            ReportItemObject *rObj = [[ReportItemObject alloc] initWithObjectDict:[PFController pfObjectToDict:pfObject]];
+        [query getObjectInBackgroundWithId:[obj pfObject][@"notification_id"] block:^(PFObject *pfObject, NSError *error) {
+            ReportItemObject *rObj = [[ReportItemObject alloc] initWithPFObject:pfObject];
             ReportDetailViewController *viewController = [[ReportDetailViewController alloc] initWithReportItem:rObj];
             [[MainViewController getRootNaviController] pushViewController:viewController animated:YES];
         }];
@@ -87,9 +82,9 @@
     else {
         
     }
-    if (![[obj objectDict][@"is_read"] boolValue]) {
+    if (![[obj pfObject][@"is_read"] boolValue]) {
         PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
-        [query getObjectInBackgroundWithId:[obj objectDict][@"objectId"] block:^(PFObject *object, NSError *error) {
+        [query getObjectInBackgroundWithId:[obj pfObject][@"objectId"] block:^(PFObject *object, NSError *error) {
             object[@"is_read"] = [NSNumber numberWithBool:YES];
             [object saveInBackground];
         }];

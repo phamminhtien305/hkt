@@ -19,6 +19,9 @@
     btnState.layer.cornerRadius = 2;
     btnState.layer.masksToBounds = YES;
     btnFollow.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    btnRequest.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    btnShare.imageEdgeInsets = UIEdgeInsetsMake(0, 0.6, 0, 0.6);
+    
     [btnState addTarget:self action:@selector(stateClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -37,7 +40,7 @@
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
         [lbDescription setText:[item getDescription]];
-        [createDate setText:[item createTime]];
+        [createDate setText:[item createDate]];
         [btnState setTitle:[PFController textStringFromState:[item state]] forState:UIControlStateNormal];
         if([item getFistImage]){
             [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item getFistImage]] placeholderImage:nil];

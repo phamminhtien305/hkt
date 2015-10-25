@@ -53,11 +53,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *reporter =[[NSUserDefaults standardUserDefaults] objectForKey:@"current_reporter"];
-    if(reporter){
-        NSDictionary *reporterDic = [reporter objectFromJSONString];
-        self.reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
-    }
+//    NSString *reporter =[[NSUserDefaults standardUserDefaults] objectForKey:@"current_reporter"];
+//    if(reporter){
+//        NSDictionary *reporterDic = [reporter objectFromJSONString];
+//        self.reporter = [[ReporterObject alloc] initWithObjectDict:reporterDic];
+//    }
 }
 
 
