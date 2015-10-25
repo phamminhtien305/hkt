@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "PageMapReportViewController.h"
 #import "UploadEngine.h"
+#import "PFController.h"
 
 @interface ReportInfoViewController ()
 
@@ -139,14 +140,22 @@
 -(IBAction)takePhoto:(id)sender{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
+#ifdef TARGET_IPHONE_SIMULATOR
+    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+#else
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
     picker.showsCameraControls = YES;
     
+#endif
+    
     [self presentViewController:picker animated:YES
                      completion:^ {
+#ifndef TARGET_IPHONE_SIMULATOR
                          [picker takePicture];
-                     }];
+#endif
+
+    }];
 
 }
 
@@ -236,7 +245,7 @@
 
 
 -(IBAction)clickSubmit:(id)sender{
-    if([MainViewController shareMainViewController].reporter){
+//    if([MainViewController shareMainViewController].reporter){
         [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
             
             PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
@@ -274,6 +283,8 @@
             [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     // The object has been saved.
+                    // Make push
+                    [PFController pushToAdminWithDictionary:[PFController pushDictWithObject:reportObject]];
 
                 } else {
                     // There was a problem, check error.description
@@ -286,7 +297,7 @@
         }];
         
         [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
-    }
+//    }
 }
 
 -(IBAction)shareWithPublicHandle:(id)sender{

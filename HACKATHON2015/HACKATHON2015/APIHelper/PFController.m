@@ -118,22 +118,19 @@
         [pushQuery whereKey:@"owner" containedIn:result];
         PFPush *push = [[PFPush alloc] init];
         [push setQuery:pushQuery];
-        NSMutableDictionary *pushDict = [NSMutableDictionary dictionaryWithDictionary:obj];
-        [pushDict setObject:@"Increment" forKey:@"badge"];
-        [pushDict setObject:@"TestPush" forKey:@"alert"];
-        [push setData:pushDict];
+        [push setData:obj];
         [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
         }];
     }];
 }
 
-+ (NSDictionary*) pushDictWithObject:(BaseObject*) object {
++ (NSDictionary*) pushDictWithObject:(PFObject*) object {
     NSMutableDictionary *pushDict = [NSMutableDictionary dictionary];
-    [pushDict setObject:object.pfObject[@"title"] forKey:@"alert"];
+    [pushDict setObject:object[@"title"] forKey:@"alert"];
     [pushDict setObject:@"Increment" forKey:@"badge"];
-    [pushDict setObject:@"class" forKey:[object.pfObject parseClassName]];
-    [pushDict setObject:@"objectId" forKey:[object.pfObject objectId]];
+    [pushDict setObject:[object parseClassName] forKey:@"class"];
+    [pushDict setObject:[object objectId] forKey:@"objectId"];
     return pushDict;
 }
 @end

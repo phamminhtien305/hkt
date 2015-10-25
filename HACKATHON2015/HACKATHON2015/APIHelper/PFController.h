@@ -18,5 +18,5 @@
 + (NSDictionary*) pfObjectToDict:(PFObject*) object;
 + (NSArray*) getListAdminUserWithCompletionBlock:(AppArrayCompleteBlock) completeBlock;
 + (void) pushToAdminWithDictionary:(NSDictionary*) obj;
-+ (NSDictionary*) pushDictWithObject:(BaseObject*) object;
++ (NSDictionary*) pushDictWithObject:(PFObject*) object;
 @end

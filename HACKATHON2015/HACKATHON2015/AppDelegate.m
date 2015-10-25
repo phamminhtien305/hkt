@@ -12,6 +12,10 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "UploadEngine.h"
 #import "PFController.h"
+#import "ReportItemObject.h"
+#import "NewsObject.h"
+#import "ReportDetailViewController.h"
+#import "UIAlertView+Blocks.h"
 
 @interface AppDelegate ()
 {
@@ -35,6 +39,7 @@
     
     [self.window setFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
+    [self handlePushWithDict:launchOptions];
     return YES;
 }
 
@@ -138,8 +143,41 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    
     NSLog(@"Receive push %@", userInfo);
+    [self handlePushWithDict:userInfo];
 }
+
+- (void) handlePushWithDict:(NSDictionary*) userInfo {
+    NSLog(@"Receive push %@", userInfo);
+    NSString *class = userInfo[@"class"];
+    NSString *objectID = userInfo[@"objectId"];
+    if (objectID) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Show alert");
+            [UIAlertView showWithTitle:@"Có sự kiện mới"
+                               message:userInfo[@"aps"][@"alert"]
+                     cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"OK"] tapBlock:^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
+                         if (buttonIndex == 1) {
+                             PFQuery *query = [PFQuery queryWithClassName:class];
+                             [query getObjectInBackgroundWithId:objectID block:^(PFObject *object, NSError *error) {
+                                 id vObject;
+                                 if ([[object parseClassName] isEqual:@"News"]) {
+                                     vObject = [[NewsObject alloc] initWithPFObject:object];
+                                 }
+                                 if ([[object parseClassName] isEqual:@"Report"]) {
+                                     vObject = [[ReportItemObject alloc] initWithPFObject:object];
+                                 }
+                                 ReportDetailViewController *viewController = [[ReportDetailViewController alloc] initWithReportItem:vObject];
+                                 [[MainViewController getRootNaviController] pushViewController:viewController animated:YES];
+                             }];
+                         }
+                     }];
+        });
+    }
+}
+
 
 #pragma mark - Core Data stack
 
