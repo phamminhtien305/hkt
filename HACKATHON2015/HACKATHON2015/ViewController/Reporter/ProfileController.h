@@ -11,6 +11,8 @@
 @interface ProfileController : BaseCollectionController
 {
     NSMutableArray *listSection;
+    NSMutableArray *listMyReport;
+    NSMutableArray *listMyFavoriteReport;
 }
 
 

@@ -41,10 +41,14 @@
     }else{
         [lbLocation setText:@"Location Services Disable"];
     }
-
+    
+    isMapViewNormalShowning = YES;
+    [btnMinimSize setHidden:YES];
+    
     txtViewDescription.delegate = self;
     txtTitle.delegate = self;
     [txtTitle setText:_titleReport];
+    
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     [self.locationManager startUpdatingLocation];
     self.locationManager.delegate = self;
@@ -67,6 +71,7 @@
     [self setupTakePhotoView];
     shareWithPublic = YES;
     isanym = NO;
+    [self.view setBackgroundColor:BACKGROUND_COLLECTION];
 }
 
 -(void)setupTakePhotoView{
@@ -96,7 +101,7 @@
     mapView_.indoorEnabled = YES;
     mapView_.delegate = self;
     mapView_.myLocationEnabled = YES;
-    [mapView_.settings setAllGesturesEnabled:YES];
+    [mapView_.settings setAllGesturesEnabled:NO];
     // Creates a marker in the center of the map.
     onComplete(YES);
 }
@@ -131,7 +136,7 @@
     updatedLocation = NO;
     [mainScrollView setContentSize:CGSizeMake([DeviceHelper getWinSize].width, btnReport.frame.origin.y +  btnReport.frame.size.height + 20)];
     [self initMapOnComplete:^(BOOL b) {
-        
+        normalFrameMap = ownerMapView.frame;
     }];
 }
 
@@ -142,12 +147,12 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
     picker.showsCameraControls = YES;
-    
-    [self presentViewController:picker animated:YES
-                     completion:^ {
-                         [picker takePicture];
-                     }];
-
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [self presentViewController:picker animated:YES
+                         completion:^ {
+                             [picker takePicture];
+                         }];
+    }
 }
 
 
@@ -301,24 +306,44 @@
 
 -(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
     [mapView clear];
-    
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(coordinate.latitude,coordinate.longitude);
-    marker.title = _titleReport;
-    marker.snippet = description;
-    marker.map = mapView;
-    marker.icon = [UIImage imageNamed:@"location_submited.png"];
-    self.location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-
-    NSDictionary *result = [DeviceHelper convertCLLocationToDegreesFormula:self.location];
-    if(result){
-        [lbLocation setText:[NSString stringWithFormat:@"Location: %@-%@",[result objectForKey:@"latitude"],[result objectForKey:@"longtitude"]]];
-        updatedLocation = YES;
+    [mainScrollView bringSubviewToFront:ownerMapView];
+    if(isMapViewNormalShowning){
+        [UIView animateWithDuration:0.5 animations:^{
+            [ownerMapView setFrame:CGRectMake(mainScrollView.frame.origin.x, mainScrollView.contentOffset.y, mainScrollView.frame.size.width, mainScrollView.frame.size.height - TABBAR_HEIGHT)];
+        }completion:^(BOOL finished) {
+            isMapViewNormalShowning = NO;
+            [btnMinimSize setHidden:NO];
+            [mapView_.settings setAllGesturesEnabled:YES];
+            [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
+        }];
+    }else{
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake(coordinate.latitude,coordinate.longitude);
+        marker.title = _titleReport;
+        marker.snippet = description;
+        marker.map = mapView;
+        marker.icon = [UIImage imageNamed:@"location_submited.png"];
+        self.location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        
+        NSDictionary *result = [DeviceHelper convertCLLocationToDegreesFormula:self.location];
+        if(result){
+            [lbLocation setText:[NSString stringWithFormat:@"Location: %@-%@",[result objectForKey:@"latitude"],[result objectForKey:@"longtitude"]]];
+            updatedLocation = YES;
+        }
+        latitude = self.location.coordinate.latitude;
+        longtitude = self.location.coordinate.longitude;
     }
-    latitude = self.location.coordinate.latitude;
-    longtitude = self.location.coordinate.longitude;
-    
 }
 
+-(IBAction)clickMinisize:(id)sender{
+    [UIView animateWithDuration:0.5 animations:^{
+        [ownerMapView setFrame:normalFrameMap];
+    }completion:^(BOOL finished) {
+        [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
+        [btnMinimSize setHidden:YES];
+        isMapViewNormalShowning = YES;
+        [mapView_.settings setAllGesturesEnabled:NO];
+    }];
+}
 
 @end

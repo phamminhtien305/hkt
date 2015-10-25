@@ -172,6 +172,15 @@
 		1BBD8B461BDB9EDF00EA1EB4 /* vietthongbao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B091BDB9EDF00EA1EB4 /* vietthongbao@3x.png */; };
 		1BBD8B4C1BDBE17500EA1EB4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4A1BDBE17500EA1EB4 /* MapViewController.m */; };
 		1BBD8B4D1BDBE17500EA1EB4 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4B1BDBE17500EA1EB4 /* MapViewController.xib */; };
+		1BBD8B511BDC70FA00EA1EB4 /* icon-facebook-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4E1BDC70FA00EA1EB4 /* icon-facebook-active.png */; };
+		1BBD8B521BDC70FA00EA1EB4 /* icon-facebook-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B4F1BDC70FA00EA1EB4 /* icon-facebook-active@2x.png */; };
+		1BBD8B531BDC70FA00EA1EB4 /* icon-facebook-active@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B501BDC70FA00EA1EB4 /* icon-facebook-active@3x.png */; };
+		1BBD8B571BDC71B300EA1EB4 /* mayanh.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B541BDC71B300EA1EB4 /* mayanh.png */; };
+		1BBD8B581BDC71B300EA1EB4 /* mayanh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B551BDC71B300EA1EB4 /* mayanh@2x.png */; };
+		1BBD8B591BDC71B300EA1EB4 /* mayanh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B561BDC71B300EA1EB4 /* mayanh@3x.png */; };
+		1BBD8B5B1BDC7A4800EA1EB4 /* minimsize@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B5A1BDC7A4800EA1EB4 /* minimsize@3x.png */; };
+		1BBD8B5E1BDC7AA300EA1EB4 /* minimsize.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B5C1BDC7AA300EA1EB4 /* minimsize.png */; };
+		1BBD8B5F1BDC7AA300EA1EB4 /* minimsize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BBD8B5D1BDC7AA300EA1EB4 /* minimsize@2x.png */; };
 		1BC2679F1BD69D0800A2355E /* BasePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2679E1BD69D0800A2355E /* BasePageViewController.m */; };
 		1BC267AF1BD6BC4700A2355E /* ReportInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC267AD1BD6BC4700A2355E /* ReportInfoViewController.m */; };
 		1BC267B01BD6BC4700A2355E /* ReportInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC267AE1BD6BC4700A2355E /* ReportInfoViewController.xib */; };
@@ -196,13 +205,10 @@
 		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; };
 		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; };
 		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; };
-		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; settings = {ASSET_TAGS = (); }; };
-		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; settings = {ASSET_TAGS = (); }; };
-		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; settings = {ASSET_TAGS = (); }; };
-		36EC02331BDBCA860091C2DF /* ListNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02321BDBCA860091C2DF /* ListNotificationController.m */; settings = {ASSET_TAGS = (); }; };
-		36EC02361BDBCD460091C2DF /* NotificationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02351BDBCD460091C2DF /* NotificationObject.m */; settings = {ASSET_TAGS = (); }; };
-		36EC023A1BDBD1000091C2DF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02371BDBD1000091C2DF /* NotificationCell.m */; settings = {ASSET_TAGS = (); }; };
-		36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02391BDBD1000091C2DF /* NotificationCell.xib */; settings = {ASSET_TAGS = (); }; };
+		36EC02331BDBCA860091C2DF /* ListNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02321BDBCA860091C2DF /* ListNotificationController.m */; };
+		36EC02361BDBCD460091C2DF /* NotificationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02351BDBCD460091C2DF /* NotificationObject.m */; };
+		36EC023A1BDBD1000091C2DF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02371BDBD1000091C2DF /* NotificationCell.m */; };
+		36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02391BDBD1000091C2DF /* NotificationCell.xib */; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -446,6 +452,15 @@
 		1BBD8B491BDBE17500EA1EB4 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewController/MapViewController/MapViewController.h; sourceTree = "<group>"; };
 		1BBD8B4A1BDBE17500EA1EB4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewController/MapViewController/MapViewController.m; sourceTree = "<group>"; };
 		1BBD8B4B1BDBE17500EA1EB4 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ViewController/MapViewController/MapViewController.xib; sourceTree = "<group>"; };
+		1BBD8B4E1BDC70FA00EA1EB4 /* icon-facebook-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-facebook-active.png"; sourceTree = "<group>"; };
+		1BBD8B4F1BDC70FA00EA1EB4 /* icon-facebook-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-facebook-active@2x.png"; sourceTree = "<group>"; };
+		1BBD8B501BDC70FA00EA1EB4 /* icon-facebook-active@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-facebook-active@3x.png"; sourceTree = "<group>"; };
+		1BBD8B541BDC71B300EA1EB4 /* mayanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mayanh.png; sourceTree = "<group>"; };
+		1BBD8B551BDC71B300EA1EB4 /* mayanh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mayanh@2x.png"; sourceTree = "<group>"; };
+		1BBD8B561BDC71B300EA1EB4 /* mayanh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mayanh@3x.png"; sourceTree = "<group>"; };
+		1BBD8B5A1BDC7A4800EA1EB4 /* minimsize@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minimsize@3x.png"; sourceTree = "<group>"; };
+		1BBD8B5C1BDC7AA300EA1EB4 /* minimsize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minimsize.png; sourceTree = "<group>"; };
+		1BBD8B5D1BDC7AA300EA1EB4 /* minimsize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minimsize@2x.png"; sourceTree = "<group>"; };
 		1BC2679D1BD69D0800A2355E /* BasePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePageViewController.h; sourceTree = "<group>"; };
 		1BC2679E1BD69D0800A2355E /* BasePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePageViewController.m; sourceTree = "<group>"; };
 		1BC267AC1BD6BC4700A2355E /* ReportInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportInfoViewController.h; path = ViewController/ReportDetail/ReportInfoViewController.h; sourceTree = "<group>"; };
@@ -849,11 +864,17 @@
 		1BBD8ACC1BDB9EDF00EA1EB4 /* Elenment */ = {
 			isa = PBXGroup;
 			children = (
+				1BBD8B5C1BDC7AA300EA1EB4 /* minimsize.png */,
+				1BBD8B5D1BDC7AA300EA1EB4 /* minimsize@2x.png */,
+				1BBD8B5A1BDC7A4800EA1EB4 /* minimsize@3x.png */,
 				1BBD8B481BDBB01D00EA1EB4 /* TabBarView */,
 				1BBD8B471BDB9FA800EA1EB4 /* ReportCell */,
 				1BBD8ACD1BDB9EDF00EA1EB4 /* plus.png */,
 				1BBD8ACE1BDB9EDF00EA1EB4 /* plus@2x.png */,
 				1BBD8ACF1BDB9EDF00EA1EB4 /* plus@3x.png */,
+				1BBD8B541BDC71B300EA1EB4 /* mayanh.png */,
+				1BBD8B551BDC71B300EA1EB4 /* mayanh@2x.png */,
+				1BBD8B561BDC71B300EA1EB4 /* mayanh@3x.png */,
 				1BBD8AD01BDB9EDF00EA1EB4 /* avatar.png */,
 				1BBD8AD11BDB9EDF00EA1EB4 /* avatar@2x.png */,
 				1BBD8AD21BDB9EDF00EA1EB4 /* avatar@3x.png */,
@@ -894,6 +915,9 @@
 				1BBD8AE21BDB9EDF00EA1EB4 /* icon-facebook.png */,
 				1BBD8AE31BDB9EDF00EA1EB4 /* icon-facebook@2x.png */,
 				1BBD8AE41BDB9EDF00EA1EB4 /* icon-facebook@3x.png */,
+				1BBD8B4E1BDC70FA00EA1EB4 /* icon-facebook-active.png */,
+				1BBD8B4F1BDC70FA00EA1EB4 /* icon-facebook-active@2x.png */,
+				1BBD8B501BDC70FA00EA1EB4 /* icon-facebook-active@3x.png */,
 				1BBD8AD91BDB9EDF00EA1EB4 /* edit.png */,
 				1BBD8ADA1BDB9EDF00EA1EB4 /* edit@2x.png */,
 				1BBD8ADB1BDB9EDF00EA1EB4 /* edit@3x.png */,
@@ -1176,17 +1200,21 @@
 				1BBD8B141BDB9EDF00EA1EB4 /* button_bo@2x.png in Resources */,
 				1BBD8B1C1BDB9EDF00EA1EB4 /* icon-about.png in Resources */,
 				1BBD8B0E1BDB9EDF00EA1EB4 /* avatar@2x.png in Resources */,
+				1BBD8B5F1BDC7AA300EA1EB4 /* minimsize@2x.png in Resources */,
 				1BBD8B391BDB9EDF00EA1EB4 /* location1@2x.png in Resources */,
 				1B7791401BD94E7200FE9A53 /* line1.png in Resources */,
 				1BBD8B2F1BDB9EDF00EA1EB4 /* icon-report.png in Resources */,
+				1BBD8B5E1BDC7AA300EA1EB4 /* minimsize.png in Resources */,
 				1BBD8B0C1BDB9EDF00EA1EB4 /* plus@3x.png in Resources */,
 				1BBD8B171BDB9EDF00EA1EB4 /* edit@2x.png in Resources */,
 				1BBD8B321BDB9EDF00EA1EB4 /* icon-yeucauxuly-active.png in Resources */,
+				1BBD8B571BDC71B300EA1EB4 /* mayanh.png in Resources */,
 				1BBD8B1D1BDB9EDF00EA1EB4 /* icon-about@2x.png in Resources */,
 				1BBD8B461BDB9EDF00EA1EB4 /* vietthongbao@3x.png in Resources */,
 				1B9CC1691BD79F3200CAA495 /* InfoViewController.xib in Resources */,
 				1BAE75B81BD9D0CF0072581B /* bg_gradient_home.png in Resources */,
 				1BBD8B441BDB9EDF00EA1EB4 /* vietthongbao.png in Resources */,
+				1BBD8B591BDC71B300EA1EB4 /* mayanh@3x.png in Resources */,
 				1BBD8B341BDB9EDF00EA1EB4 /* icon-yeucauxuly-active@3x.png in Resources */,
 				1BAE75D41BDA23870072581B /* HeaderInfoView.xib in Resources */,
 				1BBD8B361BDB9EDF00EA1EB4 /* icon-yeucauxuly@2x.png in Resources */,
@@ -1203,6 +1231,7 @@
 				1BBD8B261BDB9EDF00EA1EB4 /* icon-notice@2x.png in Resources */,
 				1B77914D1BD9510600FE9A53 /* back_white@2x.png in Resources */,
 				1BBD8AB51BDB3A3100EA1EB4 /* HeaderNewsView.xib in Resources */,
+				1BBD8B5B1BDC7A4800EA1EB4 /* minimsize@3x.png in Resources */,
 				1BBD8B291BDB9EDF00EA1EB4 /* icon-profile-active@3x.png in Resources */,
 				1B9CC16E1BD7A1DE00CAA495 /* NavigationbarView.xib in Resources */,
 				1BBD8B381BDB9EDF00EA1EB4 /* location1.png in Resources */,
@@ -1216,10 +1245,12 @@
 				1B7791421BD94E7200FE9A53 /* line2@2x.png in Resources */,
 				1BB1214F1BD5F8AF0012E13B /* AddReportViewController.xib in Resources */,
 				1B7791521BD951B700FE9A53 /* NewsCell.xib in Resources */,
+				1BBD8B511BDC70FA00EA1EB4 /* icon-facebook-active.png in Resources */,
 				1B55C0DD1BD770C700B29AAA /* TabBarView.xib in Resources */,
 				1BBD8B351BDB9EDF00EA1EB4 /* icon-yeucauxuly.png in Resources */,
 				1B7791491BD9505100FE9A53 /* add-report@2x.png in Resources */,
 				1BBD8B3B1BDB9EDF00EA1EB4 /* muiten.png in Resources */,
+				1BBD8B521BDC70FA00EA1EB4 /* icon-facebook-active@2x.png in Resources */,
 				1B55C0E31BD78A7D00B29AAA /* PageNewsViewController.xib in Resources */,
 				1BBD8B2E1BDB9EDF00EA1EB4 /* icon-report-active@3x.png in Resources */,
 				1BBD8B161BDB9EDF00EA1EB4 /* edit.png in Resources */,
@@ -1242,6 +1273,7 @@
 				1BAE75BF1BD9E4DE0072581B /* ReportDetailViewController.xib in Resources */,
 				1B9CC15A1BD78E4100CAA495 /* SegmentCell.xib in Resources */,
 				1BBD8B101BDB9EDF00EA1EB4 /* button_bo-active.png in Resources */,
+				1BBD8B531BDC70FA00EA1EB4 /* icon-facebook-active@3x.png in Resources */,
 				1BBD8B411BDB9EDF00EA1EB4 /* star.png in Resources */,
 				1BBD8B0B1BDB9EDF00EA1EB4 /* plus@2x.png in Resources */,
 				1BB121731BD5FFDF0012E13B /* ProfileViewController.xib in Resources */,
@@ -1250,6 +1282,7 @@
 				1BBD8B0D1BDB9EDF00EA1EB4 /* avatar.png in Resources */,
 				1BBD8B2A1BDB9EDF00EA1EB4 /* icon-profile@2x.png in Resources */,
 				1BBD8B1E1BDB9EDF00EA1EB4 /* icon-about@3x.png in Resources */,
+				1BBD8B581BDC71B300EA1EB4 /* mayanh@2x.png in Resources */,
 				1B58838A1BD8E3BA00F2BD45 /* ReportItemCell.xib in Resources */,
 				1BBD8B231BDB9EDF00EA1EB4 /* icon-notice-active@2x.png in Resources */,
 				1B77913E1BD94E7200FE9A53 /* hn.jpg in Resources */,

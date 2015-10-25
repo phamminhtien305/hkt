@@ -31,6 +31,7 @@
             <size key="customSize" width="362" height="50"/>
             <connections>
                 <outlet property="lbTitle" destination="lSk-ZD-hKS" id="Oio-xK-UeH"/>
+                <outlet property="lineImage" destination="gw9-cK-YXF" id="mzs-EN-sbP"/>
             </connections>
             <point key="canvasLocation" x="279" y="105"/>
         </collectionViewCell>

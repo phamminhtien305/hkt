@@ -21,5 +21,11 @@
     }
 }
 
-
+-(void)updateCell{
+    if(self.isLastCell){
+        [lineImage setHidden:YES];
+    }else{
+        [lineImage setHidden:NO];
+    }
+}
 @end

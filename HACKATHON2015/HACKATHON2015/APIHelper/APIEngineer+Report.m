@@ -48,7 +48,20 @@
 }
 
 
--(void)getReportsUserItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
+-(void)getUsersReportItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
+    PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
+        }
+    }];
+}
+
+
+-(void)getMyFavoriteReportsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
     [query whereKey:@"owner" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

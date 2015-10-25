@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[MainViewController getRootNaviController] updateTitle:@"Report"];
+    [[MainViewController getRootNaviController] updateTitle:APP_NAME];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
     // Do any additional setup after loading the view from its nib.
@@ -38,7 +38,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [[MainViewController getRootNaviController] updateTitle:@"PEOPLE SERVICE"];
+    [[MainViewController getRootNaviController] updateTitle:APP_NAME];
     
     [pageViewController.view setFrame:CGRectMake(0, segmentView.frame.origin.y + segmentView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - segmentView.frame.size.height - TABBAR_HEIGHT)];
     [self getListReportFromParse];

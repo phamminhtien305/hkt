@@ -23,6 +23,7 @@
     }else if([data isKindOfClass:[NSString class]]){
         [lbTitle setText:data];
     }
+    [self setBackgroundColor:BACKGROUND_COLLECTION];
 }
 
 @end

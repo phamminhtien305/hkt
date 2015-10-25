@@ -11,5 +11,11 @@
 @interface ReportCell : BaseCollectionViewCell
 {
     __weak IBOutlet UILabel *lbTitle;
+    __weak IBOutlet UIImageView *lineImage;
 }
+
+@property BOOL isLastCell;
+
+-(void)updateCell;
+
 @end

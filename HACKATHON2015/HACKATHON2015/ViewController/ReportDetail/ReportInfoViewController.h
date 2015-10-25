@@ -27,11 +27,15 @@
     
     __weak IBOutlet GMSMapView *mapView_;
     
-    __weak IBOutlet UIView *takePhotoView;
+    __weak IBOutlet UIView *takePhotoView, *ownerMapView;
     
     NSString *currentPath;
     
-    BOOL updatedLocation;
+    BOOL updatedLocation, isMapViewNormalShowning;
+    
+    CGRect normalFrameMap;
+    
+    __weak IBOutlet UIButton *btnMinimSize;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;

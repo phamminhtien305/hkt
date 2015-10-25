@@ -18,31 +18,6 @@
     self = [super initUsingNib];
     if(self){
         item_ = item;
-        [self initMapOnComplete:^(BOOL b) {
-            title = @"";
-            if([item isKindOfClass:[ReportItemObject class]]){
-                
-                ReportItemObject *reportItem = (ReportItemObject *)item;
-                
-                title = [reportItem getTitle];
-                description = [reportItem getDescription];
-                
-                latitude = [reportItem getLatitude];
-                longtitude = [reportItem getLongtitude];
-                
-            }else if ([item isKindOfClass:[NewsObject class]]){
-                
-                NewsObject *newItem = (NewsObject *)item;
-                
-                title = [newItem getTitle];
-                description = [newItem getDescription];
-                
-                longtitude = [newItem getLongtitude];
-                latitude = [newItem getLatitude];
-                
-            }
-            [self updateCurrenPointOnMap];
-        }];
     }
     return self;
 }
@@ -59,6 +34,35 @@
     self.location = [[CLLocation alloc] init];
     [self.locationManager startUpdatingHeading];
 
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self initMapOnComplete:^(BOOL b) {
+        title = @"";
+        if([item_ isKindOfClass:[ReportItemObject class]]){
+            
+            ReportItemObject *reportItem = (ReportItemObject *)item_;
+            
+            title = [reportItem getTitle];
+            description = [reportItem getDescription];
+            
+            latitude = [reportItem getLatitude];
+            longtitude = [reportItem getLongtitude];
+            
+        }else if ([item_ isKindOfClass:[NewsObject class]]){
+            
+            NewsObject *newItem = (NewsObject *)item_;
+            
+            title = [newItem getTitle];
+            description = [newItem getDescription];
+            
+            longtitude = [newItem getLongtitude];
+            latitude = [newItem getLatitude];
+            
+        }
+        [self updateCurrenPointOnMap];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

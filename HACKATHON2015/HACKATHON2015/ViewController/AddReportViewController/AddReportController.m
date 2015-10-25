@@ -64,10 +64,29 @@
     return [ReportCell nibName];
 }
 
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    ReportCell *cell = (ReportCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    id item = [listSection objectAtIndex:indexPath.section];
+    if(item && [item isKindOfClass:[ReportObject class]]){
+        ReportObject *reportType = (ReportObject*)item;
+        NSArray *listItemOfReport = [reportType getListReport];
+        NSString *itemAtIndexPath = [self itemAtIndexPath:indexPath];
+        if([itemAtIndexPath isEqualToString:[listItemOfReport lastObject]]){
+            cell.isLastCell = YES;
+        }else{
+            cell.isLastCell = NO;
+        }
+    }else{
+        cell.isLastCell = NO;
+    }
+    [cell updateCell];
+    return cell;
+}
+
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return [ReportCell getSize];
 }
-
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return [HeaderAddReportView getSize];

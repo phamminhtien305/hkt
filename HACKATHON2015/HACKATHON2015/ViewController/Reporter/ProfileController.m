@@ -29,11 +29,12 @@
 }
 
 -(void)getListUserReport{
-    [[APIEngineer sharedInstance] getReportsUserItemContentOnComplete:^(id result, BOOL isCache) {
+    [[APIEngineer sharedInstance] getUsersReportItemContentOnComplete:^(id result, BOOL isCache) {
         [listSection removeAllObjects];
         NSArray *list = [[NSArray alloc] init];
         [listSection addObject:list];
-        [listSection addObject:[ReportItemObject createListDataFromPFObject:result]];
+        listMyReport =[[ReportItemObject createListDataFromPFObject:result] mutableCopy];
+        [listSection addObject:listMyReport];
         [self updateCollectionViewWithListItem:listSection];
     } onError:^(NSError *error) {
         
