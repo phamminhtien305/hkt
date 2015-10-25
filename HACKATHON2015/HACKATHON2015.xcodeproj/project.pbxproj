@@ -209,6 +209,17 @@
 		36EC02361BDBCD460091C2DF /* NotificationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02351BDBCD460091C2DF /* NotificationObject.m */; };
 		36EC023A1BDBD1000091C2DF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02371BDBD1000091C2DF /* NotificationCell.m */; };
 		36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02391BDBD1000091C2DF /* NotificationCell.xib */; };
+		36EC022A1BDBAACF0091C2DF /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */; settings = {ASSET_TAGS = (); }; };
+		36EC022D1BDBAE8E0091C2DF /* AdminController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022C1BDBAE8E0091C2DF /* AdminController.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC022F1BDBB2830091C2DF /* NotificationController.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02331BDBCA860091C2DF /* ListNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02321BDBCA860091C2DF /* ListNotificationController.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02361BDBCD460091C2DF /* NotificationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02351BDBCD460091C2DF /* NotificationObject.m */; settings = {ASSET_TAGS = (); }; };
+		36EC023A1BDBD1000091C2DF /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC02371BDBD1000091C2DF /* NotificationCell.m */; settings = {ASSET_TAGS = (); }; };
+		36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02391BDBD1000091C2DF /* NotificationCell.xib */; settings = {ASSET_TAGS = (); }; };
+		36EC023E1BDC65F80091C2DF /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EC023D1BDC65F80091C2DF /* UIAlertView+Blocks.m */; settings = {ASSET_TAGS = (); }; };
+		36EC02421BDC6AD20091C2DF /* nums_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC023F1BDC6AD20091C2DF /* nums_down.png */; settings = {ASSET_TAGS = (); }; };
+		36EC02431BDC6AD20091C2DF /* nums_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02401BDC6AD20091C2DF /* nums_down@2x.png */; settings = {ASSET_TAGS = (); }; };
+		36EC02441BDC6AD20091C2DF /* nums_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EC02411BDC6AD20091C2DF /* nums_down@3x.png */; settings = {ASSET_TAGS = (); }; };
 		74864A70C652C1C56FAA7470 /* libPods-HACKATHON2015.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2977CF132565265BBD506A /* libPods-HACKATHON2015.a */; };
 /* End PBXBuildFile section */
 
@@ -514,6 +525,11 @@
 		36EC02371BDBD1000091C2DF /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		36EC02381BDBD1000091C2DF /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
 		36EC02391BDBD1000091C2DF /* NotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
+		36EC023C1BDC65F80091C2DF /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		36EC023D1BDC65F80091C2DF /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		36EC023F1BDC6AD20091C2DF /* nums_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nums_down.png; sourceTree = "<group>"; };
+		36EC02401BDC6AD20091C2DF /* nums_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nums_down@2x.png"; sourceTree = "<group>"; };
+		36EC02411BDC6AD20091C2DF /* nums_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nums_down@3x.png"; sourceTree = "<group>"; };
 		FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKATHON2015.release.xcconfig"; path = "Pods/Target Support Files/Pods-HACKATHON2015/Pods-HACKATHON2015.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -565,6 +581,8 @@
 		1B025DB01BD564DD007BD923 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				36EC023C1BDC65F80091C2DF /* UIAlertView+Blocks.h */,
+				36EC023D1BDC65F80091C2DF /* UIAlertView+Blocks.m */,
 				36EC02281BDBAACF0091C2DF /* UIActionSheet+Blocks.h */,
 				36EC02291BDBAACF0091C2DF /* UIActionSheet+Blocks.m */,
 				1BBD8AB61BDB3C5300EA1EB4 /* BannerPageControl.h */,
@@ -641,6 +659,9 @@
 				1B77913B1BD94E7200FE9A53 /* location_closed@2x.png */,
 				1B77913C1BD94E7200FE9A53 /* location_opened@2x.png */,
 				1B77913D1BD94E7200FE9A53 /* location_submited@2x.png */,
+				36EC023F1BDC6AD20091C2DF /* nums_down.png */,
+				36EC02401BDC6AD20091C2DF /* nums_down@2x.png */,
+				36EC02411BDC6AD20091C2DF /* nums_down@3x.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1201,6 +1222,7 @@
 				1BBD8B1C1BDB9EDF00EA1EB4 /* icon-about.png in Resources */,
 				1BBD8B0E1BDB9EDF00EA1EB4 /* avatar@2x.png in Resources */,
 				1BBD8B5F1BDC7AA300EA1EB4 /* minimsize@2x.png in Resources */,
+				36EC02431BDC6AD20091C2DF /* nums_down@2x.png in Resources */,
 				1BBD8B391BDB9EDF00EA1EB4 /* location1@2x.png in Resources */,
 				1B7791401BD94E7200FE9A53 /* line1.png in Resources */,
 				1BBD8B2F1BDB9EDF00EA1EB4 /* icon-report.png in Resources */,
@@ -1272,8 +1294,10 @@
 				1B77913F1BD94E7200FE9A53 /* line.png in Resources */,
 				1BAE75BF1BD9E4DE0072581B /* ReportDetailViewController.xib in Resources */,
 				1B9CC15A1BD78E4100CAA495 /* SegmentCell.xib in Resources */,
+				36EC02441BDC6AD20091C2DF /* nums_down@3x.png in Resources */,
 				1BBD8B101BDB9EDF00EA1EB4 /* button_bo-active.png in Resources */,
 				1BBD8B531BDC70FA00EA1EB4 /* icon-facebook-active@3x.png in Resources */,
+				36EC02421BDC6AD20091C2DF /* nums_down.png in Resources */,
 				1BBD8B411BDB9EDF00EA1EB4 /* star.png in Resources */,
 				1BBD8B0B1BDB9EDF00EA1EB4 /* plus@2x.png in Resources */,
 				1BB121731BD5FFDF0012E13B /* ProfileViewController.xib in Resources */,
@@ -1429,6 +1453,7 @@
 				1BBD8ABE1BDB3D3B00EA1EB4 /* ReflectionView.m in Sources */,
 				1B02EB441BD7434000DD8868 /* UIImage+_Resize.m in Sources */,
 				1B55C0DC1BD770C700B29AAA /* TabBarView.m in Sources */,
+				36EC023E1BDC65F80091C2DF /* UIAlertView+Blocks.m in Sources */,
 				1B9CC15D1BD78E5600CAA495 /* SegmentController.m in Sources */,
 				36A8A88E1BDB77B9002C66E3 /* PFController.m in Sources */,
 				1B55C0E21BD78A7D00B29AAA /* PageNewsViewController.m in Sources */,
@@ -1567,7 +1592,8 @@
 			baseConfigurationReference = 0E3DE7A20A1805B933CCC021 /* Pods-HACKATHON2015.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1597,7 +1623,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1607,7 +1633,8 @@
 			baseConfigurationReference = FDCE35972648DE3A584DCCDC /* Pods-HACKATHON2015.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1637,7 +1664,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

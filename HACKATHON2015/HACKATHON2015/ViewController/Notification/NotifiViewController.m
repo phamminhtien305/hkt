@@ -8,10 +8,12 @@
 
 #import "NotifiViewController.h"
 #import "ListNotificationController.h"
+#import "PFController.h"
 
 @interface NotifiViewController ()
 {
     ListNotificationController *notificationController;
+    int count;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *notificationCollectionView;
 
@@ -27,10 +29,14 @@
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
     notificationController = [[ListNotificationController alloc] initWithTargetCollection:self.notificationCollectionView];
+    count = 0;
 }
 
-- (void) viewWillDisappear:(BOOL)animated {
-    [notificationController reloadData];
+- (void) viewWillAppear:(BOOL)animated {
+    if (count > 0) {
+        [notificationController reloadData];
+    }
+    count++;
 }
 
 - (void)didReceiveMemoryWarning {

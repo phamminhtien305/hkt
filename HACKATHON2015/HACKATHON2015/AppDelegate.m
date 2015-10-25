@@ -12,6 +12,10 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "UploadEngine.h"
 #import "PFController.h"
+#import "ReportItemObject.h"
+#import "NewsObject.h"
+#import "ReportDetailViewController.h"
+#import "UIAlertView+Blocks.h"
 
 @interface AppDelegate ()
 {
@@ -35,6 +39,7 @@
     
     [self.window setFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
+    [self handlePushWithDict:launchOptions];
     return YES;
 }
 
@@ -42,11 +47,10 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:PARSE_APP_ID
                   clientKey:PARSE_CLIENT_ID];
-    
-    [self registerAPN];
-    
     // Register PFUser
-    [PFController registerPFUser];
+    [PFController registerPFUserWithCompletionBlock:^(BOOL b) {
+        [self registerAPN];        
+    }];
 }
 
 
@@ -99,6 +103,9 @@
             [currentInstallation removeObject:channel forKey:@"channels"];
         }
     }
+    PFUser *currUser = [PFUser currentUser];
+    PFRelation *relation = [currentInstallation relationForKey:@"owner"];
+    [relation addObject:currUser];
     [currentInstallation saveInBackground];
     
     [currentInstallation removeObjectForKey:@"device_name"];
@@ -127,13 +134,56 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
 }
+
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    
+    NSLog(@"Receive push %@", userInfo);
+    [self handlePushWithDict:userInfo];
+}
+
+- (void) handlePushWithDict:(NSDictionary*) userInfo {
+    NSLog(@"Receive push %@", userInfo);
+    NSString *class = userInfo[@"class"];
+    NSString *objectID = userInfo[@"objectId"];
+    if (objectID) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Show alert");
+            [UIAlertView showWithTitle:@"Có sự kiện mới"
+                               message:userInfo[@"aps"][@"alert"]
+                     cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"OK"] tapBlock:^(UIAlertView *  alertView, NSInteger buttonIndex) {
+                         if (buttonIndex == 1) {
+                             PFQuery *query = [PFQuery queryWithClassName:class];
+                             [query getObjectInBackgroundWithId:objectID block:^(PFObject *object, NSError *error) {
+                                 id vObject;
+                                 if ([[object parseClassName] isEqual:@"News"]) {
+                                     vObject = [[NewsObject alloc] initWithPFObject:object];
+                                 }
+                                 if ([[object parseClassName] isEqual:@"Report"]) {
+                                     vObject = [[ReportItemObject alloc] initWithPFObject:object];
+                                 }
+                                 ReportDetailViewController *viewController = [[ReportDetailViewController alloc] initWithReportItem:vObject];
+                                 [[MainViewController getRootNaviController] pushViewController:viewController animated:YES];
+                             }];
+                         }
+                     }];
+        });
+    }
+}
+
 
 #pragma mark - Core Data stack
 

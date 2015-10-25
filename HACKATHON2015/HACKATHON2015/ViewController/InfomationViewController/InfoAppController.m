@@ -18,15 +18,27 @@
     self = [super initWithTargetCollection:targetCollectionView];
     if(self){
         listSection = [[NSMutableArray alloc] init];
-        [self getInfoApp];
+        [self addAppInfo];
+        [self updateCollectionViewWithListItem:listSection];
+//        [self getInfoApp];
     }
     return self;
+}
+
+-(void)addAppInfo{
+    NSDictionary *buildObjectDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"1",@"value",@"Build",@"title", nil];
+    NSDictionary *versionObjectDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"1.0",@"value",@"Version",@"title", nil];
+    NSDictionary *checkUpdateObjectDic = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"value",@"Check update",@"title", nil];
+    
+    NSArray *listItem = [[NSArray alloc] initWithObjects:versionObjectDic,buildObjectDic,checkUpdateObjectDic, nil];
+    [listSection addObject:listItem];
 }
 
 -(void)getInfoApp{
     [[APIEngineer sharedInstance] getInfoAppOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
             [listSection removeAllObjects];
+            [self addAppInfo];
             [listSection addObjectsFromArray:result];
             [self updateCollectionViewWithListItem:listSection];
         }
@@ -35,25 +47,6 @@
     }];
 }
 
--(id)itemAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *item = [self.items objectAtIndex:indexPath.section];
-    if([item  objectForKey:@"list"] && [[item objectForKey:@"list"] isKindOfClass:[NSArray class]]){
-        NSArray *list = [item objectForKey:@"list"];
-        if ([list count] > indexPath.row) {
-            return [list objectAtIndex:indexPath.row];
-        }
-    }
-    return nil;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSDictionary *item = [self.items objectAtIndex:section];
-    if([item  objectForKey:@"list"] && [[item objectForKey:@"list"] isKindOfClass:[NSArray class]]){
-        NSInteger number_row = [[item objectForKey:@"list"] count] ? [[item objectForKey:@"list"] count]:0;
-        return number_row;
-    }
-    return 0;
-}
 
 -(void)registerNibWithCollection:(UICollectionView *)collectionView{
     [collectionView setBackgroundColor:[UIColor whiteColor]];
@@ -81,7 +74,7 @@
     
     UICollectionReusableView *reusableView = nil;
     if (kind == UICollectionElementKindSectionHeader) {
-        id item = [listSection objectAtIndex:indexPath.section];
+        id item = [self itemAtIndexPath:indexPath];
         HeaderInfoView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderInfoView nibName] forIndexPath:indexPath];
         reusableView = collectionHeader;
         [collectionHeader configHeader:[item objectForKey:@"title"]];

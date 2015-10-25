@@ -38,4 +38,5 @@
     #import "ReportObject.h"
     #import <GoogleMaps/GoogleMaps.h>
     #import "AppUIFontHelper.h"
+    #import "NotificationController.h"
 #endif

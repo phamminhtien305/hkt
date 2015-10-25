@@ -11,5 +11,7 @@
 @interface InfoCell : BaseCollectionViewCell
 {
     __weak IBOutlet UILabel *lbTitle;
+    __weak IBOutlet UILabel *lbValue;
+    NSDictionary *objectDic;
 }
 @end

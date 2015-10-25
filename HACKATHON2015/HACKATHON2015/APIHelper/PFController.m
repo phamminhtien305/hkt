@@ -8,21 +8,24 @@
 
 #import "PFController.h"
 #import "DeviceHelper.h"
+#import "BaseObject.h"
 #import <Parse/Parse.h>
 
 @implementation PFController
 
-+ (void) registerPFUser{
++ (void) registerPFUserWithCompletionBlock:(AppBOOLBlock) completeBlock{
     PFUser *user = [PFUser currentUser];
     if (!user) {
         PFUser *user = [PFUser user];
         [user setValue:@"user" forKey:@"group"];
+        [user setValue:[[UIDevice currentDevice] systemName] forKey:@"device_name"];
         user.username = [DeviceHelper getDeviceID];
         user.password = [DeviceHelper getDeviceID];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error.code == kPFErrorUsernameTaken) {
-                [PFUser logInWithUsername:[DeviceHelper getDeviceID] password:[DeviceHelper getDeviceID]];
+                [PFUser logInWithUsername:[DeviceHelper getDeviceID] password:[DeviceHelper getDeviceID]];                
             }
+            completeBlock(YES);
         }];
     }
 }
@@ -97,5 +100,45 @@
 //    [retDict setObject:object.createdAt forKey:@"createdAt"];
 //    [retDict setObject:object.updatedAt forKey:@"updateAt"];
     return  retDict;
+}
+
++ (NSArray*) getListAdminUserWithCompletionBlock:(AppArrayCompleteBlock) completeBlock{
+    NSArray *listAdmin;
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"group" equalTo:@"admin"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        completeBlock(objects);
+    }];
+    return listAdmin;
+}
+
++ (void) pushToAdminWithDictionary:(NSDictionary*) obj {
+    [PFController getListAdminUserWithCompletionBlock:^(NSArray *result) {
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"owner" containedIn:result];
+        PFPush *push = [[PFPush alloc] init];
+        [push setQuery:pushQuery];
+        [push setData:obj];
+        [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+        }];
+    }];
+}
+
++ (NSDictionary*) pushDictWithObject:(PFObject*) object {
+    NSMutableDictionary *pushDict = [NSMutableDictionary dictionary];
+    [pushDict setObject:object[@"title"] forKey:@"alert"];
+    [pushDict setObject:@"Increment" forKey:@"badge"];
+    [pushDict setObject:[object parseClassName] forKey:@"class"];
+    [pushDict setObject:[object objectId] forKey:@"objectId"];
+    return pushDict;
+}
+
++ (void) reloadReadNotice {
+    PFQuery *query = [PFQuery queryWithClassName:@"Notification"];
+    [query whereKey:@"is_read" equalTo:[NSNumber numberWithBool:NO]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:READ_CHANGE_NOTIFICATION object:[NSNumber numberWithInteger:objects.count]];
+    }];
 }
 @end

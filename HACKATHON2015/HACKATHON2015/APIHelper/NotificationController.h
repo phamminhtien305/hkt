@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define STATE_CHANGE_NOTIFICATION @"state_change_notification"
+#define READ_CHANGE_NOTIFICATION @"read_change_notification"
 
 @interface NotificationController : NSObject
 

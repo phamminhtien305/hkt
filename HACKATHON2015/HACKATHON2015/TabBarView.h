@@ -19,6 +19,7 @@
     UIButton *selectedBtn;
     __weak IBOutlet UIButton *btnTabbar0, *btnTabbar1, *btnTabbar2, *btnTabBar3;
     __weak IBOutlet UIImageView *imgBtnTabBar0,*imgBtnTabBar1,*imgBtnTabBar2,*imgBtnTabBar3;
+    IBOutlet UIButton *btnNotRead;
     
     IBOutlet UIView *_contentView;
 }

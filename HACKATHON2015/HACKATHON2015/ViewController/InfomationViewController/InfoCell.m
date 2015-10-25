@@ -17,6 +17,10 @@
 -(void)configCell:(id)data{
     if([data isKindOfClass:[NSString class]]){
         [lbTitle setText:data];
+    }else if ([data isKindOfClass:[NSDictionary class]]){
+        objectDic = (NSDictionary *)data;
+        [lbTitle setText:[objectDic objectForKey:@"title"]];
+        [lbValue setText:[objectDic objectForKey:@"value"]];
     }
 }
 
