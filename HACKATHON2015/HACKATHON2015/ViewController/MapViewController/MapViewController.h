@@ -16,7 +16,8 @@
     NSString *title, *description;
     float latitude, longtitude;
     IBOutlet GMSMapView *mapView;
-    BOOL updatedLocation;
+    BOOL updatedLocation,isShowWithListPoint;
+    NSArray *listPoint;
     id item_;
 }
 
@@ -24,5 +25,7 @@
 @property (nonatomic, strong) CLLocation *location;
 
 -(id)initWithItem:(id)item;
+
+-(id)initWithItems:(NSArray *)items withTitle:(NSString *)title_;
 
 @end

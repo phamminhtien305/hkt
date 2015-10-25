@@ -49,7 +49,6 @@
     [collectionView setBackgroundColor:[UIColor whiteColor]];
     [collectionView registerNib:[ReportCell nib] forCellWithReuseIdentifier:[ReportCell nibName]];
     [collectionView registerNib:[HeaderAddReportView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderAddReportView nibName]];
-    
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

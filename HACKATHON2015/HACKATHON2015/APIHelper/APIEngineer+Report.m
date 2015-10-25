@@ -26,6 +26,7 @@
 
 -(void)getReportsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+    [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open",@"close", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
             errorBlock(error);
@@ -38,6 +39,7 @@
 
 -(void)getNewsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"News"];
+    [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
             errorBlock(error);

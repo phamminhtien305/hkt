@@ -11,10 +11,11 @@
 @implementation HeaderInfoView
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 44);
+    return CGSizeMake([DeviceHelper getWinSize].width, 20);
 }
 
 -(void)configHeader:(id)data{
+    [self setBackgroundColor:BACKGROUND_COLLECTION];
     if([data isKindOfClass:[NSString class]]){
         [lbTitle setText:data];
     }

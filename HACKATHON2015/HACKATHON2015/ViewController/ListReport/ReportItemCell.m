@@ -36,7 +36,7 @@
 -(void)configCell:(id)data{
     if(data && [data isKindOfClass:[ReportItemObject class]]){
         item = (ReportItemObject *)data;
-        [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 40, 35)];
+        [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 100, 35)];
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
         [lbDescription setText:[item getDescription]];

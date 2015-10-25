@@ -11,13 +11,26 @@
 
 @implementation APIEngineer (Infomation)
 
--(void)getInfoAppOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
-    [self requestParseWithLink:INFO_APP_URL withCompleteBlock:^(id result, BOOL isCache) {
-        onComplete(result, NO);
-    } errorBlock:^(NSError *error) {
-        errorBlock(error);
+-(void)getHotLines:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
+    PFQuery *query = [PFQuery queryWithClassName:@"SupportNumber"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
+        }
     }];
 }
 
+-(void)getLocationService:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
+    PFQuery *query = [PFQuery queryWithClassName:@"SupportLocation"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if(error){
+            errorBlock(error);
+        }else{
+            onComplete(objects, NO);
+        }
+    }];
+}
 
 @end

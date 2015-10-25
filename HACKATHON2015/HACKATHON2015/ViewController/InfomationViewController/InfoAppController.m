@@ -12,6 +12,11 @@
 
 #import "APIEngineer+Infomation.h"
 
+#import "HotLineObject.h"
+#import "LocalServiceObject.h"
+
+#import "MapViewController.h"
+
 @implementation InfoAppController
 
 -(id)initWithTargetCollection:(UICollectionView *)targetCollectionView{
@@ -20,7 +25,7 @@
         listSection = [[NSMutableArray alloc] init];
         [self addAppInfo];
         [self updateCollectionViewWithListItem:listSection];
-//        [self getInfoApp];
+        [self getInfoApp];
     }
     return self;
 }
@@ -35,13 +40,19 @@
 }
 
 -(void)getInfoApp{
-    [[APIEngineer sharedInstance] getInfoAppOnComplete:^(id result, BOOL isCache) {
+    [[APIEngineer sharedInstance] getHotLines:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
             [listSection removeAllObjects];
             [self addAppInfo];
-            [listSection addObjectsFromArray:result];
+            [listSection addObject:[HotLineObject createListDataFromPFObject:result]];
             [self updateCollectionViewWithListItem:listSection];
         }
+        [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache) {
+            [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
+            [self updateCollectionViewWithListItem:listSection];
+        } onError:^(NSError *error) {
+            
+        }];
     } onError:^(NSError *error) {
         
     }];
@@ -74,12 +85,42 @@
     
     UICollectionReusableView *reusableView = nil;
     if (kind == UICollectionElementKindSectionHeader) {
-        id item = [self itemAtIndexPath:indexPath];
         HeaderInfoView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderInfoView nibName] forIndexPath:indexPath];
         reusableView = collectionHeader;
-        [collectionHeader configHeader:[item objectForKey:@"title"]];
+        [collectionHeader configHeader:@""];
     }
     return reusableView;
+}
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    id item = [self itemAtIndexPath:indexPath];
+    if(item){
+        if([item isKindOfClass:[HotLineObject class]]){
+            hotLineItemSelected = (HotLineObject *)item;
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hot Line" message:[hotLineItemSelected getDescription] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok",nil];
+            [alert show];
+            
+        }else if([item isKindOfClass:[LocalServiceObject class]]){
+            LocalServiceObject *localService = (LocalServiceObject *)item;
+            NSArray *listPoint = [localService listPoint];
+            MapViewController *map = [[MapViewController alloc] initWithItems:listPoint withTitle:[localService getTitle]];
+            [[MainViewController getRootNaviController] pushViewController:map animated:YES];
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex > 0){
+        NSString *hotLine = [hotLineItemSelected getHotLine];
+        NSString *urlString = [NSString stringWithFormat:@"tel://%@",hotLine];
+        [[UIApplication sharedApplication] openURL:[[NSURL alloc] initWithString:urlString]];
+    }
+}
+
+-(void)alertViewCancel:(UIAlertView *)alertView{
+    
 }
 
 

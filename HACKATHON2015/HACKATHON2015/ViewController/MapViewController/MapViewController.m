@@ -14,10 +14,22 @@
 
 @implementation MapViewController
 
+-(id)initWithItems:(NSArray *)items withTitle:(NSString *)title_{
+    self = [super initUsingNib];
+    if(self){
+        title = title_;
+        listPoint = items;
+        isShowWithListPoint = YES;
+    }
+    
+    return self;
+}
+
 -(id)initWithItem:(id)item{
     self = [super initUsingNib];
     if(self){
         item_ = item;
+        isShowWithListPoint = NO;
     }
     return self;
 }
@@ -38,30 +50,49 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
     [self initMapOnComplete:^(BOOL b) {
-        title = @"";
-        if([item_ isKindOfClass:[ReportItemObject class]]){
-            
-            ReportItemObject *reportItem = (ReportItemObject *)item_;
-            
-            title = [reportItem getTitle];
-            description = [reportItem getDescription];
-            
-            latitude = [reportItem getLatitude];
-            longtitude = [reportItem getLongtitude];
-            
-        }else if ([item_ isKindOfClass:[NewsObject class]]){
-            
-            NewsObject *newItem = (NewsObject *)item_;
-            
-            title = [newItem getTitle];
-            description = [newItem getDescription];
-            
-            longtitude = [newItem getLongtitude];
-            latitude = [newItem getLatitude];
-            
+
+        if(!item_ && isShowWithListPoint){
+            [mapView clear];
+            for (NSString *locationStr in listPoint) {
+                GMSMarker *marker = [[GMSMarker alloc] init];
+                
+                NSString *_latitude = [[locationStr componentsSeparatedByString:@","] firstObject];
+                NSString *_longtitude = [[locationStr componentsSeparatedByString:@","] lastObject];
+                marker.position = CLLocationCoordinate2DMake([_latitude  floatValue], [_longtitude floatValue]);
+                marker.title = title;
+                marker.snippet = @"";
+                marker.map = mapView;
+            }
+            [mapView.settings setAllGesturesEnabled:YES];
+        }else{
+            title = @"";
+            description  = @"";
+            if([item_ isKindOfClass:[ReportItemObject class]]){
+                
+                ReportItemObject *reportItem = (ReportItemObject *)item_;
+                
+                title = [reportItem getTitle];
+                description = [reportItem getDescription];
+                
+                latitude = [reportItem getLatitude];
+                longtitude = [reportItem getLongtitude];
+                
+            }else if ([item_ isKindOfClass:[NewsObject class]]){
+                
+                NewsObject *newItem = (NewsObject *)item_;
+                
+                title = [newItem getTitle];
+                description = [newItem getDescription];
+                
+                longtitude = [newItem getLongtitude];
+                latitude = [newItem getLatitude];
+                
+            }
+            [self updateCurrenPointOnMap];
         }
-        [self updateCurrenPointOnMap];
+       
     }];
 }
 
@@ -82,10 +113,13 @@
 
 -(void)initMapOnComplete:(AppBOOLBlock)onComplete{
     // Do any additional setup after loading the view from its nib.
-    float ss = [item_ getLongtitude];
+    float zoomValue = 12;
+    if(isShowWithListPoint){
+        zoomValue = 14;
+    }
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[item_ getLatitude]
                                                             longitude:[item_ getLongtitude]
-                                                                 zoom:12];
+                                                                 zoom:zoomValue];
     [mapView setCamera:camera];
     mapView.mapType = kGMSTypeNormal;
     mapView.accessibilityElementsHidden = YES;
@@ -101,16 +135,18 @@
 #pragma mark - Location Delegate
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    self.location = locations.lastObject;
-    [mapView animateToLocation:self.location.coordinate];
-    
-    NSDictionary *result = [DeviceHelper convertCLLocationToDegreesFormula:self.location];
-    
-    latitude = self.location.coordinate.latitude;
-    longtitude = self.location.coordinate.longitude;
-    
-    if(result){
-        updatedLocation = YES;
+    if(isShowWithListPoint){
+        self.location = locations.lastObject;
+        [mapView animateToLocation:self.location.coordinate];
+        
+        NSDictionary *result = [DeviceHelper convertCLLocationToDegreesFormula:self.location];
+        
+        latitude = self.location.coordinate.latitude;
+        longtitude = self.location.coordinate.longitude;
+        
+        if(result){
+            updatedLocation = YES;
+        }
     }
 }
 

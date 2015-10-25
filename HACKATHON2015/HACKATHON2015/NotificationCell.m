@@ -11,8 +11,14 @@
 
 @implementation NotificationCell
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    thumbnail.layer.cornerRadius = thumbnail.frame.size.width/2;
+    thumbnail.layer.masksToBounds = YES;
+}
+
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 77);
+    return CGSizeMake([DeviceHelper getWinSize].width, 60);
 }
 
 -(void)configCell:(id)data{
@@ -21,7 +27,7 @@
         [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 140, 42)];
         [lbTitle setText:[item getTitle]];
         [lbTitle sizeToFit];
-//        [createDate setText:[item createTime]];
+        [createDate setText:[item createDate]];
         [thumbnail sd_setImageWithURL:[NSURL URLWithString:[item pfObject][@"thumbnail"]] placeholderImage:nil];
         if (![[item pfObject][@"is_read"] boolValue]) {
             self.backgroundColor = BACKGROUND_NOTIFICATION_NOTREAD;

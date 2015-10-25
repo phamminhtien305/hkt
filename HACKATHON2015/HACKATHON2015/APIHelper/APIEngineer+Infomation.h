@@ -10,6 +10,8 @@
 
 @interface APIEngineer (Infomation)
 
--(void)getInfoAppOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock;
+-(void)getHotLines:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock;
+
+-(void)getLocationService:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock;
 
 @end

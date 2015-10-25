@@ -7,9 +7,11 @@
 //
 
 #import "BaseCollectionController.h"
+#import "HotLineObject.h"
 
-@interface InfoAppController : BaseCollectionController{
+@interface InfoAppController : BaseCollectionController<UIAlertViewDelegate>{
     NSMutableArray *listSection;
+    HotLineObject *hotLineItemSelected;
 }
 
 @end

@@ -48,6 +48,10 @@
     txtViewDescription.delegate = self;
     txtTitle.delegate = self;
     [txtTitle setText:_titleReport];
+    txtViewDescription.layer.masksToBounds = YES;
+    txtViewDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    txtViewDescription.layer.cornerRadius = 10;
+    txtViewDescription.layer.borderWidth = 0.5;
     
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     [self.locationManager startUpdatingLocation];
@@ -339,7 +343,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         [ownerMapView setFrame:normalFrameMap];
     }completion:^(BOOL finished) {
-        [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
+        [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
         [btnMinimSize setHidden:YES];
         isMapViewNormalShowning = YES;
         [mapView_.settings setAllGesturesEnabled:NO];

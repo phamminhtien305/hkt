@@ -119,8 +119,8 @@
                                     <rect key="frame" x="302" y="14" width="7" height="12"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="n6c-XL-6ch">
-                                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location-detail.png" id="n6c-XL-6ch">
+                                    <rect key="frame" x="14" y="10" width="12" height="19"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.png" id="hpG-9e-ZDF">
@@ -147,6 +147,7 @@
         <image name="icon-facebook.png" width="15" height="15"/>
         <image name="icon-yeucauxuly.png" width="15" height="15"/>
         <image name="line.png" width="493" height="3"/>
+        <image name="location-detail.png" width="12" height="19"/>
         <image name="muiten.png" width="7" height="12"/>
         <image name="star.png" width="15" height="15"/>
     </resources>
