@@ -134,5 +134,6 @@
     [pushDict setObject:@"Increment" forKey:@"badge"];
     [pushDict setObject:@"class" forKey:[object.pfObject parseClassName]];
     [pushDict setObject:@"objectId" forKey:[object.pfObject objectId]];
+    return pushDict;
 }
 @end
