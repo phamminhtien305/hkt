@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "PageMapReportViewController.h"
 #import "UploadEngine.h"
+#import "UIActionSheet+Blocks.h"
 
 @interface ReportInfoViewController ()
 
@@ -58,11 +59,7 @@
     self.locationManager.delegate = self;
     self.location = [[CLLocation alloc] init];
     [self.locationManager startUpdatingHeading];
-    
-    if([MainViewController shareMainViewController].reporter){
-        [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[[MainViewController shareMainViewController].reporter getReporterFirstName], [[MainViewController shareMainViewController].reporter  getReporterLastName]]];
-    }
-    
+        
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
                                                  name:UIKeyboardDidShowNotification
@@ -146,17 +143,31 @@
 
 
 -(IBAction)takePhoto:(id)sender{
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-    picker.showsCameraControls = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [self presentViewController:picker animated:YES
-                         completion:^ {
-                             [picker takePicture];
-                         }];
-    }
+    [UIActionSheet showInView:self.view
+                    withTitle:@"Chọn ảnh"
+            cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Chụp ảnh", @"Chọn trong thư viện"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
+                UIImagePickerController *picker;
+                if (buttonIndex == 0) {
+                    picker = [[UIImagePickerController alloc] init];
+                    picker.delegate = self;
+                    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                    picker.showsCameraControls = YES;
+                }
+                if (buttonIndex == 1) {
+                    picker = [[UIImagePickerController alloc] init];
+                    picker.delegate = self;
+                    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                }
+                if (picker) {
+                    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                        [self presentViewController:picker animated:YES
+                                         completion:^ {
+                                             //                             [picker takePicture];
+                                         }];
+                    }
+                }
+            }];
 }
 
 
@@ -245,57 +256,55 @@
 
 
 -(IBAction)clickSubmit:(id)sender{
-    if([MainViewController shareMainViewController].reporter){
-        [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
-            
-            PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
-            reportObject[@"title"] = txtTitle.text;
-            
-            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
-            
-            reportObject[@"location"] = geoPoint;
-            
-            reportObject[@"state"] = @"pending";
-            
-            reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
-            
-            PFUser *currUser = [PFUser currentUser];
-            PFRelation *relation = [reportObject relationForKey:@"owner"];
-            [relation addObject:currUser];
-            
-            description = txtViewDescription.text;
-            if(description)
-                reportObject[@"description"] = description;
-            
-            if(shareWithPublic){
-                reportObject[@"state"] = @"private";
-            }else{
-                reportObject[@"state"] = @"pending";
-            }
-            
-            if(isanym){
-                reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
-            }else{
-                reportObject[@"isanym"] = [NSNumber numberWithBool:NO];
-            }
-
-            
-            [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    // The object has been saved.
-
-                } else {
-                    // There was a problem, check error.description
-                    [lbStatus setHidden:NO];
-                }
-            }];
-
-        } withErrorBlock:^(NSError *error) {
-            
-        }];
+    [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
         
-        [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
-    }
+        PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
+        reportObject[@"title"] = txtTitle.text;
+        
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
+        
+        reportObject[@"location"] = geoPoint;
+        
+        reportObject[@"state"] = @"pending";
+        
+        reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
+        
+        PFUser *currUser = [PFUser currentUser];
+        PFRelation *relation = [reportObject relationForKey:@"owner"];
+        [relation addObject:currUser];
+        
+        description = txtViewDescription.text;
+        if(description)
+            reportObject[@"description"] = description;
+        
+        if(shareWithPublic){
+            reportObject[@"state"] = @"private";
+        }else{
+            reportObject[@"state"] = @"pending";
+        }
+        
+        if(isanym){
+            reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
+        }else{
+            reportObject[@"isanym"] = [NSNumber numberWithBool:NO];
+        }
+
+        
+        [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                // The object has been saved.
+
+            } else {
+                // There was a problem, check error.description
+                [lbStatus setHidden:NO];
+            }
+        }];
+
+    } withErrorBlock:^(NSError *error) {
+        
+    }];
+    
+    [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
 }
 
 -(IBAction)shareWithPublicHandle:(id)sender{

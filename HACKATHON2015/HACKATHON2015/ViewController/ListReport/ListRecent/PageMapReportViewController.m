@@ -91,7 +91,7 @@
     mapView_.delegate = self;
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
-    [mapView_.settings setAllGesturesEnabled:NO];
+    [mapView_.settings setAllGesturesEnabled:YES];
     // Creates a marker in the center of the map.
     onComplete(YES);
 }

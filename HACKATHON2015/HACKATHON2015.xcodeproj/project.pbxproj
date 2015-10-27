@@ -1544,7 +1544,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: APPOTA INC PTE. LTD";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: APPOTA INC PTE. LTD";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1552,7 +1553,7 @@
 				);
 				GCC_PREFIX_HEADER = "Hackathon-PrefixHeader.pch";
 				INFOPLIST_FILE = HACKATHON2015/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1575,7 +1576,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
+				PROVISIONING_PROFILE = "536c6be4-e427-4cf5-8579-ee4437f30482";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1586,7 +1587,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: APPOTA INC PTE. LTD";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: APPOTA INC PTE. LTD";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1594,7 +1596,7 @@
 				);
 				GCC_PREFIX_HEADER = "Hackathon-PrefixHeader.pch";
 				INFOPLIST_FILE = HACKATHON2015/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1617,7 +1619,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
+				PROVISIONING_PROFILE = "536c6be4-e427-4cf5-8579-ee4437f30482";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
