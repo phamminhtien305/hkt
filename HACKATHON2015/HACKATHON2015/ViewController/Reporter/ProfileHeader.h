@@ -10,6 +10,10 @@
 
 @interface ProfileHeader : BaseCollectionReusableView<UITextFieldDelegate>
 {
-    __weak IBOutlet UITextField *txtFirstName, *txtEmail, *txtPhone;
+    __weak IBOutlet UITextField *txtFirstName, *txtEmail;
+    
+    __weak IBOutlet UIView *viewLogin, *viewInfo;
+    
+    __weak IBOutlet UILabel *lbName, *lbEmail;
 }
 @end

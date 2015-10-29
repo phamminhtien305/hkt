@@ -47,12 +47,13 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xoL-6i-aK8">
-                        <rect key="frame" x="59" y="229" width="57" height="23"/>
+                        <rect key="frame" x="138" y="229" width="57" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
-                        <state key="normal" title=" Share" image="icon-facebook.png" backgroundImage="button_bo.png">
-                            <color key="titleColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title=" Share" image="icon-facebook-active.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -68,7 +69,9 @@
                             <color key="titleColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" image="star-active.png" backgroundImage="button_bo-active.png"/>
+                        <state key="selected" image="star-active.png" backgroundImage="button_bo-active.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                         <connections>
                             <action selector="handleFollow:" destination="8uu-iN-0i3" eventType="touchUpInside" id="5Wh-WU-KkG"/>
                         </connections>
@@ -88,7 +91,7 @@
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eYw-dW-OxG">
-                        <rect key="frame" x="123" y="229" width="70" height="23"/>
+                        <rect key="frame" x="59" y="229" width="70" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
@@ -96,7 +99,9 @@
                             <color key="titleColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" image="icon-yeucauxuly-active.png" backgroundImage="button_bo-active.png"/>
+                        <state key="selected" image="icon-yeucauxuly-active.png" backgroundImage="button_bo-active.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                         <connections>
                             <action selector="handleRequest:" destination="8uu-iN-0i3" eventType="touchUpInside" id="FX8-oB-mw0"/>
                         </connections>
@@ -132,10 +137,10 @@
         <image name="button_bo-active.png" width="39" height="16"/>
         <image name="button_bo.png" width="39" height="16"/>
         <image name="edit.png" width="15" height="17"/>
-        <image name="icon-facebook.png" width="15" height="15"/>
+        <image name="icon-facebook-active.png" width="15" height="15"/>
         <image name="icon-yeucauxuly-active.png" width="15" height="15"/>
         <image name="icon-yeucauxuly.png" width="15" height="15"/>
-        <image name="star-active.png" width="15" height="15"/>
+        <image name="star-active.png" width="10" height="10"/>
         <image name="star.png" width="15" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

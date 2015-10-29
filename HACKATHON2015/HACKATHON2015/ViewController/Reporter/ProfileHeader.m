@@ -15,12 +15,10 @@
     [super awakeFromNib];
     txtEmail.delegate = self;
     txtFirstName.delegate = self;
-    txtPhone.delegate = self;
-    [self updateViewWithReporterObject:[PFUser currentUser]];
 }
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 240);
+    return CGSizeMake([DeviceHelper getWinSize].width, 168);
 }
 
 -(void)configHeader:(id)data{
@@ -33,9 +31,27 @@
 
 
 -(void)updateViewWithReporterObject:(PFUser*) user{
-    [txtEmail setText:user[@"email"]];
-    [txtFirstName setText:user[@"user_full_name"]];
-    [txtPhone setText:user[@"phone"]];
+    if(user[@"email"] && user[@"user_full_name"]){
+        NSString *name = user[@"user_full_name"];
+        [lbEmail setText:user[@"email"]];
+        [lbName setText:user[@"user_full_name"]];
+        [UIView animateWithDuration:0.25 animations:^{
+            [viewLogin setAlpha:0.0];
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [viewInfo setAlpha:1.0];
+            }];
+        }];
+    }else{
+        [UIView animateWithDuration:0.25 animations:^{
+            [viewInfo setAlpha:0.0];
+        }completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [viewLogin setAlpha:1.0];
+            }];
+        }];
+    }
+
 }
 
 #pragma mark - Text Field Delegate
@@ -74,9 +90,10 @@
     user[@"email"] = txtEmail.text;
     
     
-    [[PFUser currentUser] saveInBackground];
-    
-   }
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [NotificationManager postNotificationWhenUpdatedUserInfoWithObject:nil];
+    }];
+}
 
 
 

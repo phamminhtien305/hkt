@@ -14,10 +14,39 @@
 
 @implementation PageListReportViewController
 
+-(id)initWithListUserReport{
+    self = [super initUsingNib];
+    if(self){
+        type = USER_REPORT;
+    }
+    return self;
+}
+
+-(id)initWithListUserRequest{
+    self = [super initUsingNib];
+    if(self){
+        type = USER_REQUEST;
+    }
+    return self;
+}
+
+
+-(id)initWithListUserFollow{
+    self = [super initUsingNib];
+    if(self){
+        type = USER_FOLLOW_REPORT;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    controller = [[ListReportController alloc] initWithTargetCollection:collectionView withListItem:[MainViewController shareMainViewController].listReporterItem];
+    if(type == LIST_REPORT_NONE){
+        controller = [[ListReportController alloc] initWithTargetCollection:collectionView withListItem:[MainViewController shareMainViewController].listReporterItem];
+    }else{
+        controller = [[ListReportController alloc] initWithTargetCollection:collectionView withListType:type];  
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{

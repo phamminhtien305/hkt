@@ -39,4 +39,5 @@
     #import <GoogleMaps/GoogleMaps.h>
     #import "AppUIFontHelper.h"
     #import "NotificationController.h"
+    #import "NotificationManager.h"
 #endif

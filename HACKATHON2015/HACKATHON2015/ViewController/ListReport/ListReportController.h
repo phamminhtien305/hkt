@@ -21,4 +21,7 @@
 @property (nonatomic, retain) BaseRefreshTableHeaderView * refreshHeaderView;
 
 -(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items;
+
+
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListType:(LIST_REPORT_TYPE)type;
 @end

@@ -18,5 +18,13 @@ typedef enum{
     unpublish =4
 } REPORT_STATE;
 
+typedef enum{
+    LIST_REPORT_NONE =0,
+    USER_REPORT = 1,
+    USER_FOLLOW_REPORT = 2,
+    USER_REQUEST = 3
+} LIST_REPORT_TYPE;
+
+
 
 #endif

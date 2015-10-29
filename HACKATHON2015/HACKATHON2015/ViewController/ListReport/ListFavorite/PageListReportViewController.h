@@ -13,5 +13,11 @@
 {
     ListReportController *controller;
     __weak IBOutlet UICollectionView *collectionView;
+    LIST_REPORT_TYPE type;
+    NSString *title;
 }
+
+-(id)initWithListUserReport;
+-(id)initWithListUserRequest;
+-(id)initWithListUserFollow;
 @end

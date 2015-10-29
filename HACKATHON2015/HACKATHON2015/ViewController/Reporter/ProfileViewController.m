@@ -23,13 +23,20 @@
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
     
     controller = [[ProfileController alloc] initWithTargetCollection:collectionView];
+    
+    [NotificationManager registerNotificationWhenUpdatedUserInfoWithOnserver:self withSelector:@selector(updateProfile)];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
+    [controller reloadCollectionView];
     
+}
+
+-(void)updateProfile{
+    [controller reloadCollectionView];
 }
 
 

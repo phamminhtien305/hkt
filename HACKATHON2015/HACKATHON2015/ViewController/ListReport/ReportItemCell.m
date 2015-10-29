@@ -22,6 +22,8 @@
     btnFollow.imageEdgeInsets = UIEdgeInsetsMake(0.2, 0.2, 0.2, 0.2);
     btnRequest.imageEdgeInsets = UIEdgeInsetsMake(0.2, 0.2, 0.2, 0.2);
     btnShare.imageEdgeInsets = UIEdgeInsetsMake(0.2, 0.2, 0.2, 0.2);
+    btnShare.layer.cornerRadius = 2;
+    btnShare.layer.masksToBounds = YES;
 
     [btnState addTarget:self action:@selector(stateClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -114,6 +116,10 @@
 }
 
 -(void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results{
+    
+}
+
+-(void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error{
     
 }
 

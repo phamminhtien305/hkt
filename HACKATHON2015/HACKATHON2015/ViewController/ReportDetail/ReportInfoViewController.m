@@ -265,8 +265,6 @@
         
         reportObject[@"location"] = geoPoint;
         
-        reportObject[@"state"] = @"pending";
-        
         reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
         
         PFUser *currUser = [PFUser currentUser];
@@ -278,18 +276,13 @@
             reportObject[@"description"] = description;
         
         if(shareWithPublic){
-            reportObject[@"state"] = @"private";
-        }else{
             reportObject[@"state"] = @"pending";
-        }
-        
-        if(isanym){
-            reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
         }else{
-            reportObject[@"isanym"] = [NSNumber numberWithBool:NO];
+            reportObject[@"state"] = @"private";
         }
-
         
+        reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
+
         [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 // The object has been saved.

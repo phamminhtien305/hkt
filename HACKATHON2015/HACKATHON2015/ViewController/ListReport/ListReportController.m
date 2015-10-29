@@ -16,6 +16,38 @@
 #import "NotificationController.h"
 
 @implementation ListReportController
+
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListType:(LIST_REPORT_TYPE)type{
+    self = [super initWithTargetCollection:targetCollectionView];
+    if(self){
+        listItem = [[NSMutableArray  alloc] init];
+        listSection = [[NSMutableArray alloc] initWithObjects:listItem, nil];
+        
+        if(type == USER_REPORT){
+            [self getListUserReport];
+        }else if(type == USER_FOLLOW_REPORT){
+            
+        }else if(type == USER_REQUEST){
+            
+        }
+    }
+    return self;
+}
+
+
+-(void)getListUserReport{
+        [[APIEngineer sharedInstance] getUsersReportItemContentOnComplete:^(id result, BOOL isCache) {
+            if(result && [result isKindOfClass:[NSArray class]]){
+                [listItem removeAllObjects];
+                [listItem addObjectsFromArray:[ReportItemObject createListDataFromPFObject:result]];
+                [self reloadCollectionView];
+            }
+            isLoading = NO;
+        } onError:^(NSError *error) {
+            
+        }];
+}
+
 -(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items{
     self = [super initWithTargetCollection:targetCollectionView];
     if(self){
