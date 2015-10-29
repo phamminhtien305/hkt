@@ -14,4 +14,6 @@
 
 -(NSArray *)getListReport;
 
+-(NSArray *)getListReportThumbnail;
+
 @end

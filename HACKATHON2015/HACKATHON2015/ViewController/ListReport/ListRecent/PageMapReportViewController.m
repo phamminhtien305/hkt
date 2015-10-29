@@ -54,7 +54,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [[MainViewController getRootNaviController] updateTitle:@"Map"];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if(!mapView_){
@@ -91,7 +90,7 @@
     mapView_.delegate = self;
     mapView_.myLocationEnabled = YES;
     mapView_.settings.myLocationButton = YES;
-    [mapView_.settings setAllGesturesEnabled:NO];
+    [mapView_.settings setAllGesturesEnabled:YES];
     // Creates a marker in the center of the map.
     onComplete(YES);
 }

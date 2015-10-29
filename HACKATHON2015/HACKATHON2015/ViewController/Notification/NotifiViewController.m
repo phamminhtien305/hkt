@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [[MainViewController getRootNaviController] updateTitle:@"Notification"];
+    [[MainViewController getRootNaviController] updateTitle:@"Thông báo"];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
     notificationController = [[ListNotificationController alloc] initWithTargetCollection:self.notificationCollectionView];

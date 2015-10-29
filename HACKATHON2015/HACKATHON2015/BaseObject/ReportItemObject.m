@@ -7,8 +7,35 @@
 //
 
 #import "ReportItemObject.h"
+#import <Parse/Parse.h>
 
 @implementation ReportItemObject
+
++ (NSArray*) createListDataFromPFObject:(NSArray*) listPFObject {
+    if (![listPFObject isKindOfClass:[NSArray class]])
+        return nil;
+    NSMutableArray *listData = [NSMutableArray array];
+    int index = 0;
+    for (PFObject* pfobject in listPFObject) {
+        ReportItemObject *object = [[self alloc] initWithPFObject:pfobject];
+        object.order = index;
+        [listData addObject:object];
+//        PFRelation *relationUser = [pfobject relationForKey:@"user_follower"];
+        
+//        NSArray *listUserFollow = [[relationUser query] findObjects];
+//        [relationUser query].cachePolicy = kPFCachePolicyCacheThenNetwork;
+//        object.follower = (int)[listUserFollow count];
+//        object.isFollowed = NO;
+//        for (PFUser *user in listUserFollow) {
+//            if ([user.username isEqualToString:[PFUser currentUser].username]) {
+//                object.isFollowed = YES;
+//            }
+//        }
+        index ++;
+        
+    }
+    return listData;
+}
 
 -(NSString *)getTitle{
     if([self.pfObject objectForKey:@"title"]){
@@ -96,6 +123,15 @@
         }
     }
     return nil;
+}
+
+-(int)getFollower{
+    return self.follower;
+}
+
+
+-(BOOL)checkFollow{
+    return self.isFollowed;
 }
 
 @end

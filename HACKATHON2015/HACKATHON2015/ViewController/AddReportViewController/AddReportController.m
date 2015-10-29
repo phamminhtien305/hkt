@@ -27,6 +27,7 @@
 -(void)getReportTypeFromServer{
     [[APIEngineer sharedInstance] getReportContentOnComplete:^(id result, BOOL isCache) {
         NSArray *list = [ReportObject createListDataFromPFObject:result];
+        [listSection removeAllObjects];
         [listSection addObjectsFromArray:list];
         [self updateCollectionViewWithListItem:listSection];
     } onError:^(NSError *error) {
@@ -64,21 +65,38 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    ReportCell *cell = (ReportCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-    
     id item = [listSection objectAtIndex:indexPath.section];
+    NSString *cellIdentify = [self getCellIdentifierWithItem:item];
+    ReportCell *cell = (ReportCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
+    
     if(item && [item isKindOfClass:[ReportObject class]]){
         ReportObject *reportType = (ReportObject*)item;
         NSArray *listItemOfReport = [reportType getListReport];
+
         NSString *itemAtIndexPath = [self itemAtIndexPath:indexPath];
+        
         if([itemAtIndexPath isEqualToString:[listItemOfReport lastObject]]){
             cell.isLastCell = YES;
         }else{
             cell.isLastCell = NO;
         }
+        NSString *thumb = @"";
+        NSArray *listThumbsOfReport = [reportType getListReportThumbnail];
+        if(listThumbsOfReport && [listThumbsOfReport count] > indexPath.row){
+            thumb = [listThumbsOfReport objectAtIndex:indexPath.row];
+        }
+        if ([cell respondsToSelector:@selector(configCell:)]) {
+            [cell configCell:itemAtIndexPath withThumb:thumb];
+            cell.cellIndexPath = indexPath;
+        }
+        
     }else{
         cell.isLastCell = NO;
     }
+    
+
+    
+    
     [cell updateCell];
     return cell;
 }

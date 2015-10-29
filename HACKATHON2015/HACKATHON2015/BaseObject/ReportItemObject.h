@@ -10,6 +10,9 @@
 
 @interface ReportItemObject : BaseObject
 
+@property int follower;
+@property BOOL isFollowed;
+
 -(NSString *)getTitle;
 
 -(NSString *)getDescription;
@@ -29,5 +32,9 @@
 -(NSArray *)getImages;
 
 -(NSString *)getFistImage;
+
+-(int)getFollower;
+
+-(BOOL)checkFollow;
 
 @end

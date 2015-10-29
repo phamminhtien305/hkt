@@ -33,6 +33,7 @@
     REPORT_STATE oldState = [reportObject state];
     if (oldState != newState) {
         PFQuery *query = [PFQuery queryWithClassName:@"Report"];
+        query.cachePolicy =     kPFCachePolicyCacheThenNetwork;
         [query whereKey:@"objectId" equalTo:[reportObject getID]];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             [object setObject:[PFController stringFromState:newState] forKey:@"state"];

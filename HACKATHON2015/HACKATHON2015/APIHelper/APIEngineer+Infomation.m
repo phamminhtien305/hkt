@@ -14,6 +14,7 @@
 -(void)getHotLines:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"SupportNumber"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"------>");
         if(error){
             errorBlock(error);
         }else{

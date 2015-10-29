@@ -18,8 +18,23 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb873865342733325</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>873865342733325</string>
+	<key>FacebookDisplayName</key>
+	<string>PeopleService</string>
 	<key>Information Property List</key>
 	<dict>
 		<key>LSApplicationQueriesSchemes</key>
@@ -35,8 +50,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Tôi cần biết vị trí của bạn</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Tôi cần biết vị trí của bạn</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -56,5 +73,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>privacy - location usage description</key>
+	<string>Tôi cần biết vị trí của bạn</string>
 </dict>
 </plist>

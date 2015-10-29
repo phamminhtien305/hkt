@@ -7,8 +7,8 @@
 //
 
 #import "BaseCollectionViewCell.h"
-
-@interface ReportItemCell : BaseCollectionViewCell
+#import <FBSDKShareKit/FBSDKShareKit.h>
+@interface ReportItemCell : BaseCollectionViewCell<FBSDKSharingDelegate>
 {
     ReportItemObject *item;
     

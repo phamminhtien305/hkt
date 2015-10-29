@@ -25,7 +25,14 @@
         listSection = [[NSMutableArray alloc] init];
         [self addAppInfo];
         [self updateCollectionViewWithListItem:listSection];
-        [self getInfoApp];
+        __weak InfoAppController *weaksef = self;
+        [self addHotLineOnComplete:^(BOOL b) {
+            __strong InfoAppController * strongSelf = weaksef;
+            [strongSelf addLocation];
+        } onError:^(NSError *error) {
+            __strong InfoAppController * strongSelf = weaksef;
+            [strongSelf addLocation];
+        }];
     }
     return self;
 }
@@ -39,20 +46,26 @@
     [listSection addObject:listItem];
 }
 
--(void)getInfoApp{
+-(void)addHotLineOnComplete:(AppBOOLBlock)onComplete onError:(AppResultErrorBlock)err{
     [[APIEngineer sharedInstance] getHotLines:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
-            [listSection removeAllObjects];
-            [self addAppInfo];
             [listSection addObject:[HotLineObject createListDataFromPFObject:result]];
             [self updateCollectionViewWithListItem:listSection];
+            onComplete(YES);
+        }else
+        {
+            onComplete(NO);
         }
-        [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache) {
-            [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
-            [self updateCollectionViewWithListItem:listSection];
-        } onError:^(NSError *error) {
-            
-        }];
+    } onError:^(NSError *error) {
+        err(error);
+    }];
+
+}
+
+-(void)addLocation{
+    [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache) {
+        [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
+        [self updateCollectionViewWithListItem:listSection];
     } onError:^(NSError *error) {
         
     }];

@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <view contentMode="scaleToFill" id="2en-ST-whS">
+                <view hidden="YES" contentMode="scaleToFill" id="2en-ST-whS">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>

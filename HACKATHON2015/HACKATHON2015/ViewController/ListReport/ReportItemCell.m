@@ -11,6 +11,7 @@
 #import "AdminController.h"
 #import "UIActionSheet+Blocks.h"
 #import "NewsObject.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @implementation ReportItemCell
 
@@ -72,7 +73,55 @@
 
         }];
 
+        [btnFollow setSelected:[item checkFollow]];
+        
+        [btnFollow setTitle:[NSString stringWithFormat:@" %d",[item getFollower]] forState:UIControlStateNormal];
+        
     }
 }
+
+
+-(IBAction)handleFollow:(id)sender{
+    PFObject *object = item.pfObject;
+    PFRelation *relation = [item.pfObject relationForKey:@"user_follower"];
+    NSArray *listUserFollower = [[relation query] findObjects];
+    if([listUserFollower containsObject:[PFUser currentUser]]){
+        // unfollow
+        [relation removeObject:[PFUser currentUser]];
+    }else{
+        // follow
+        [relation addObject:[PFUser currentUser]];
+    }
+    [object saveInBackground];
+}
+
+
+-(IBAction)handleShare:(id)sender{
+    FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc] init];
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+
+    content.imageURL = [NSURL URLWithString: [item getFistImage]];
+    content.contentDescription = [item getDescription];
+    content.contentTitle = APP_NAME;
+    shareDialog.shareContent = content;
+    shareDialog.delegate = self;
+    shareDialog.mode = FBSDKShareDialogModeAutomatic;
+    [shareDialog show];
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer{
+    
+}
+
+-(void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results{
+    
+}
+
+-(IBAction)handleRequest:(id)sender{
+    PFObject *object = item.pfObject;
+}
+
+
+
 
 @end

@@ -16,6 +16,7 @@
 #import "NewsObject.h"
 #import "ReportDetailViewController.h"
 #import "UIAlertView+Blocks.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()
 {
@@ -40,6 +41,9 @@
     [self.window setFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     [self handlePushWithDict:launchOptions];
+
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -117,6 +121,15 @@
     [currentInstallation addUniqueObject:APP_BUILD_INDEX forKey:@"app_build"];
     [currentInstallation saveInBackground];
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation
+            ];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

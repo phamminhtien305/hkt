@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[MainViewController getRootNaviController] updateTitle:@"Báo Cáo"];
     controller = [[AddReportController alloc] initWithTargetCollection:collectionView];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:YES];

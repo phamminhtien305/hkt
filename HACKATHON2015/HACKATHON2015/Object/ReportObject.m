@@ -24,5 +24,11 @@
     return nil;
 }
 
+-(NSArray *)getListReportThumbnail{
+    if([self.pfObject objectForKey:@"thumbnails"]){
+        return [self.pfObject objectForKey:@"thumbnails"];
+    }
+    return nil;
+}
 
 @end

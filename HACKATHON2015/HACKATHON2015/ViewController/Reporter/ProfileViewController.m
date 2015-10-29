@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [[MainViewController getRootNaviController] updateTitle:@"Profile"];
+    [[MainViewController getRootNaviController] updateTitle:@"Hồ Sơ"];
     [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
     

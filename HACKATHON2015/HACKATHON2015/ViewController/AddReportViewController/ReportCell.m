@@ -15,10 +15,9 @@
     return CGSizeMake([DeviceHelper getWinSize].width, 44);
 }
 
--(void)configCell:(id)data{
-    if([data isKindOfClass:[NSString class]]){
-        [lbTitle setText:data];
-    }
+-(void)configCell:(NSString *)title withThumb:(NSString *)thumb{
+    [lbTitle setText:title];
+    [thumbNail sd_setImageWithURL:[NSURL URLWithString:thumb] placeholderImage:ERROR_UIIMAGE];
 }
 
 -(void)updateCell{

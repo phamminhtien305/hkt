@@ -26,6 +26,8 @@
 #define TABBAR_HEIGHT 50
 #define BannerHeight 180
 
+#define ERROR_UIIMAGE  [UIImage imageNamed:@""]
+
 
 
 #endif

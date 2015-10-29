@@ -11,7 +11,7 @@
 @implementation SegmentView
 
 -(void)initViewWithList{
-    listItem = [[NSArray alloc] initWithObjects:@"List Report",@"Map",@"News", nil];
+    listItem = [[NSArray alloc] initWithObjects:@"Báo cáo",@"Bản đồ",@"Tin tức", nil];
     controller = [[SegmentController alloc] initWithTargetCollection:collectionView withListItem:listItem];
     controller.delegate = self;
     [self setBackgroundColor:BACKGROUND_NAVIGATIONBAR];
