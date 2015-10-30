@@ -11,6 +11,7 @@
 #import "NewsObject.h"
 #import "PFController.h"
 #import "MapViewController.h"
+#import "EventViewController.h"
 
 @interface ReportDetailViewController ()
 
@@ -148,6 +149,11 @@
 -(IBAction)clickPosition:(id)sender{
     MapViewController *map = [[MapViewController alloc] initWithItem:item_];
     [[MainViewController getRootNaviController] pushViewController:map animated:YES];
+}
+
+-(IBAction)clickEvent:(id)sender{
+    EventViewController *event = [[EventViewController alloc] initUsingNib];
+    [[MainViewController getRootNaviController] pushViewController:event animated:YES];
 }
 
 

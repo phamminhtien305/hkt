@@ -30,7 +30,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="dBj-P3-nrE">
+                <view alpha="0.0" contentMode="scaleToFill" id="dBj-P3-nrE">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>

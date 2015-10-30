@@ -103,13 +103,15 @@
         marker.title = [item getTitle];
         marker.snippet = [item getDescription];
         marker.map = mapView_;
-//        if([item state] == open_){
-//            marker.icon = [UIImage imageNamed:@"location_opened.png"];
-//        }else if([item state] == pending){
-//            marker.icon = [UIImage imageNamed:@"location_submited.png"];
-//        }else if([item state] == close_){
-//            marker.icon = [UIImage imageNamed:@"location_closed.png"];
-//        }else if([item state] == private_){
+        if([item state] == open_){
+            marker.icon = [UIImage imageNamed:@"location_1.png"];
+        }else if([item state] == pending){
+            marker.icon = [UIImage imageNamed:@"location_2.png"];
+        }else if([item state] == close_){
+            marker.icon = [UIImage imageNamed:@"location_4.png"];
+        }else if([item state] == unpublish){
+            marker.icon = [UIImage imageNamed:@"location_3.png"];        
+        }
     }
 }
 

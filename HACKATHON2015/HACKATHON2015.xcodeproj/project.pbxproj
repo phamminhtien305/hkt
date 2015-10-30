@@ -12,6 +12,20 @@
 		1B025DC61BD56966007BD923 /* DeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B025DC51BD56966007BD923 /* DeviceHelper.m */; };
 		1B025DC91BD569DA007BD923 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B025DC81BD569DA007BD923 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1B02EB441BD7434000DD8868 /* UIImage+_Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B02EB431BD7434000DD8868 /* UIImage+_Resize.m */; };
+		1B4642541BE37D3400F73647 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4642521BE37D3400F73647 /* EventViewController.m */; };
+		1B4642551BE37D3400F73647 /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642531BE37D3400F73647 /* EventViewController.xib */; };
+		1B46425F1BE3852600F73647 /* location_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642561BE3852600F73647 /* location_2.png */; };
+		1B4642601BE3852600F73647 /* location_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642571BE3852600F73647 /* location_2@2x.png */; };
+		1B4642611BE3852600F73647 /* location_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642581BE3852600F73647 /* location_2@3x.png */; };
+		1B4642621BE3852600F73647 /* location_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642591BE3852600F73647 /* location_3.png */; };
+		1B4642631BE3852600F73647 /* location_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46425A1BE3852600F73647 /* location_3@2x.png */; };
+		1B4642641BE3852600F73647 /* location_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46425B1BE3852600F73647 /* location_3@3x.png */; };
+		1B4642651BE3852600F73647 /* location_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46425C1BE3852600F73647 /* location_4.png */; };
+		1B4642661BE3852600F73647 /* location_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46425D1BE3852600F73647 /* location_4@2x.png */; };
+		1B4642671BE3852600F73647 /* location_4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46425E1BE3852600F73647 /* location_4@3x.png */; };
+		1B46426B1BE3853E00F73647 /* location_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642681BE3853E00F73647 /* location_1.png */; };
+		1B46426C1BE3853E00F73647 /* location_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B4642691BE3853E00F73647 /* location_1@2x.png */; };
+		1B46426D1BE3853E00F73647 /* location_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46426A1BE3853E00F73647 /* location_1@3x.png */; };
 		1B55C0DC1BD770C700B29AAA /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C0D81BD770C700B29AAA /* TabBarView.m */; };
 		1B55C0DD1BD770C700B29AAA /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B55C0D91BD770C700B29AAA /* TabBarView.xib */; };
 		1B55C0DE1BD770C700B29AAA /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B55C0DB1BD770C700B29AAA /* BaseTabBarController.m */; };
@@ -261,6 +275,21 @@
 		1B025DCA1BD56ACB007BD923 /* Hackathon-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Hackathon-PrefixHeader.pch"; path = "../Hackathon-PrefixHeader.pch"; sourceTree = "<group>"; };
 		1B02EB421BD7434000DD8868 /* UIImage+_Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+_Resize.h"; sourceTree = "<group>"; };
 		1B02EB431BD7434000DD8868 /* UIImage+_Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+_Resize.m"; sourceTree = "<group>"; };
+		1B4642511BE37D3400F73647 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ViewController/EventViewController/EventViewController.h; sourceTree = "<group>"; };
+		1B4642521BE37D3400F73647 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ViewController/EventViewController/EventViewController.m; sourceTree = "<group>"; };
+		1B4642531BE37D3400F73647 /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventViewController.xib; path = ViewController/EventViewController/EventViewController.xib; sourceTree = "<group>"; };
+		1B4642561BE3852600F73647 /* location_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_2.png; sourceTree = "<group>"; };
+		1B4642571BE3852600F73647 /* location_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_2@2x.png"; sourceTree = "<group>"; };
+		1B4642581BE3852600F73647 /* location_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_2@3x.png"; sourceTree = "<group>"; };
+		1B4642591BE3852600F73647 /* location_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_3.png; sourceTree = "<group>"; };
+		1B46425A1BE3852600F73647 /* location_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_3@2x.png"; sourceTree = "<group>"; };
+		1B46425B1BE3852600F73647 /* location_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_3@3x.png"; sourceTree = "<group>"; };
+		1B46425C1BE3852600F73647 /* location_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location_4.png; sourceTree = "<group>"; };
+		1B46425D1BE3852600F73647 /* location_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_4@2x.png"; sourceTree = "<group>"; };
+		1B46425E1BE3852600F73647 /* location_4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_4@3x.png"; sourceTree = "<group>"; };
+		1B4642681BE3853E00F73647 /* location_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = location_1.png; path = ../location_1.png; sourceTree = "<group>"; };
+		1B4642691BE3853E00F73647 /* location_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_1@2x.png"; path = "../location_1@2x.png"; sourceTree = "<group>"; };
+		1B46426A1BE3853E00F73647 /* location_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location_1@3x.png"; path = "../location_1@3x.png"; sourceTree = "<group>"; };
 		1B55C0D71BD770C700B29AAA /* TabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
 		1B55C0D81BD770C700B29AAA /* TabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
 		1B55C0D91BD770C700B29AAA /* TabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
@@ -740,6 +769,9 @@
 				1BAE75BB1BD9E4DE0072581B /* ReportDetailViewController.h */,
 				1BAE75BC1BD9E4DE0072581B /* ReportDetailViewController.m */,
 				1BAE75BD1BD9E4DE0072581B /* ReportDetailViewController.xib */,
+				1B4642511BE37D3400F73647 /* EventViewController.h */,
+				1B4642521BE37D3400F73647 /* EventViewController.m */,
+				1B4642531BE37D3400F73647 /* EventViewController.xib */,
 			);
 			name = DetailReportViewController;
 			sourceTree = "<group>";
@@ -933,6 +965,18 @@
 		1BBD8ACC1BDB9EDF00EA1EB4 /* Elenment */ = {
 			isa = PBXGroup;
 			children = (
+				1B4642681BE3853E00F73647 /* location_1.png */,
+				1B4642691BE3853E00F73647 /* location_1@2x.png */,
+				1B46426A1BE3853E00F73647 /* location_1@3x.png */,
+				1B4642561BE3852600F73647 /* location_2.png */,
+				1B4642571BE3852600F73647 /* location_2@2x.png */,
+				1B4642581BE3852600F73647 /* location_2@3x.png */,
+				1B4642591BE3852600F73647 /* location_3.png */,
+				1B46425A1BE3852600F73647 /* location_3@2x.png */,
+				1B46425B1BE3852600F73647 /* location_3@3x.png */,
+				1B46425C1BE3852600F73647 /* location_4.png */,
+				1B46425D1BE3852600F73647 /* location_4@2x.png */,
+				1B46425E1BE3852600F73647 /* location_4@3x.png */,
 				1B7FC2631BE27F2F0028C04E /* Request.png */,
 				1B7FC2641BE27F2F0028C04E /* Request@2x.png */,
 				1B7FC2651BE27F2F0028C04E /* Request@3x.png */,
@@ -1267,29 +1311,35 @@
 				1BBD8B181BDB9EDF00EA1EB4 /* edit@3x.png in Resources */,
 				1BBD8B141BDB9EDF00EA1EB4 /* button_bo@2x.png in Resources */,
 				1BBD8B1C1BDB9EDF00EA1EB4 /* icon-about.png in Resources */,
+				1B4642621BE3852600F73647 /* location_3.png in Resources */,
+				1B4642611BE3852600F73647 /* location_2@3x.png in Resources */,
 				1BBD8B0E1BDB9EDF00EA1EB4 /* avatar@2x.png in Resources */,
 				1BBD8B5F1BDC7AA300EA1EB4 /* minimsize@2x.png in Resources */,
 				36EC02431BDC6AD20091C2DF /* nums_down@2x.png in Resources */,
 				1BBD8B391BDB9EDF00EA1EB4 /* location1@2x.png in Resources */,
 				1B7791401BD94E7200FE9A53 /* line1.png in Resources */,
 				1BBD8B2F1BDB9EDF00EA1EB4 /* icon-report.png in Resources */,
+				1B4642671BE3852600F73647 /* location_4@3x.png in Resources */,
 				1BBD8B5E1BDC7AA300EA1EB4 /* minimsize.png in Resources */,
 				1BBD8B0C1BDB9EDF00EA1EB4 /* plus@3x.png in Resources */,
 				1BBD8B171BDB9EDF00EA1EB4 /* edit@2x.png in Resources */,
 				1BBD8B321BDB9EDF00EA1EB4 /* icon-yeucauxuly-active.png in Resources */,
 				1B7FC2481BE270EC0028C04E /* Request_issues@3x.png in Resources */,
+				1B4642601BE3852600F73647 /* location_2@2x.png in Resources */,
 				1BBD8B571BDC71B300EA1EB4 /* mayanh.png in Resources */,
 				1BBD8B1D1BDB9EDF00EA1EB4 /* icon-about@2x.png in Resources */,
 				1BBD8B461BDB9EDF00EA1EB4 /* vietthongbao@3x.png in Resources */,
 				1B9CC1691BD79F3200CAA495 /* InfoViewController.xib in Resources */,
 				1B7FC24D1BE2713C0028C04E /* icon_map@2x.png in Resources */,
 				1BAE75B81BD9D0CF0072581B /* bg_gradient_home.png in Resources */,
+				1B46426D1BE3853E00F73647 /* location_1@3x.png in Resources */,
 				1BBD8B441BDB9EDF00EA1EB4 /* vietthongbao.png in Resources */,
 				1BBD8B591BDC71B300EA1EB4 /* mayanh@3x.png in Resources */,
 				1BBD8B341BDB9EDF00EA1EB4 /* icon-yeucauxuly-active@3x.png in Resources */,
 				1BAE75D41BDA23870072581B /* HeaderInfoView.xib in Resources */,
 				1BBD8B361BDB9EDF00EA1EB4 /* icon-yeucauxuly@2x.png in Resources */,
 				1BBD8B691BDC940F00EA1EB4 /* location-detail.png in Resources */,
+				1B4642651BE3852600F73647 /* location_4.png in Resources */,
 				1B7FC25A1BE27EC10028C04E /* tindadang.png in Resources */,
 				36EC023B1BDBD1000091C2DF /* NotificationCell.xib in Resources */,
 				1BCC10721BE2320B000FF177 /* icon_facebook.png in Resources */,
@@ -1301,11 +1351,13 @@
 				1BBD8B221BDB9EDF00EA1EB4 /* icon-notice-active.png in Resources */,
 				1BBD8B2C1BDB9EDF00EA1EB4 /* icon-report-active.png in Resources */,
 				1BBD8B451BDB9EDF00EA1EB4 /* vietthongbao@2x.png in Resources */,
+				1B46426B1BE3853E00F73647 /* location_1.png in Resources */,
 				1BBD8B0A1BDB9EDF00EA1EB4 /* plus.png in Resources */,
 				1BBD8B261BDB9EDF00EA1EB4 /* icon-notice@2x.png in Resources */,
 				1BBD8B6A1BDC940F00EA1EB4 /* location-detail@2x.png in Resources */,
 				1B7FC24E1BE2713C0028C04E /* icon_map@3x.png in Resources */,
 				1B77914D1BD9510600FE9A53 /* back_white@2x.png in Resources */,
+				1B4642631BE3852600F73647 /* location_3@2x.png in Resources */,
 				1BBD8AB51BDB3A3100EA1EB4 /* HeaderNewsView.xib in Resources */,
 				1BBD8B5B1BDC7A4800EA1EB4 /* minimsize@3x.png in Resources */,
 				1B7FC25C1BE27EC10028C04E /* tindadang@3x.png in Resources */,
@@ -1319,10 +1371,12 @@
 				1BBD8B3E1BDB9EDF00EA1EB4 /* star-active.png in Resources */,
 				1B7791441BD94E7200FE9A53 /* location_vs@2x.png in Resources */,
 				1BBD8B281BDB9EDF00EA1EB4 /* icon-profile-active@2x.png in Resources */,
+				1B46425F1BE3852600F73647 /* location_2.png in Resources */,
 				1B7FC2421BE26FBE0028C04E /* icon-events@3x.png in Resources */,
 				1BAE75B91BD9D0CF0072581B /* bg_gradient_home@2x.png in Resources */,
 				1B7791421BD94E7200FE9A53 /* line2@2x.png in Resources */,
 				1BB1214F1BD5F8AF0012E13B /* AddReportViewController.xib in Resources */,
+				1B4642641BE3852600F73647 /* location_3@3x.png in Resources */,
 				1B7FC2601BE27F040028C04E /* tindaluu.png in Resources */,
 				1B7791521BD951B700FE9A53 /* NewsCell.xib in Resources */,
 				1BBD8B511BDC70FA00EA1EB4 /* icon-facebook-active.png in Resources */,
@@ -1339,6 +1393,7 @@
 				1BBD8B161BDB9EDF00EA1EB4 /* edit.png in Resources */,
 				1BBD8B2B1BDB9EDF00EA1EB4 /* icon-profile@3x.png in Resources */,
 				1B7FC2411BE26FBE0028C04E /* icon-events@2x.png in Resources */,
+				1B4642551BE37D3400F73647 /* EventViewController.xib in Resources */,
 				1BBD8B1B1BDB9EDF00EA1EB4 /* icon-about-active@3x.png in Resources */,
 				1BEA1E511BD5634B0029262E /* Main.storyboard in Resources */,
 				1B7FC2611BE27F040028C04E /* tindaluu@2x.png in Resources */,
@@ -1355,6 +1410,7 @@
 				1BBD8B111BDB9EDF00EA1EB4 /* button_bo-active@2x.png in Resources */,
 				1B7791411BD94E7200FE9A53 /* line1@2x.png in Resources */,
 				1BB121861BD643A80012E13B /* ReportCell.xib in Resources */,
+				1B46426C1BE3853E00F73647 /* location_1@2x.png in Resources */,
 				1BB121571BD5FC340012E13B /* ListReportViewController.xib in Resources */,
 				1B77913F1BD94E7200FE9A53 /* line.png in Resources */,
 				1BAE75BF1BD9E4DE0072581B /* ReportDetailViewController.xib in Resources */,
@@ -1380,6 +1436,7 @@
 				1BBD8B331BDB9EDF00EA1EB4 /* icon-yeucauxuly-active@2x.png in Resources */,
 				1BBD8B191BDB9EDF00EA1EB4 /* icon-about-active.png in Resources */,
 				1BB121621BD5FC8B0012E13B /* PageMapReportViewController.xib in Resources */,
+				1B4642661BE3852600F73647 /* location_4@2x.png in Resources */,
 				1BBD8B1F1BDB9EDF00EA1EB4 /* icon-facebook.png in Resources */,
 				1B7FC2561BE27D400028C04E /* CellProfile.xib in Resources */,
 				1BEA1E531BD5634B0029262E /* Images.xcassets in Resources */,
@@ -1493,6 +1550,7 @@
 				1BAE75CD1BDA21BE0072581B /* InfoCell.m in Sources */,
 				1B58838D1BD8E53500F2BD45 /* ReportItemObject.m in Sources */,
 				1BB121561BD5FC340012E13B /* ListReportViewController.m in Sources */,
+				1B4642541BE37D3400F73647 /* EventViewController.m in Sources */,
 				1B9CC1681BD79F3200CAA495 /* InfoViewController.m in Sources */,
 				1B025DC91BD569DA007BD923 /* OpenUDID.m in Sources */,
 				36EC02301BDBB2830091C2DF /* NotificationController.m in Sources */,
