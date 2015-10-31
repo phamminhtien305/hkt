@@ -9,7 +9,7 @@
 #ifndef HACKATHON2015_AppConfig_h
 #define HACKATHON2015_AppConfig_h
 
-#define APP_NAME @"Service For The People"
+#define APP_NAME @"Vì Cộng Đồng"
 
 #define APP_BUILD_INDEX [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
 #define APP_VERSION  [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]
