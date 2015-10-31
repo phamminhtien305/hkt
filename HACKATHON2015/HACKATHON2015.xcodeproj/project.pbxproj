@@ -1735,7 +1735,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
+				PROVISIONING_PROFILE = "da53e8ba-eb78-4fbb-9065-3bc49a2e5d99";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1779,7 +1779,7 @@
 					"\"SystemConfiguration\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2dcf79cb-5600-4944-a2dc-eb64453f6e49";
+				PROVISIONING_PROFILE = "da53e8ba-eb78-4fbb-9065-3bc49a2e5d99";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
