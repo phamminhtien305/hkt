@@ -29,7 +29,7 @@
 -(void)getReportsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open",@"close",@"pending", nil]];
+    [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open",@"close", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
             errorBlock(error);

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ReportInfoViewController : BaseViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate, GMSMapViewDelegate>
+@interface ReportInfoViewController : BaseViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate, GMSMapViewDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UIScrollView *mainScrollView;
     __weak IBOutlet UIView *reportView;

@@ -13,6 +13,7 @@
 #import "PageMapReportViewController.h"
 #import "UploadEngine.h"
 #import "UIActionSheet+Blocks.h"
+#import "UIAlertView+Blocks.h"
 
 @interface ReportInfoViewController ()
 
@@ -160,7 +161,9 @@
                     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 }
                 if (picker) {
-                    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                    UIImagePickerControllerSourceType source = TARGET_IPHONE_SIMULATOR ? UIImagePickerControllerSourceTypePhotoLibrary : UIImagePickerControllerSourceTypeCamera;
+                    if ([UIImagePickerController isSourceTypeAvailable:source]
+                        ) {
                         [self presentViewController:picker animated:YES
                                          completion:^ {
                                              //                             [picker takePicture];
@@ -256,48 +259,71 @@
 
 
 -(IBAction)clickSubmit:(id)sender{
-    [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
-        
-        PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
-        reportObject[@"title"] = txtTitle.text;
-        
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
-        
-        reportObject[@"location"] = geoPoint;
-        
-        reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
-        
-        PFUser *currUser = [PFUser currentUser];
-        PFRelation *relation = [reportObject relationForKey:@"owner"];
-        [relation addObject:currUser];
-        
-        description = txtViewDescription.text;
-        if(description)
-            reportObject[@"description"] = description;
-        
-        if(shareWithPublic){
-            reportObject[@"state"] = @"pending";
-        }else{
-            reportObject[@"state"] = @"private";
-        }
-        
-        reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Bạn có muốn gửi thông báo này không?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil];
+    [alert show];
+}
 
-        [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                // The object has been saved.
-
-            } else {
-                // There was a problem, check error.description
-                [lbStatus setHidden:NO];
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
+            break;
+        case 1:
+        {
+            if(!currentPath){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                break;
+            }else{
+                [[UploadEngine sharedInstance] uploadWithPath:currentPath withCompletionBlock:^(NSString *result) {
+                    
+                    PFObject *reportObject = [PFObject objectWithClassName:@"Report"];
+                    reportObject[@"title"] = txtTitle.text;
+                    
+                    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
+                    
+                    reportObject[@"location"] = geoPoint;
+                    
+                    reportObject[@"images"] = [[NSArray alloc] initWithObjects:result, nil];
+                    
+                    PFUser *currUser = [PFUser currentUser];
+                    PFRelation *relation = [reportObject relationForKey:@"owner"];
+                    [relation addObject:currUser];
+                    
+                    description = txtViewDescription.text;
+                    if(description)
+                        reportObject[@"description"] = description;
+                    
+                    if(shareWithPublic){
+                        reportObject[@"state"] = @"pending";
+                    }else{
+                        reportObject[@"state"] = @"private";
+                    }
+                    
+                    reportObject[@"isanym"] = [NSNumber numberWithBool:YES];
+                    
+                    [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            // The object has been saved.
+                            
+                        } else {
+                            // There was a problem, check error.description
+                            [lbStatus setHidden:NO];
+                        }
+                    }];
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                    
+                } withErrorBlock:^(NSError *error) {
+                    
+                }];
+                break;
             }
-        }];
-
-    } withErrorBlock:^(NSError *error) {
-        
-    }];
-    
-    [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
+        }
+        default:
+            break;
+    }
 }
 
 -(IBAction)shareWithPublicHandle:(id)sender{
