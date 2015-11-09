@@ -12,14 +12,16 @@
 
 -(void)initViewWithList{
     listItem = [[NSArray alloc] initWithObjects:@"Báo cáo",@"Bản đồ",@"Tin tức", nil];
-    controller = [[SegmentController alloc] initWithTargetCollection:collectionView withListItem:listItem];
+    controller = [[SegmentController alloc] initWithTargetCollection:collectionView
+                                                        withListItem:listItem];
     controller.delegate = self;
     [self setBackgroundColor:BACKGROUND_NAVIGATIONBAR];
 }
 
 
 -(void)indexChange:(int)index{
-    if(self.delegate && [self.delegate respondsToSelector:@selector(segmentDidSelectRowAtIndex:)]){
+    if(self.delegate && [self.delegate respondsToSelector:@selector(segmentDidSelectRowAtIndex:)])
+    {
         [self.delegate segmentDidSelectRowAtIndex:index];
     }
 }

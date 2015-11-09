@@ -19,10 +19,28 @@
         self.targetCollectionView.dataSource = self;
         [self registerNibWithCollection:self.targetCollectionView];
         contentOffset = 0;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setUpEgoRefreshHeader];
+        });
     }
     
     return self;
 }
+
+
+-(void)setUpEgoRefreshHeader{
+    self.isLoadingRefreshHeader = NO;
+    if(!self.refreshHeaderView){
+        self.refreshHeaderView = [[BaseRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.targetCollectionView.bounds.size.height, [DeviceHelper getWinSize].width, self.targetCollectionView.bounds.size.height)];
+        [self.refreshHeaderView setBackgroundColor:[UIColor whiteColor]];
+        self.refreshHeaderView.delegate = self;
+        [self.targetCollectionView addSubview:self.refreshHeaderView];
+    }else{
+        [self.refreshHeaderView setFrame:CGRectMake(self.refreshHeaderView.frame.origin.x,self.refreshHeaderView.frame.origin.y, [DeviceHelper getWinSize].width,self.refreshHeaderView.frame.size.height)];
+    }
+}
+
+
 
 - (id) initWithTargetCollection:(UICollectionView*) targetCollectionView
                  withParamsDict:(NSMutableDictionary*) params{
@@ -95,6 +113,71 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
+
+
+
+
+#pragma mark - Ego pull to refresh protocol
+#pragma mark - Ego refresh header protocol
+- (void) doneLoadingTableViewData {
+    //  model should call this when its done loading
+    self.isLoadingRefreshHeader = NO;
+    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.targetCollectionView];
+}
+
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+- (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.refreshHeaderView) {
+        [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (self.refreshHeaderView) {
+        [self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    }
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    if (self.refreshHeaderView)
+    {
+        [self refreshHeaderHandle:view];
+        [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1];
+    }
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+    if (!self.refreshHeaderView) {
+        return NO;
+    }
+    return self.isLoadingRefreshHeader; // should return if data source model is reloading
+}
+
+- (NSDate*) egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
+    if (!self.refreshHeaderView) {
+        return nil;
+    }
+    return [NSDate date]; // should return date data source was last changed
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)refreshHeaderHandle:(id)handle{}
 
 
 

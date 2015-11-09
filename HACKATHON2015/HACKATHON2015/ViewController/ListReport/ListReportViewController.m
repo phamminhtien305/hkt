@@ -47,7 +47,6 @@
     [[MainViewController getRootNaviController] hiddenNavigationButtonRight:NO];
 }
 
-
 -(void)getListReportFromParse{
     [[APIEngineer sharedInstance] getReportsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
@@ -59,7 +58,8 @@
 }
 
 #pragma mark - Setup PageView
--(void)setupPageView{
+-(void)setupPageView
+{
     PageListReportViewController *favorite = [[PageListReportViewController alloc] initUsingNib];
     PageMapReportViewController *map = [[PageMapReportViewController alloc] initUsingNib];
     PageNewsViewController *news = [[PageNewsViewController alloc] initUsingNib];

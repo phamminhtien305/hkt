@@ -7,17 +7,15 @@
 //
 
 #import "BaseCollectionController.h"
-#import "BaseRefreshTableHeaderView.h"
 
-@interface ListNewsController : BaseCollectionController<EGORefreshTableHeaderDelegate>{
+@interface ListNewsController : BaseCollectionController{
     NSMutableArray *listItem;
     NSMutableArray *listSection;
-    BOOL isLoading;
 }
 
-@property (readwrite) BOOL isLoadingRefreshHeader;
-@property (nonatomic, retain) BaseRefreshTableHeaderView * refreshHeaderView;
+- (id) initWithTargetCollection:(UICollectionView *)targetCollectionView
+                   withListItem:(NSMutableArray *)items;
 
-- (id) initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items;
 -(void)getListNewsFromParse;
+
 @end

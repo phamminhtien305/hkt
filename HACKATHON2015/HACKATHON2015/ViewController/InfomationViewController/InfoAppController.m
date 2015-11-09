@@ -46,9 +46,12 @@
     [listSection addObject:listItem];
 }
 
--(void)addHotLineOnComplete:(AppBOOLBlock)onComplete onError:(AppResultErrorBlock)err{
+-(void)addHotLineOnComplete:(AppBOOLBlock)onComplete
+                    onError:(AppResultErrorBlock)err
+{
     [[APIEngineer sharedInstance] getHotLines:^(id result, BOOL isCache) {
-        if(result && [result isKindOfClass:[NSArray class]]){
+        if(result && [result isKindOfClass:[NSArray class]])
+        {
             [listSection addObject:[HotLineObject createListDataFromPFObject:result]];
             [self updateCollectionViewWithListItem:listSection];
             onComplete(YES);
@@ -63,7 +66,8 @@
 }
 
 -(void)addLocation{
-    [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache) {
+    [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache)
+     {
         [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
         [self updateCollectionViewWithListItem:listSection];
     } onError:^(NSError *error) {
@@ -72,7 +76,8 @@
 }
 
 
--(void)registerNibWithCollection:(UICollectionView *)collectionView{
+-(void)registerNibWithCollection:(UICollectionView *)collectionView
+{
     [collectionView setBackgroundColor:[UIColor whiteColor]];
     
     [collectionView registerNib:[InfoCell nib] forCellWithReuseIdentifier:[InfoCell nibName]];
@@ -83,14 +88,19 @@
     return [InfoCell nibName];
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(CGSize)collectionView:(UICollectionView *)collectionView
+                 layout:(UICollectionViewLayout *)collectionViewLayout
+ sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     return [InfoCell getSize];
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+-(CGSize)collectionView:(UICollectionView *)collectionView
+                 layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section
+{
     return [HeaderInfoView getSize];
 }
-
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
@@ -106,7 +116,8 @@
 }
 
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     id item = [self itemAtIndexPath:indexPath];
     if(item){
         if([item isKindOfClass:[HotLineObject class]]){

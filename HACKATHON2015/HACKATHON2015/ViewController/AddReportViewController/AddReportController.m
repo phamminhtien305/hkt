@@ -24,7 +24,8 @@
     return self;
 }
 
--(void)getReportTypeFromServer{
+-(void)getReportTypeFromServer
+{
     [[APIEngineer sharedInstance] getReportContentOnComplete:^(id result, BOOL isCache) {
         NSArray *list = [ReportObject createListDataFromPFObject:result];
         [listSection removeAllObjects];
@@ -35,9 +36,11 @@
     }];
 }
 
--(id)itemAtIndexPath:(NSIndexPath *)indexPath{
+-(id)itemAtIndexPath:(NSIndexPath *)indexPath
+{
     id item = [listSection objectAtIndex:indexPath.section];
-    if(item && [item isKindOfClass:[ReportObject class]]){
+    if(item && [item isKindOfClass:[ReportObject class]])
+    {
         ReportObject *reportType = (ReportObject*)item;
         NSArray *listItemOfReport = [reportType getListReport];
         return [listItemOfReport objectAtIndex:indexPath.row];
@@ -46,13 +49,16 @@
     }
 }
 
--(void)registerNibWithCollection:(UICollectionView *)collectionView{
+-(void)registerNibWithCollection:(UICollectionView *)collectionView
+{
     [collectionView setBackgroundColor:[UIColor whiteColor]];
     [collectionView registerNib:[ReportCell nib] forCellWithReuseIdentifier:[ReportCell nibName]];
     [collectionView registerNib:[HeaderAddReportView nib] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderAddReportView nibName]];
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
+{
     id item = [listSection objectAtIndex:section];
     if(item && [item getListReport]){
         return [[item getListReport] count];
@@ -64,12 +70,15 @@
     return [ReportCell nibName];
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     id item = [listSection objectAtIndex:indexPath.section];
     NSString *cellIdentify = [self getCellIdentifierWithItem:item];
     ReportCell *cell = (ReportCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     
-    if(item && [item isKindOfClass:[ReportObject class]]){
+    if(item && [item isKindOfClass:[ReportObject class]])
+    {
         ReportObject *reportType = (ReportObject*)item;
         NSArray *listItemOfReport = [reportType getListReport];
 
@@ -82,9 +91,12 @@
         }
         NSString *thumb = @"";
         NSArray *listThumbsOfReport = [reportType getListReportThumbnail];
-        if(listThumbsOfReport && [listThumbsOfReport count] > indexPath.row){
+
+        if(listThumbsOfReport && [listThumbsOfReport count] > indexPath.row)
+        {
             thumb = [listThumbsOfReport objectAtIndex:indexPath.row];
         }
+    
         if ([cell respondsToSelector:@selector(configCell:)]) {
             [cell configCell:itemAtIndexPath withThumb:thumb];
             cell.cellIndexPath = indexPath;
@@ -101,11 +113,17 @@
     return cell;
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(CGSize)collectionView:(UICollectionView *)collectionView
+                 layout:(UICollectionViewLayout *)collectionViewLayout
+ sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     return [ReportCell getSize];
 }
 
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+-(CGSize)collectionView:(UICollectionView *)collectionView
+                 layout:(UICollectionViewLayout *)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section
+{
     return [HeaderAddReportView getSize];
 }
 
@@ -116,7 +134,8 @@
                                  atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *reusableView = nil;
-    if (kind == UICollectionElementKindSectionHeader) {
+    if (kind == UICollectionElementKindSectionHeader)
+    {
         id item = [listSection objectAtIndex:indexPath.section];
         HeaderAddReportView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderAddReportView nibName] forIndexPath:indexPath];
         reusableView = collectionHeader;
@@ -125,11 +144,8 @@
     return reusableView;
 }
 
-
-
-
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     NSString *item = [self itemAtIndexPath:indexPath];
     if(item){
         ReportInfoViewController *reportView = [[ReportInfoViewController alloc] initWithTitleName:item];

@@ -19,7 +19,8 @@
 
 @implementation ProfileController
 
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView{
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+{
     self = [super initWithTargetCollection:targetCollectionView];
     if(self){
         listSection = [[NSMutableArray alloc] init];
@@ -68,7 +69,8 @@
                                  atIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionReusableView *reusableView = nil;
-    if (kind == UICollectionElementKindSectionHeader) {
+    if (kind == UICollectionElementKindSectionHeader)
+    {
         ProfileHeader *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[ProfileHeader nibName] forIndexPath:indexPath];
         reusableView = collectionHeader;
         [collectionHeader configHeader:nil];
@@ -77,7 +79,8 @@
 }
 
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
     if(indexPath.row == 0){
         PageListReportViewController *page = [[PageListReportViewController alloc] initWithListUserReport];
         [[MainViewController getRootNaviController] pushViewController:page animated:YES];

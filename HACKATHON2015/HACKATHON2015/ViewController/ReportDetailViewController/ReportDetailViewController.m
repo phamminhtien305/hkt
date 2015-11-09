@@ -74,7 +74,7 @@
     [lbTitle setText:[newItem getTitle]];
     [lbTitle sizeToFit];
     [lbCreateDate setText:[newItem createDate]];
-    //    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
+    
     [textDescription setText:[newItem getDescription]];
 
     [btnStateReport setTitle:[PFController textStringFromState:[newItem state]] forState:UIControlStateNormal];
@@ -114,7 +114,7 @@
     [lbTitle setText:[reportItem getTitle]];
     [lbTitle sizeToFit];
     [lbCreateDate setText:[reportItem createDate]];
-//    [lbReporter setText:[NSString stringWithFormat:@"Reporter: %@ %@",[reportItem getUserFirstName], [reportItem getUserLastName]]];
+    
     [textDescription setText:[reportItem getDescription]];
     
     [btnStateReport setTitle:[PFController textStringFromState:[reportItem state]] forState:UIControlStateNormal];
@@ -152,8 +152,24 @@
 }
 
 -(IBAction)clickEvent:(id)sender{
-    EventViewController *event = [[EventViewController alloc] initUsingNib];
+    EventViewController *event = [[EventViewController alloc] initWithOwnerViewController:self];
     [[MainViewController getRootNaviController] pushViewController:event animated:YES];
+}
+
+-(void)updateWithEvent:(id)event{
+    _event = event;
+    // Update event for report
+    [self updateReport];
+}
+
+-(void)updateReport{
+     ReportItemObject *reportObject = (ReportItemObject *)item_;
+    PFRelation *relation = [reportObject.pfObject relationForKey:@"event"];
+    [relation addObject:_event];
+    [reportObject.pfObject saveEventually:^(BOOL succeeded, NSError *error) {
+        [btnCreateEvent setTitle:@"Đã có sự kiện" forState:UIControlStateNormal];
+        [btnCreateEvent setUserInteractionEnabled:NO];
+    }];
 }
 
 

@@ -9,19 +9,15 @@
 #import "BaseCollectionController.h"
 #import "BaseRefreshTableHeaderView.h"
 
-@interface ListReportController : BaseCollectionController<EGORefreshTableHeaderDelegate>
+@interface ListReportController : BaseCollectionController
 {
     NSMutableArray *listItem;
     NSMutableArray *listSection;
-    BOOL isLoading;
 }
 
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+                 withListItem:(NSMutableArray *)items;
 
-@property (readwrite) BOOL isLoadingRefreshHeader;
-@property (nonatomic, retain) BaseRefreshTableHeaderView * refreshHeaderView;
-
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items;
-
-
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListType:(LIST_REPORT_TYPE)type;
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+                 withListType:(LIST_REPORT_TYPE)type;
 @end
