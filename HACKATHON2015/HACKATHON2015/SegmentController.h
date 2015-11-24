@@ -19,7 +19,8 @@
     int currentIndex;
 }
 
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSArray *)listItem;
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+                 withListItem:(NSArray *)listItem;
 
 @property (nonatomic, strong) id<SegmentControllerDelegate>delegate;
 

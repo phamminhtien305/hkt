@@ -14,7 +14,9 @@
 
 @implementation MapViewController
 
--(id)initWithItems:(NSArray *)items withTitle:(NSString *)title_{
+-(id)initWithItems:(NSArray *)items
+         withTitle:(NSString *)title_
+{
     self = [super initUsingNib];
     if(self){
         title = title_;

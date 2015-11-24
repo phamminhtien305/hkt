@@ -25,7 +25,8 @@
 }
 
 -(void)configHeader:(id)data{
-    if([data isKindOfClass:[NSArray class]]){
+    if([data isKindOfClass:[NSArray class]])
+    {
         self.carouselView.delegate = self;
         self.carouselView.dataSource = self;
         self.items = data;
@@ -44,7 +45,9 @@
     CGRect pageControlRect = CGRectMake(self.frame.origin.x,_height - 14
                                         , itemNum*17.0f, 8.0);
     self.pageControl = [[BannerPageControl alloc] initWithFrame:pageControlRect];
-    [self.pageControl addTarget:self action:@selector(changeBannerPage:) forControlEvents:UIControlEventValueChanged];
+    [self.pageControl addTarget:self
+                         action:@selector(changeBannerPage:)
+               forControlEvents:UIControlEventValueChanged];
     
     self.pageControl.currentPage = 0;
     
@@ -114,8 +117,7 @@
 
 - (void) carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
     id item = [self.items objectAtIndex:index];
-    
-    
+
 }
 
 - (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value

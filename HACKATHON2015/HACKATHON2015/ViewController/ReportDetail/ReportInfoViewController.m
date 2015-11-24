@@ -20,7 +20,8 @@
 @end
 
 @implementation ReportInfoViewController
--(id)initWithTitleName:(NSString *)title{
+-(id)initWithTitleName:(NSString *)title
+{
     self = [super initUsingNib];
     if(self){
         _titleReport = title;
@@ -83,7 +84,8 @@
 }
 
 
--(void)keyboardDidShow:(NSNotification *)aNotification{
+-(void)keyboardDidShow:(NSNotification *)aNotification
+{
     [mainScrollView setContentSize:CGSizeMake(mainScrollView.frame.size.width, mainScrollView.contentSize.height + 170)];
 }
 
@@ -108,7 +110,9 @@
     onComplete(YES);
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+-(void)locationManager:(CLLocationManager *)manager
+    didUpdateLocations:(NSArray *)locations
+{
     if(updatedLocation) return;
     self.location = locations.lastObject;
     [mapView_ animateToLocation:self.location.coordinate];
@@ -143,23 +147,28 @@
 }
 
 
--(IBAction)takePhoto:(id)sender{
+-(IBAction)takePhoto:(id)sender
+{
     [UIActionSheet showInView:self.view
                     withTitle:@"Chọn ảnh"
             cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@[@"Chụp ảnh", @"Chọn trong thư viện"] tapBlock:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
                 UIImagePickerController *picker;
-                if (buttonIndex == 0) {
+                if (buttonIndex == 0)
+                {
                     picker = [[UIImagePickerController alloc] init];
                     picker.delegate = self;
                     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
                     picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
                     picker.showsCameraControls = YES;
                 }
-                if (buttonIndex == 1) {
+                
+                if (buttonIndex == 1)
+                {
                     picker = [[UIImagePickerController alloc] init];
                     picker.delegate = self;
                     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 }
+                
                 if (picker) {
                     UIImagePickerControllerSourceType source = TARGET_IPHONE_SIMULATOR ? UIImagePickerControllerSourceTypePhotoLibrary : UIImagePickerControllerSourceTypeCamera;
                     if ([UIImagePickerController isSourceTypeAvailable:source]
@@ -211,7 +220,8 @@
     
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     [picker dismissViewControllerAnimated:YES completion:^{
         [lbStatus setHidden:YES];
     }];
@@ -259,7 +269,7 @@
 
 
 -(IBAction)clickSubmit:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Bạn có muốn gửi thông báo này không?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Bạn có muốn gửi thông báo này không?" delegate:self cancelButtonTitle:@"Hủy" otherButtonTitles:@"Gửi",nil];
     [alert show];
 }
 
@@ -271,7 +281,7 @@
         case 1:
         {
             if(!currentPath){
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
                 [alert show];
                 break;
             }else{
@@ -312,7 +322,7 @@
                         }
                     }];
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Báo cáo của bạn đã được gửi đi." delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
                     [alert show];
                     
                 } withErrorBlock:^(NSError *error) {

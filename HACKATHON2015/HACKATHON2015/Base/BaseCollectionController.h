@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseRefreshTableHeaderView.h"
 
-@interface BaseCollectionController : NSObject<UICollectionViewDataSource, UICollectionViewDelegate>{
+@interface BaseCollectionController : NSObject<UICollectionViewDataSource, UICollectionViewDelegate,EGORefreshTableHeaderDelegate>{
     float contentOffset;
     float startDragX, targetOffsetX;
 
 }
 
+@property (readwrite) BOOL isLoadingRefreshHeader;
+@property (nonatomic, retain) BaseRefreshTableHeaderView * refreshHeaderView;
 
 @property (nonatomic, strong) BaseViewController *ownerViewController;
 
@@ -38,5 +41,5 @@
 - (void) reloadCollectionView;
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
-
+-(void)refreshHeaderHandle:(id)handle;
 @end

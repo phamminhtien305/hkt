@@ -30,9 +30,9 @@
 }
 
 
--(void)updateViewWithReporterObject:(PFUser*) user{
+-(void)updateViewWithReporterObject:(PFUser*) user
+{
     if(user[@"email"] && user[@"user_full_name"]){
-        NSString *name = user[@"user_full_name"];
         [lbEmail setText:user[@"email"]];
         [lbName setText:user[@"user_full_name"]];
         [UIView animateWithDuration:0.25 animations:^{

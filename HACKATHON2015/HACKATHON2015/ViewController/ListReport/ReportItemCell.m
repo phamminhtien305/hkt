@@ -37,7 +37,8 @@
 }
 
 -(void)configCell:(id)data{
-    if(data && [data isKindOfClass:[ReportItemObject class]]){
+    if(data && [data isKindOfClass:[ReportItemObject class]])
+    {
         item = (ReportItemObject *)data;
         [lbTitle setFrame:CGRectMake(lbTitle.frame.origin.x, lbTitle.frame.origin.y, [DeviceHelper getWinSize].width - 100, 35)];
         [lbTitle setText:[item getTitle]];
@@ -71,8 +72,6 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             [btnState setAlpha:1.0];
-            
-
         }];
 
         [btnFollow setSelected:[item checkFollow]];

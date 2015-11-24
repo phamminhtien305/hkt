@@ -21,7 +21,8 @@
     return self;
 }
 
--(void)registerNibWithCollection:(UICollectionView *)collectionView{
+-(void)registerNibWithCollection:(UICollectionView *)collectionView
+{
     [collectionView setBackgroundColor:[UIColor clearColor]];
     [collectionView registerNib:[SegmentCell nib] forCellWithReuseIdentifier:[SegmentCell nibName]];    
 }
@@ -36,7 +37,9 @@
     [self reloadCollectionView];
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     id item = [self itemAtIndexPath:indexPath];
     NSString *cellIdentify = [self getCellIdentifierWithItem:item];
     

@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "ReportDetailViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface EventViewController : BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate, GMSMapViewDelegate>{
+@interface EventViewController : BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,CLLocationManagerDelegate, UITextViewDelegate, UITextFieldDelegate, GMSMapViewDelegate >{
     __weak IBOutlet GMSMapView *mapView_;
+    __weak IBOutlet UIView *ownerMapView;
     float longtitude,latitude;
     BOOL updatedLocation;
     
@@ -20,10 +23,16 @@
     
     __weak IBOutlet UITextField *textTitle;
     __weak IBOutlet UITextView *txtDescription;
+    ReportDetailViewController *_owner;
+    BOOL isMapViewNormalShowning;
+    __weak IBOutlet UIButton *btnMinimSize;
+    CGRect normalFrameMap;
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *location;
+
+-(id)initWithOwnerViewController:(ReportDetailViewController *)owner;
 
 
 @end

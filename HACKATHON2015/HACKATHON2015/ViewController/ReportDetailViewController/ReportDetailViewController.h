@@ -17,12 +17,15 @@
     __weak IBOutlet UIButton *btnStateReport;
     __weak IBOutlet UIScrollView *mainScroll;
     
-    __weak IBOutlet UIButton *btnFollow, *btnShare, *btnRequest;
+    __weak IBOutlet UIButton *btnFollow, *btnShare, *btnRequest, *btnCreateEvent;
     __weak IBOutlet UIView *locationView;
+    
+    id _event;
 }
 
 -(id)initWithReportItem:(ReportItemObject *)item;
 
+-(void)updateWithEvent:(id)event;
 
 
 @end

@@ -17,12 +17,14 @@
 
 @implementation ListReportController
 
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListType:(LIST_REPORT_TYPE)type{
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+                 withListType:(LIST_REPORT_TYPE)type
+{
     self = [super initWithTargetCollection:targetCollectionView];
-    if(self){
+    if(self)
+    {
         listItem = [[NSMutableArray  alloc] init];
         listSection = [[NSMutableArray alloc] initWithObjects:listItem, nil];
-        
         if(type == USER_REPORT){
             [self getListUserReport];
         }else if(type == USER_FOLLOW_REPORT){
@@ -36,49 +38,46 @@
 
 
 -(void)getListUserReport{
-        [[APIEngineer sharedInstance] getUsersReportItemContentOnComplete:^(id result, BOOL isCache) {
-            if(result && [result isKindOfClass:[NSArray class]]){
-                [listItem removeAllObjects];
-                [listItem addObjectsFromArray:[ReportItemObject createListDataFromPFObject:result]];
-                [self reloadCollectionView];
-            }
-            isLoading = NO;
-        } onError:^(NSError *error) {
-            
-        }];
+    [[APIEngineer sharedInstance] getUsersReportItemContentOnComplete:^(id result, BOOL isCache)
+    {
+        if(result && [result isKindOfClass:[NSArray class]])
+        {
+            [listItem removeAllObjects];
+            [listItem addObjectsFromArray:[ReportItemObject createListDataFromPFObject:result]];
+            [self reloadCollectionView];
+        }
+    } onError:^(NSError *error) {
+        
+    }];
 }
 
--(id)initWithTargetCollection:(UICollectionView *)targetCollectionView withListItem:(NSMutableArray *)items{
+-(id)initWithTargetCollection:(UICollectionView *)targetCollectionView
+                 withListItem:(NSMutableArray *)items
+{
     self = [super initWithTargetCollection:targetCollectionView];
     if(self){
         listItem = [[NSMutableArray  alloc] initWithArray:items];
         listSection = [[NSMutableArray alloc] initWithObjects:listItem, nil];
         [self updateCollectionViewWithListItem:listSection];
-        if([listItem count] == 0){
+        if([listItem count] == 0)
+        {
             [self getListReportFromParse];
         }
-        [self setUpEgoRefreshHeader];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getListReportFromParse) name:STATE_CHANGE_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(getListReportFromParse)
+                                                     name:STATE_CHANGE_NOTIFICATION
+                                                   object:nil];
     }
     return self;
 }
 
 
--(void)setUpEgoRefreshHeader{
-    self.isLoadingRefreshHeader = NO;
-    if(!self.refreshHeaderView){
-        self.refreshHeaderView = [[BaseRefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.targetCollectionView.bounds.size.height, [DeviceHelper getWinSize].width, self.targetCollectionView.bounds.size.height)];
-        [self.refreshHeaderView setBackgroundColor:[UIColor whiteColor]];
-        self.refreshHeaderView.delegate = self;
-        [self.targetCollectionView addSubview:self.refreshHeaderView];
-    }else{
-        [self.refreshHeaderView setFrame:CGRectMake(self.refreshHeaderView.frame.origin.x,self.refreshHeaderView.frame.origin.y, [DeviceHelper getWinSize].width,self.refreshHeaderView.frame.size.height)];
-    }
+-(void)refreshHeaderHandle:(id)handle{
+    [self getListReportFromParse];
 }
 
-
--(void)getListReportFromParse {
-    isLoading = YES;
+-(void)getListReportFromParse
+{
     [[APIEngineer sharedInstance] getReportsItemContentOnComplete:^(id result, BOOL isCache) {
         if(result && [result isKindOfClass:[NSArray class]]){
             [listItem removeAllObjects];
@@ -86,10 +85,8 @@
             [listItem addObjectsFromArray:[ReportItemObject createListDataFromPFObject:result]];
             [self reloadCollectionView];
         }
-        isLoading = NO;
-    } onError:^(NSError *error) {
-        isLoading = NO;        
-    }];
+
+    } onError:^(NSError *error) {}];
 }
 
 -(void)registerNibWithCollection:(UICollectionView *)collectionView{
@@ -124,68 +121,6 @@
         [[MainViewController getRootNaviController] pushViewController:reportDetailView animated:YES];
     }
 }
-
-#pragma mark - Ego pull to refresh protocol
-#pragma mark - Ego refresh header protocol
-- (void) doneLoadingTableViewData {
-    //  model should call this when its done loading
-    self.isLoadingRefreshHeader = NO;
-    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.targetCollectionView];
-}
-
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-- (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (self.refreshHeaderView) {
-        [self.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (self.refreshHeaderView) {
-        [self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-    }
-}
-
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-}
-
-#pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-    if (self.refreshHeaderView) {
-        if(!isLoading){
-            [self getListReportFromParse];
-        }
-        [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1];
-    }
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-    if (!self.refreshHeaderView) {
-        return NO;
-    }
-    return self.isLoadingRefreshHeader; // should return if data source model is reloading
-}
-
-- (NSDate*) egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
-    if (!self.refreshHeaderView) {
-        return nil;
-    }
-    return [NSDate date]; // should return date data source was last changed
-}
-
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 
 

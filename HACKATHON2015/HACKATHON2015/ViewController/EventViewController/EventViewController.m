@@ -7,6 +7,8 @@
 //
 
 #import "EventViewController.h"
+#import <Parse/Parse.h>
+#import "UIAlertView+Blocks.h"
 
 @interface EventViewController ()
 
@@ -14,9 +16,19 @@
 
 @implementation EventViewController
 
+-(id)initWithOwnerViewController:(ReportDetailViewController *)owner{
+    self = [super initUsingNib];
+    if(self){
+        _owner = owner;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    [btnMinimSize setHidden:YES];
     
     self.locationManager = [[CLLocationManager alloc] init];
     [CLLocationManager locationServicesEnabled];
@@ -30,14 +42,14 @@
     }
     
     [self initMapOnComplete:^(BOOL b) {
-        
+         normalFrameMap = ownerMapView.frame;
     }];
     
     txtDescription.delegate =self;
     textTitle.delegate = self;
     
     [mainscroll setContentSize:CGSizeMake(mainscroll.frame.size.width, btnCreateEvent.frame.origin.y + btnCreateEvent.frame.size.height + 50)]; 
-    
+    isMapViewNormalShowning = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,8 +96,6 @@
 }
 
 
-
-
 -(void)textViewDidBeginEditing:(UITextView *)textView{
     [textView setTextColor:[UIColor blackColor]];
     [textView  setText:@""];
@@ -118,6 +128,99 @@
 
 - (BOOL) textField:(UITextField *)aTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return YES;
+}
+
+
+-(IBAction)clickCreateEvent:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Bạn có muốn tạo sự kiện này không?" delegate:self cancelButtonTitle:@"Hủy" otherButtonTitles:@"Tạo",nil];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            [[MainViewController getRootNaviController] popViewControllerAnimated:YES];
+            break;
+        case 1:
+        {
+            PFObject *event = [PFObject objectWithClassName:@"Events"];
+            event[@"title"] = textTitle.text;
+            
+            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
+            
+            event[@"location"] = geoPoint;
+            
+            PFUser *currUser = [PFUser currentUser];
+            PFRelation *relation = [event relationForKey:@"owner"];
+            [relation addObject:currUser];
+            
+            NSString * description = txtDescription.text;
+            if(description)
+                event[@"description"] = description;
+            
+            [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    // The object has been saved.
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Sự kiện của bạn đã được tạo." delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
+                    [alert show];
+                    if(_owner){
+                        [_owner updateWithEvent:event];
+                    }
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Nỗi kết nối vui lòng thử lại sau!" delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
+                    [alert show];
+                }
+            }];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
+
+
+-(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    [mapView clear];
+    [mainscroll bringSubviewToFront:ownerMapView];
+    if(isMapViewNormalShowning){
+        [UIView animateWithDuration:0.5 animations:^{
+            [ownerMapView setFrame:CGRectMake(mainscroll.frame.origin.x, mainscroll.contentOffset.y, mainscroll.frame.size.width, mainscroll.frame.size.height - TABBAR_HEIGHT)];
+        }completion:^(BOOL finished) {
+            isMapViewNormalShowning = NO;
+            [btnMinimSize setHidden:NO];
+            [mapView_.settings setAllGesturesEnabled:YES];
+            [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:YES];
+        }];
+    }else{
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake(coordinate.latitude,coordinate.longitude);
+        marker.title = textTitle.text;
+        marker.snippet = txtDescription.text;
+        marker.map = mapView;
+        marker.icon = [UIImage imageNamed:@"location_submited.png"];
+        self.location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        
+        NSDictionary *result = [DeviceHelper convertCLLocationToDegreesFormula:self.location];
+        if(result){
+            [lbLocation setText:[NSString stringWithFormat:@"Location: %@-%@",[result objectForKey:@"latitude"],[result objectForKey:@"longtitude"]]];
+            updatedLocation = YES;
+        }
+        latitude = self.location.coordinate.latitude;
+        longtitude = self.location.coordinate.longitude;
+    }
+}
+
+-(IBAction)clickMinisize:(id)sender{
+    [UIView animateWithDuration:0.5 animations:^{
+        [ownerMapView setFrame:normalFrameMap];
+    }completion:^(BOOL finished) {
+        [[MainViewController getRootNaviController] hiddenNavigationButtonLeft:NO];
+        [btnMinimSize setHidden:YES];
+        isMapViewNormalShowning = YES;
+        [mapView_.settings setAllGesturesEnabled:NO];
+    }];
 }
 
 

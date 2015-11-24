@@ -56,9 +56,11 @@
     [super viewDidAppear:animated];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if(!mapView_){
+        if(!mapView_)
+        {
             mapView_ = [[GMSMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            if(mapView_.frame.size.height > [DeviceHelper getWinSize].height - TABBAR_HEIGHT - 64){
+            if(mapView_.frame.size.height > [DeviceHelper getWinSize].height - TABBAR_HEIGHT - 64)
+            {
                 mapView_ = [[GMSMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TABBAR_HEIGHT)];
             }
             [self.view insertSubview:mapView_ belowSubview:controlView];
