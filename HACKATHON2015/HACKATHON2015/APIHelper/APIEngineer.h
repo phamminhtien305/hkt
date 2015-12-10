@@ -22,5 +22,8 @@
            withCompleteBlock:(AppResultCompleteBlock)completeBlock
                   errorBlock:(AppResultErrorBlock)errorBlock;
 
-
+-(void)postMessageToPage:(NSString *)link
+              withParams:(NSDictionary *)params
+       withCompleteBlock:(AppResultCompleteBlock)completeBlock
+              errorBlock:(AppResultErrorBlock)errorBlock;
 @end

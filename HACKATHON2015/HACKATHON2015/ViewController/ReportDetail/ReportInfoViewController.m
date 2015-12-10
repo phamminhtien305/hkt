@@ -14,7 +14,8 @@
 #import "UploadEngine.h"
 #import "UIActionSheet+Blocks.h"
 #import "UIAlertView+Blocks.h"
-
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 @interface ReportInfoViewController ()
 
 @end
@@ -33,44 +34,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [lbStatus setHidden:YES];
-    [[MainViewController getRootNaviController] updateTitle:@"Thông Tin Báo Cáo"];
-    self.locationManager = [[CLLocationManager alloc] init];
-    [CLLocationManager locationServicesEnabled];
-    if([CLLocationManager locationServicesEnabled])
-    {
-        if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
-            [lbLocation setText:@"Location Services Disable"];
-        }
-    }else{
-        [lbLocation setText:@"Location Services Disable"];
-    }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[MainViewController getRootNaviController] updateTitle:@"Thông Tin Báo Cáo"];
+            self.locationManager = [[CLLocationManager alloc] init];
+            [CLLocationManager locationServicesEnabled];
+            if([CLLocationManager locationServicesEnabled])
+            {
+                if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusDenied){
+                    [lbLocation setText:@"Location Services Disable"];
+                }
+            }else{
+                [lbLocation setText:@"Location Services Disable"];
+            }
+            
+            isMapViewNormalShowning = YES;
+            [btnMinimSize setHidden:YES];
+            
+            txtViewDescription.delegate = self;
+            txtTitle.delegate = self;
+            [txtTitle setText:_titleReport];
+            txtViewDescription.layer.masksToBounds = YES;
+            txtViewDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+            txtViewDescription.layer.cornerRadius = 10;
+            txtViewDescription.layer.borderWidth = 0.5;
+
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+            [self.locationManager startUpdatingLocation];
+            self.locationManager.delegate = self;
+            self.location = [[CLLocation alloc] init];
+            [self.locationManager startUpdatingHeading];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(keyboardDidShow:)
+                                                         name:UIKeyboardDidShowNotification
+                                                       object:nil];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(keyboardDidHide:)
+                                                         name:UIKeyboardDidHideNotification
+                                                       object:nil];
+    });
     
-    isMapViewNormalShowning = YES;
-    [btnMinimSize setHidden:YES];
-    
-    txtViewDescription.delegate = self;
-    txtTitle.delegate = self;
-    [txtTitle setText:_titleReport];
-    txtViewDescription.layer.masksToBounds = YES;
-    txtViewDescription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    txtViewDescription.layer.cornerRadius = 10;
-    txtViewDescription.layer.borderWidth = 0.5;
-    
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [self.locationManager startUpdatingLocation];
-    self.locationManager.delegate = self;
-    self.location = [[CLLocation alloc] init];
-    [self.locationManager startUpdatingHeading];
-        
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHide:)
-                                                 name:UIKeyboardDidHideNotification
-                                               object:nil];
     [self setupTakePhotoView];
     shareWithPublic = YES;
     isanym = NO;
@@ -315,7 +319,7 @@
                     [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
                             // The object has been saved.
-                            
+                            [self postToFanPageWithReportObject:reportObject];
                         } else {
                             // There was a problem, check error.description
                             [lbStatus setHidden:NO];
@@ -334,6 +338,37 @@
         default:
             break;
     }
+}
+
+
+-(void)postToFanPageWithReportObject:(PFObject *)report{
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    NSArray *listImage = report[@"images"];
+    if([listImage count]> 0){
+        NSString *urlImage = [listImage firstObject];
+        [login logInWithPublishPermissions:@[@"publish_actions"]
+                                   handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                                       NSDictionary *params = @{
+                                                                @"message": report[@"description"],
+                                                                @"link": urlImage,
+                                                                @"published":@"1"
+                                                                };
+                                       /* make the API call */
+                                       FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                                                     initWithGraphPath:@"/1088242164520912/feed"
+                                                                     parameters:params
+                                                                     HTTPMethod:@"POST"];
+                                       [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                                                             id result,
+                                                                             NSError *error) {
+                                           // Handle the result
+                                       }];
+                                   }];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Image error!" delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 -(IBAction)shareWithPublicHandle:(id)sender{

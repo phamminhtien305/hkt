@@ -60,6 +60,20 @@
     }];
 }
 
+
+-(void)postMessageToPage:(NSString *)link
+              withParams:(NSDictionary *)params
+       withCompleteBlock:(AppResultCompleteBlock)completeBlock
+              errorBlock:(AppResultErrorBlock)errorBlock
+{
+    [self POST:link parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+}
+
 - (void) objectFromJSonString:(NSString*) jsonString
           withCompletionBlock:(void (^)(id jsonObject)) jsonDecompressionHandler{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
