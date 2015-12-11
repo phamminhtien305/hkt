@@ -43,6 +43,18 @@
 			<string>comgooglemaps</string>
 		</array>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fb-messenger-api20140430</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130214</string>
+		<string>fbauth</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>fb-messenger-api</string>
+		<string>fbapi</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

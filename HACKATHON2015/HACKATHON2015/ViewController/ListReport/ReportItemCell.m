@@ -12,6 +12,9 @@
 #import "UIActionSheet+Blocks.h"
 #import "NewsObject.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "APIEngineer.h"
 
 @implementation ReportItemCell
 
@@ -110,6 +113,8 @@
     [shareDialog show];
 }
 
+
+
 - (void)sharerDidCancel:(id<FBSDKSharing>)sharer{
     
 }
@@ -121,6 +126,7 @@
 -(void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error{
     
 }
+
 
 -(IBAction)handleRequest:(id)sender{
     PFObject *object = item.pfObject;
