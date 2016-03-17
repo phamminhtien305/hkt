@@ -1,0 +1,14 @@
+# NOTA
+- Design chức năng event mới
+	- Design chức năng event, tạo event, tương tự Facebook
+	- Cho phép tạo event mới, tạo event từ report có sẵn.
+	- Tạo 1 cate mới bên cạnh bản đồ, news, thêm cate event, list ra giao diện các event
+	- Trong chi tiết event thì sẽ có nội dung như của FB event (kèm theo link (scheme url) tới report nếu event tạo ra từ report)
+- Bỏ cái favorite hiện tại, nút request -> yêu cầu xử lý
+- Bản đồ tin open mở đén schemes feed luôn
+- Làm login, register
+- Cho thêm nút chụp hình ngay ở ngoài để thao tác tạo sự kiẹn nhanh hơn
+- Thêm nút invite Facebook
+- Cho phép post lên page trực tiếp từ report
+- Share sử dụng FB Applink
+- PINed post
