@@ -633,11 +633,11 @@
 		1B025DAF1BD564D0007BD923 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1BAE75BA1BD9E4950072581B /* DetailReportViewController */,
-				1B9CC1641BD79F1500CAA495 /* INFOMATION */,
-				1B9CC15E1BD79CE200CAA495 /* NOTIFIVIEW */,
-				1BB121691BD5FDDE0012E13B /* REPORTER */,
 				1BB121521BD5FB8F0012E13B /* LISTREPORT */,
+				1B9CC15E1BD79CE200CAA495 /* NOTIFIVIEW */,
+				1BB121691BD5FDDE0012E13B /* PROFILE */,
+				1B9CC1641BD79F1500CAA495 /* INFOMATION */,
+				1BAE75BA1BD9E4950072581B /* DetailReportViewController */,
 				1BB121511BD5F8C20012E13B /* ADDREPORT */,
 			);
 			name = ViewController;
@@ -913,7 +913,7 @@
 			name = ListPage;
 			sourceTree = "<group>";
 		};
-		1BB121691BD5FDDE0012E13B /* REPORTER */ = {
+		1BB121691BD5FDDE0012E13B /* PROFILE */ = {
 			isa = PBXGroup;
 			children = (
 				1BAE75D51BDA39FA0072581B /* Controller */,
@@ -921,7 +921,7 @@
 				1BB121701BD5FFDF0012E13B /* ProfileViewController.m */,
 				1BB121711BD5FFDF0012E13B /* ProfileViewController.xib */,
 			);
-			name = REPORTER;
+			name = PROFILE;
 			sourceTree = "<group>";
 		};
 		1BB1217E1BD640170012E13B /* Controller */ = {
@@ -1270,6 +1270,7 @@
 				TargetAttributes = {
 					1BEA1E3E1BD5634B0029262E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 747LG25T2M;
 					};
 				};
 			};
@@ -1707,8 +1708,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: APPOTA INC PTE. LTD";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: APPOTA INC PTE. LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nguyen Hang (5WT7H8D5WW)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1738,9 +1739,9 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appotainc.test;
+				PRODUCT_BUNDLE_IDENTIFIER = nota.peopleservice.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb594822-4559-41de-a0ea-cd9b1e09461a";
+				PROVISIONING_PROFILE = "6f18441d-066c-43ef-88e1-37303fde5cb2";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1752,8 +1753,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: APPOTA INC PTE. LTD";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: APPOTA INC PTE. LTD";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1783,9 +1784,9 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appotainc.test;
+				PRODUCT_BUNDLE_IDENTIFIER = nota.peopleservice.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb594822-4559-41de-a0ea-cd9b1e09461a";
+				PROVISIONING_PROFILE = "2329642e-9002-450d-b87c-ae887cf55303";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
