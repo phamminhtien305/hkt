@@ -12,6 +12,7 @@
 {
     __weak IBOutlet UILabel *lbTitle;
     __weak IBOutlet UILabel *lbValue;
+    __weak IBOutlet UIImageView *bottomLine;
     id objectDic;
 }
 @end

@@ -14,7 +14,7 @@
 
 -(void)getReportContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"NEWREPORT"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+//    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
@@ -28,7 +28,7 @@
 
 -(void)getReportsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"Report"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+//    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open",@"close", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){
@@ -42,7 +42,7 @@
 
 -(void)getNewsItemContentOnComplete:(AppResultCompleteBlock)onComplete onError:(AppResultErrorBlock)errorBlock{
     PFQuery *query = [PFQuery queryWithClassName:@"News"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+//    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     [query whereKey:@"state" containedIn:[[NSArray alloc] initWithObjects:@"open", nil]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if(error){

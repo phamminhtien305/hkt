@@ -11,7 +11,7 @@
 @implementation HeaderInfoView
 
 +(CGSize)getSize{
-    return CGSizeMake([DeviceHelper getWinSize].width, 20);
+    return CGSizeMake([DeviceHelper getWinSize].width, 40);
 }
 
 -(void)configHeader:(id)data{
