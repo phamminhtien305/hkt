@@ -16,6 +16,7 @@
 #import "LocalServiceObject.h"
 
 #import "MapViewController.h"
+#import "ContactUsView.h"
 
 @implementation InfoAppController
 
@@ -68,11 +69,19 @@
 -(void)addLocation{
     [[APIEngineer sharedInstance] getLocationService:^(id result, BOOL isCache)
      {
-        [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
-        [self updateCollectionViewWithListItem:listSection];
+         [listSection addObject:[LocalServiceObject createListDataFromPFObject:result]];
+         [self addAboutMe];
     } onError:^(NSError *error) {
-        
+        [self addAboutMe];
     }];
+}
+
+-(void)addAboutMe{
+    NSDictionary *contactUs = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"value",@"Contact us",@"title", nil];
+    
+    NSArray *listItem = [[NSArray alloc] initWithObjects:contactUs, nil];
+    [listSection addObject:listItem];
+    [self updateCollectionViewWithListItem:listSection];
 }
 
 
@@ -110,7 +119,24 @@ referenceSizeForHeaderInSection:(NSInteger)section
     if (kind == UICollectionElementKindSectionHeader) {
         HeaderInfoView *collectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:[HeaderInfoView nibName] forIndexPath:indexPath];
         reusableView = collectionHeader;
-        [collectionHeader configHeader:@""];
+        NSString *titleHeader = @"";
+        switch (indexPath.section) {
+            case 0:
+                titleHeader = @"THÔNG TIN ỨNG DỤNG";
+                break;
+            case 1:
+                titleHeader = @"HOT LINE";
+                break;
+            case 2:
+                titleHeader = @"TRA CỨU NHANH";
+                break;
+            case 3:
+                titleHeader = @"PHẢN HỒI";
+                break;
+            default:
+                break;
+        }
+        [collectionHeader configHeader:titleHeader];
     }
     return reusableView;
 }
@@ -133,6 +159,9 @@ referenceSizeForHeaderInSection:(NSInteger)section
             [[MainViewController getRootNaviController] pushViewController:map animated:YES];
         }
     }
+    if(indexPath.section == 3){
+        [ContactUsView showContactUsView];
+    }
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -144,7 +173,7 @@ referenceSizeForHeaderInSection:(NSInteger)section
 }
 
 -(void)alertViewCancel:(UIAlertView *)alertView{
-    
+ 
 }
 
 

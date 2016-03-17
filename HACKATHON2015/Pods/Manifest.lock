@@ -17,6 +17,7 @@ PODS:
   - AFNetworking/Serialization (2.0.2)
   - AFNetworking/UIKit (2.0.2):
     - AFNetworking/NSURLConnection
+  - Branch (0.11.18)
   - EGOTableViewPullRefresh (0.1.0)
   - GoogleMaps (1.10.4)
   - iCarousel (1.7.6)
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 2.0.2)
+  - Branch
   - EGOTableViewPullRefresh
   - GoogleMaps
   - iCarousel (~> 1.7.6)
@@ -37,6 +39,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: e5f258bd3aadae719d75476f73f4414ad6d662ef
+  Branch: 64f4f08eaf69bdb5b1f46d4f1f4479494755a073
   EGOTableViewPullRefresh: d4c15be51914f4168d6fd7529b6ad3a4ab01e5f4
   GoogleMaps: 134bcf57e8d489efbc0c29d532ed421554fabdb2
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd

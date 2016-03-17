@@ -11,6 +11,7 @@
 @interface BaseCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSIndexPath *cellIndexPath;
+@property BOOL lastCell;
 - (void) configCell:(id) data;
 -(void)configCellWithPath:(id)url;
 - (void) selectCell:(id) data;

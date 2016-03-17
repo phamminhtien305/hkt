@@ -37,6 +37,8 @@
 		1B5883881BD8E3AD00F2BD45 /* ReportItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5883871BD8E3AD00F2BD45 /* ReportItemCell.m */; };
 		1B58838A1BD8E3BA00F2BD45 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B5883891BD8E3BA00F2BD45 /* ReportItemCell.xib */; };
 		1B58838D1BD8E53500F2BD45 /* ReportItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B58838C1BD8E53500F2BD45 /* ReportItemObject.m */; };
+		1B74D9A11C9B1813004A50C2 /* ContactUsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B74D9A01C9B1813004A50C2 /* ContactUsView.m */; };
+		1B74D9A31C9B1821004A50C2 /* ContactUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B74D9A21C9B1821004A50C2 /* ContactUsView.xib */; };
 		1B77913E1BD94E7200FE9A53 /* hn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1B7791361BD94E7200FE9A53 /* hn.jpg */; };
 		1B77913F1BD94E7200FE9A53 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B7791371BD94E7200FE9A53 /* line.png */; };
 		1B7791401BD94E7200FE9A53 /* line1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B7791381BD94E7200FE9A53 /* line1.png */; };
@@ -310,6 +312,9 @@
 		1B58838B1BD8E53500F2BD45 /* ReportItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportItemObject.h; path = BaseObject/ReportItemObject.h; sourceTree = "<group>"; };
 		1B58838C1BD8E53500F2BD45 /* ReportItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportItemObject.m; path = BaseObject/ReportItemObject.m; sourceTree = "<group>"; };
 		1B58838E1BD8FC6F00F2BD45 /* EnumConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumConfig.h; sourceTree = "<group>"; };
+		1B74D99F1C9B1813004A50C2 /* ContactUsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactUsView.h; path = ViewController/CustomContactUs/ContactUsView.h; sourceTree = "<group>"; };
+		1B74D9A01C9B1813004A50C2 /* ContactUsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactUsView.m; path = ViewController/CustomContactUs/ContactUsView.m; sourceTree = "<group>"; };
+		1B74D9A21C9B1821004A50C2 /* ContactUsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactUsView.xib; path = ViewController/CustomContactUs/ContactUsView.xib; sourceTree = "<group>"; };
 		1B77912C1BD94C4C00FE9A53 /* ColorConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorConfig.h; sourceTree = "<group>"; };
 		1B7791361BD94E7200FE9A53 /* hn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hn.jpg; path = Resource/hn.jpg; sourceTree = "<group>"; };
 		1B7791371BD94E7200FE9A53 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = line.png; path = Resource/line.png; sourceTree = "<group>"; };
@@ -633,11 +638,11 @@
 		1B025DAF1BD564D0007BD923 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1BAE75BA1BD9E4950072581B /* DetailReportViewController */,
-				1B9CC1641BD79F1500CAA495 /* INFOMATION */,
-				1B9CC15E1BD79CE200CAA495 /* NOTIFIVIEW */,
-				1BB121691BD5FDDE0012E13B /* REPORTER */,
 				1BB121521BD5FB8F0012E13B /* LISTREPORT */,
+				1B9CC15E1BD79CE200CAA495 /* NOTIFIVIEW */,
+				1BB121691BD5FDDE0012E13B /* PROFILE */,
+				1B9CC1641BD79F1500CAA495 /* INFOMATION */,
+				1BAE75BA1BD9E4950072581B /* DetailReportViewController */,
 				1BB121511BD5F8C20012E13B /* ADDREPORT */,
 			);
 			name = ViewController;
@@ -705,6 +710,16 @@
 				1BBD8AB41BDB3A3100EA1EB4 /* HeaderNewsView.xib */,
 			);
 			name = ListReportController;
+			sourceTree = "<group>";
+		};
+		1B74D99E1C9B17DF004A50C2 /* CustomContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				1B74D99F1C9B1813004A50C2 /* ContactUsView.h */,
+				1B74D9A01C9B1813004A50C2 /* ContactUsView.m */,
+				1B74D9A21C9B1821004A50C2 /* ContactUsView.xib */,
+			);
+			name = CustomContactUs;
 			sourceTree = "<group>";
 		};
 		1B7791351BD94E1D00FE9A53 /* Resource */ = {
@@ -779,6 +794,7 @@
 		1BAE75CA1BDA20790072581B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1B74D99E1C9B17DF004A50C2 /* CustomContactUs */,
 				1BAE75C71BDA20720072581B /* InfoAppController.h */,
 				1BAE75C81BDA20720072581B /* InfoAppController.m */,
 				1BAE75CB1BDA21BE0072581B /* InfoCell.h */,
@@ -913,7 +929,7 @@
 			name = ListPage;
 			sourceTree = "<group>";
 		};
-		1BB121691BD5FDDE0012E13B /* REPORTER */ = {
+		1BB121691BD5FDDE0012E13B /* PROFILE */ = {
 			isa = PBXGroup;
 			children = (
 				1BAE75D51BDA39FA0072581B /* Controller */,
@@ -921,7 +937,7 @@
 				1BB121701BD5FFDF0012E13B /* ProfileViewController.m */,
 				1BB121711BD5FFDF0012E13B /* ProfileViewController.xib */,
 			);
-			name = REPORTER;
+			name = PROFILE;
 			sourceTree = "<group>";
 		};
 		1BB1217E1BD640170012E13B /* Controller */ = {
@@ -1270,6 +1286,7 @@
 				TargetAttributes = {
 					1BEA1E3E1BD5634B0029262E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 747LG25T2M;
 					};
 				};
 			};
@@ -1321,6 +1338,7 @@
 				1BBD8B2F1BDB9EDF00EA1EB4 /* icon-report.png in Resources */,
 				1B4642671BE3852600F73647 /* location_4@3x.png in Resources */,
 				1BBD8B5E1BDC7AA300EA1EB4 /* minimsize.png in Resources */,
+				1B74D9A31C9B1821004A50C2 /* ContactUsView.xib in Resources */,
 				1BBD8B0C1BDB9EDF00EA1EB4 /* plus@3x.png in Resources */,
 				1BBD8B171BDB9EDF00EA1EB4 /* edit@2x.png in Resources */,
 				1BBD8B321BDB9EDF00EA1EB4 /* icon-yeucauxuly-active.png in Resources */,
@@ -1562,6 +1580,7 @@
 				1BB121A01BD6539D0012E13B /* ReportObject.m in Sources */,
 				1BC2679F1BD69D0800A2355E /* BasePageViewController.m in Sources */,
 				1B7FC2511BE27ABA0028C04E /* NotificationManager.m in Sources */,
+				1B74D9A11C9B1813004A50C2 /* ContactUsView.m in Sources */,
 				1B7791551BD954C800FE9A53 /* AddNewReportCell.m in Sources */,
 				1B5883881BD8E3AD00F2BD45 /* ReportItemCell.m in Sources */,
 				1BAE75D81BDA3A930072581B /* ProfileController.m in Sources */,
@@ -1631,7 +1650,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1653,6 +1673,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "2329642e-9002-450d-b87c-ae887cf55303";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1675,7 +1696,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1690,6 +1712,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2329642e-9002-450d-b87c-ae887cf55303";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1703,8 +1726,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nguyen Hang (5WT7H8D5WW)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1712,7 +1735,7 @@
 				);
 				GCC_PREFIX_HEADER = "Hackathon-PrefixHeader.pch";
 				INFOPLIST_FILE = HACKATHON2015/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1734,8 +1757,9 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = nota.peopleservice.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da53e8ba-eb78-4fbb-9065-3bc49a2e5d99";
+				PROVISIONING_PROFILE = "6f18441d-066c-43ef-88e1-37303fde5cb2";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1747,8 +1771,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xuan Tran (72XXGAVX4P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nguyen Hang (747LG25T2M)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1756,7 +1780,7 @@
 				);
 				GCC_PREFIX_HEADER = "Hackathon-PrefixHeader.pch";
 				INFOPLIST_FILE = HACKATHON2015/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1778,8 +1802,9 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = nota.peopleservice.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "da53e8ba-eb78-4fbb-9065-3bc49a2e5d99";
+				PROVISIONING_PROFILE = "2329642e-9002-450d-b87c-ae887cf55303";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

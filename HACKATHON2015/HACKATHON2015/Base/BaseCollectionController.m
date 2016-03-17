@@ -105,8 +105,15 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     if ([cell respondsToSelector:@selector(configCell:)]) {
         [(BaseCollectionViewCell*) cell setCellIndexPath:indexPath];
-        [((BaseCollectionViewCell*) cell) configCell:item];
+        
         ((BaseCollectionViewCell*) cell).cellIndexPath = indexPath;
+     
+        if(indexPath.row == [collectionView numberOfItemsInSection:indexPath.section] - 1){
+            ((BaseCollectionViewCell*) cell).lastCell = YES;
+        }else{
+            ((BaseCollectionViewCell*) cell).lastCell = NO;
+        }
+        [((BaseCollectionViewCell*) cell) configCell:item];
     }
     return cell;
 }

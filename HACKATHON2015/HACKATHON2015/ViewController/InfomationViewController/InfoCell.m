@@ -31,6 +31,11 @@
         [lbTitle setText:[(NSDictionary *)objectDic objectForKey:@"title"]];
         [lbValue setText:[(NSDictionary *)objectDic objectForKey:@"phone"]];
     }
+    if(self.lastCell){
+        [bottomLine setHidden:YES];
+    }else{
+        [bottomLine setHidden:NO];
+    }
 }
 
 

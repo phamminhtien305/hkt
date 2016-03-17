@@ -11,9 +11,9 @@
 
 #define AF_API_HOST @"http://"
 
-#define PARSE_APP_ID @"oMOfpjaRTPouqR7YNZAuQXy0SuOMj1IAaWSvtJqI"
-#define PARSE_CLIENT_ID @"XjzR1tH9GVKeAikQ47GuUnxKi6UMa2aO2CkeVmNt"
-#define PARSE_REST_API_ID @"88UfTsYRRpquw614FNgrxDx0M5SkVs36THL5E6Ov"
+#define PARSE_APP_ID @"lXyH4WDBDr7JR5bjrf4zRNcPJA91OSMQ3jdYZGXs"
+#define PARSE_CLIENT_ID @"fJv2rMtvsqTxx7J6eH367NQQFtyCzoZTBZCTz4rf"
+#define PARSE_REST_API_ID @"ie1Cfo7VWSZGZ4parcJRlrXE9ACQGRLRbhiwUSjU"
 
 #define HOME_URL @"https://api.parse.com/1/classes/HOME"
 #define REPORT_URL @"https://api.parse.com/1/classes/NEWREPORT"

@@ -11,9 +11,5 @@ target 'HACKATHON2015' do
     pod 'GoogleMaps'
     pod 'EGOTableViewPullRefresh'
     pod 'iCarousel', '~> 1.7.6'
+    pod 'Branch'
 end
-
-target 'HACKATHON2015Tests' do
-
-end
-

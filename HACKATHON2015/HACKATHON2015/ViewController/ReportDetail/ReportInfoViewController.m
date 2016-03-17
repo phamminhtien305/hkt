@@ -16,6 +16,7 @@
 #import "UIAlertView+Blocks.h"
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 @interface ReportInfoViewController ()
 
 @end
@@ -319,7 +320,11 @@
                     [reportObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
                             // The object has been saved.
-                            [self postToFanPageWithReportObject:reportObject];
+                            [self checkLogin:^(BOOL b) {
+                                if(b){
+                                    [self postToFanPageWithReportObject:reportObject];
+                                }
+                            }];
                         } else {
                             // There was a problem, check error.description
                             [lbStatus setHidden:NO];
@@ -340,36 +345,45 @@
     }
 }
 
+-(void)checkLogin:(AppBOOLBlock)onComplete{
+    if ([[FBSDKAccessToken currentAccessToken] hasGranted:@"publish_actions"]) {
+        // TODO: publish content.
+        onComplete(YES);
+    } else {
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logInWithPublishPermissions:@[@"publish_actions"]
+                                   handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                                       onComplete(YES);
+                                   }];
+    }
+}
 
 -(void)postToFanPageWithReportObject:(PFObject *)report{
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     NSArray *listImage = report[@"images"];
     if([listImage count]> 0){
         NSString *urlImage = [listImage firstObject];
-        [login logInWithPublishPermissions:@[@"publish_actions"]
-                                   handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                                       NSDictionary *params = @{
-                                                                @"message": report[@"description"],
-                                                                @"link": urlImage,
-                                                                @"published":@"1"
-                                                                };
-                                       /* make the API call */
-                                       FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-                                                                     initWithGraphPath:@"/1088242164520912/feed"
-                                                                     parameters:params
-                                                                     HTTPMethod:@"POST"];
-                                       [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
-                                                                             id result,
-                                                                             NSError *error) {
-                                           // Handle the result
-                                       }];
-                                   }];
+        NSDictionary *params = @{
+                                 @"message": report[@"description"],
+                                 @"link": urlImage,
+                                 @"published":@"1"
+                                 };
+        /* make the API call */
+        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                      initWithGraphPath:@"/1088242164520912/feed"
+                                      parameters:params
+                                      HTTPMethod:@"POST"];
+        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                              id result,
+                                              NSError *error) {
+            // Handle the result
+        }];
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Vì Cộng Đồng" message:@"Image error!" delegate:self cancelButtonTitle:@"Ẩn thông báo" otherButtonTitles:nil];
         [alert show];
     }
     
 }
+
 
 -(IBAction)shareWithPublicHandle:(id)sender{
     UISwitch *sw = (UISwitch *)sender;
